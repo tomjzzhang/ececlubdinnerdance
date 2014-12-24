@@ -1,6 +1,11 @@
 $(document).ready(function() {
 
   function init() {
+
+    var canvas = document.getElementById('background-animation');
+    console.log("Canvas width: " + canvas.width + " height: " + canvas.height);
+
+
     clock();
     setInterval(clock, 1000);
   }
@@ -9,6 +14,10 @@ $(document).ready(function() {
     var now = new Date();
     var ctx = document.getElementById('background-animation').getContext(
       '2d');
+
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+
     ctx.save();
     ctx.clearRect(0, 0, 150, 150);
     ctx.translate(75, 75);
