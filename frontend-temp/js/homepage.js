@@ -3,10 +3,20 @@ $(document).ready(function() {
   var ctx = null;
   var objectList = [];
   var printList = [];
-  var decc = 0.25;
+  var decc = 0.015;
 
   var canvas = document.getElementById('background-animation');
   var context = canvas.getContext('2d');
+  var fps = 0;
+
+  var imageObj = new Image();
+
+  imageObj.onload = function() {
+    init();
+  };
+  imageObj.src =
+    'resources/footprint.png';
+
 
   window.requestAnimFrame = (function(callback) {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
@@ -24,12 +34,14 @@ $(document).ready(function() {
 
 
 
-  function makeObject(ix, iy) {
+  function makeObject(ix, iy, id, left) {
 
     var newObject = {
       x: ix,
       y: iy,
-      r: 10
+      d: id,
+      op: 1,
+      leftFlag: left
     };
 
     objectList.push(newObject);
@@ -44,7 +56,8 @@ $(document).ready(function() {
       d: id,
       tc: 0,
       speed: 5,
-      rotationSpeed: 0.5
+      rotationSpeed: 0.2,
+      leftFlag: false
     };
 
     printList.push(newPrint);
@@ -60,33 +73,36 @@ $(document).ready(function() {
 
     makePrint(400, 400, 1);
     makePrint(400, 400, 1);
-    makePrint(400, 400, 1);
-    makePrint(400, 400, 1);
-    makePrint(400, 400, 1);
 
-    renderLoop();
+    renderLoop(Date.now());
   }
 
 
-  function renderLoop() {
-    update();
-    render(context);
+  function renderLoop(lastUpdateTime) {
+    var currentTime = Date.now();
+    var dt = currentTime - lastUpdateTime;
+    update(dt);
+    render(dt, context);
+
+    // calculate average FPS
+    if (dt > 1)
+      fps = (fps + 1000.0 / dt) / 2.0;
 
     // request new frame
     requestAnimFrame(function() {
-      renderLoop();
+      renderLoop(currentTime);
     });
   }
 
 
 
-  function update() {
+  function update(deltaTime) {
 
     // update objects
     printList.forEach(function(ob) {
 
       // calculate new position
-      ob.x += ob.speed * Math.sin(ob.d);
+      ob.x -= ob.speed * Math.sin(ob.d);
       ob.y += ob.speed * Math.cos(ob.d);
 
       // calculate movement direction
@@ -96,9 +112,10 @@ $(document).ready(function() {
       // calculate potential object spawning
       ob.tc++;
 
-      if (ob.tc > 10) {
+      if (ob.tc > 15 + 4 * (Math.random() - 0.5)) {
         ob.tc = 0;
-        makeObject(ob.x, ob.y);
+        makeObject(ob.x, ob.y, ob.d, ob.leftFlag);
+        ob.leftFlag = !ob.leftFlag;
       }
 
       // position correction
@@ -130,58 +147,73 @@ $(document).ready(function() {
     // update objects
     objectList.forEach(function(ob) {
 
-      if (ob.r > decc) {
-        ob.r -= decc;
+      if (ob.op > decc) {
+        ob.op -= decc;
       } else {
-        ob.r = 0;
+        ob.op = 0;
       }
 
     });
 
     for (var i = 0; i < objectList.length; ++i) {
-      if (objectList[i].r == 0) {
+      if (objectList[i].op == 0) {
         objectList.splice(i--, 1);
       }
     }
 
 
     // write debug info
-    var dbinfo = "===================[DBINFO]================== <br>";
-    dbinfo += "There are " + objectList.length + " objects alive.<br>";
-    dbinfo += "Current active spawners: " + printList.length;
+    var dbinfo = "=============[ CANVAS DEBUG ]============== <br>";
+    dbinfo += "There are " + objectList.length +
+      " objects alive.<br>";
+    dbinfo += "Current active spawners: " + printList.length + "<br>";
+    dbinfo += "dTIME: " + deltaTime + "<br>";
+    dbinfo += "avgFPS: " + fps + "<br>";
 
     document.getElementById("canvas-debug").innerHTML = dbinfo;
   }
 
 
-  function render(ctx) {
+  function render(deltaTime, ctx) {
 
-    //ctx.canvas.width = window.innerWidth;
-    //ctx.canvas.height = window.innerHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    printList.forEach(function(ob) {
-
-      ctx.beginPath();
-      ctx.lineWidth = 14;
-      ctx.strokeStyle = '#AAAAAA';
-      ctx.arc(ob.x, ob.y, 5, 0, Math.PI * 2, true);
-      ctx.stroke();
-
-    });
+    // printList.forEach(function(ob) {
+    //
+    //   ctx.beginPath();
+    //   ctx.lineWidth = 14;
+    //   ctx.strokeStyle = '#AAAAAA';
+    //   ctx.arc(ob.x, ob.y, 5, 0, Math.PI * 2, true);
+    //   ctx.stroke();
+    //
+    // });
 
     objectList.forEach(function(ob) {
 
-      ctx.beginPath();
-      ctx.lineWidth = 14;
-      ctx.strokeStyle = '#325FA2';
-      ctx.arc(ob.x, ob.y, ob.r, 0, Math.PI * 2, true);
-      ctx.stroke();
+      ctx.save();
+
+      ctx.globalAlpha = ob.op;
+      ctx.translate(ob.x, ob.y);
+      ctx.rotate(ob.d);
+      if (ob.leftFlag) {
+        ctx.scale(-1, 1);
+      }
+
+
+      ctx.drawImage(imageObj, 0, 0, imageObj.width / 2, imageObj.height /
+        2);
+
+      ctx.restore();
+
+      // ctx.beginPath();
+      // ctx.lineWidth = 14;
+      // ctx.strokeStyle = '#325FA2';
+      // ctx.arc(ob.x, ob.y, ob.r, 0, Math.PI * 2, true);
+      // ctx.stroke();
 
     });
 
 
   }
-
-  init();
 
 });
