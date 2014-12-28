@@ -1,21 +1,31 @@
 $(document).ready(function() {
 
+  // footprint object control
   var ctx = null;
   var objectList = [];
   var printList = [];
   var decc = 0.015;
 
+  // canvas control
   var canvas = document.getElementById('background-animation');
   var context = canvas.getContext('2d');
   var fps = 0;
 
+  // iamge loading
   var imageObj = new Image();
 
   imageObj.onload = function() {
     init();
   };
-  imageObj.src =
-    'resources/footprint.png';
+  imageObj.src = 'resources/footprint.png';
+
+  // mouse position
+  var mousex = 0,
+    mousey = 0;
+  $("body").mousemove(function(e) {
+    mousex = e.pageX;
+    mousey = e.pageY;
+  })
 
 
   window.requestAnimFrame = (function(callback) {
@@ -55,7 +65,7 @@ $(document).ready(function() {
       y: iy,
       d: id,
       tc: 0,
-      speed: 5,
+      speed: 3,
       rotationSpeed: 0.2,
       leftFlag: false
     };
@@ -169,6 +179,8 @@ $(document).ready(function() {
     dbinfo += "Current active spawners: " + printList.length + "<br>";
     dbinfo += "dTIME: " + deltaTime + "<br>";
     dbinfo += "avgFPS: " + fps + "<br>";
+    dbinfo += "MOUSE: (" + mousex + ", " + mousey + ") <br>";
+
 
     document.getElementById("canvas-debug").innerHTML = dbinfo;
   }
@@ -200,8 +212,8 @@ $(document).ready(function() {
       }
 
 
-      ctx.drawImage(imageObj, 0, 0, imageObj.width / 2, imageObj.height /
-        2);
+      ctx.drawImage(imageObj, 0, 0, imageObj.width / 4, imageObj.height /
+        4);
 
       ctx.restore();
 
