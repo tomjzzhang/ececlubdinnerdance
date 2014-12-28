@@ -5,6 +5,25 @@ $(document).ready(function() {
   var printList = [];
   var decc = 0.25;
 
+  var canvas = document.getElementById('background-animation');
+  var context = canvas.getContext('2d');
+
+  window.requestAnimFrame = (function(callback) {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame || window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+      };
+  })();
+
+  function resizeCanvas() {
+    context.canvas.width = window.innerWidth;
+    context.canvas.height = window.innerHeight;
+  }
+
+
+
   function makeObject(ix, iy) {
 
     var newObject = {
@@ -33,8 +52,11 @@ $(document).ready(function() {
 
 
   function init() {
-    ctx = document.getElementById('background-animation').getContext('2d');
 
+    window.addEventListener('resize', resizeCanvas, false);
+
+    // Draw canvas border for the first time.
+    resizeCanvas();
 
     makePrint(400, 400, 1);
     makePrint(400, 400, 1);
@@ -48,8 +70,12 @@ $(document).ready(function() {
 
   function renderLoop() {
     update();
-    render();
-    requestAnimationFrame(renderLoop);
+    render(context);
+
+    // request new frame
+    requestAnimFrame(function() {
+      renderLoop();
+    });
   }
 
 
@@ -128,10 +154,10 @@ $(document).ready(function() {
   }
 
 
-  function render() {
+  function render(ctx) {
 
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
+    //ctx.canvas.width = window.innerWidth;
+    //ctx.canvas.height = window.innerHeight;
 
     printList.forEach(function(ob) {
 
