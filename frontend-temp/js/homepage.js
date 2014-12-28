@@ -3,10 +3,9 @@ $(document).ready(function() {
   var ctx = null;
   var objectList = [];
   var printList = [];
-  var decc = 0.5;
+  var decc = 0.25;
 
   function makeObject(ix, iy) {
-    console.log("Making at (" + ix + ", " + iy + ")");
 
     var newObject = {
       x: ix,
@@ -42,8 +41,6 @@ $(document).ready(function() {
     makePrint(400, 400, 1);
     makePrint(400, 400, 1);
     makePrint(400, 400, 1);
-    makePrint(400, 400, 1);
-    makePrint(400, 400, 1);
 
     renderLoop();
   }
@@ -73,7 +70,7 @@ $(document).ready(function() {
       // calculate potential object spawning
       ob.tc++;
 
-      if (ob.tc > 5) {
+      if (ob.tc > 10) {
         ob.tc = 0;
         makeObject(ob.x, ob.y);
       }
@@ -118,9 +115,16 @@ $(document).ready(function() {
     for (var i = 0; i < objectList.length; ++i) {
       if (objectList[i].r == 0) {
         objectList.splice(i--, 1);
-        console.log("object is dead. removing");
       }
     }
+
+
+    // write debug info
+    var dbinfo = "===================[DBINFO]================== <br>";
+    dbinfo += "There are " + objectList.length + " objects alive.<br>";
+    dbinfo += "Current active spawners: " + printList.length;
+
+    document.getElementById("canvas-debug").innerHTML = dbinfo;
   }
 
 

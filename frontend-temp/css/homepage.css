@@ -23,3 +23,22 @@ canvas {
 h1{
   margin: 100px 100px 100px 100px;
 }
+
+
+
+
+/*********CANVAS DEBUG SETTINGS*********/
+#canvas-debug{
+  color: darkgreen;
+
+  font-family:Monaco;
+  font-size:50%;
+  text-align:left;
+
+  z-index:999;
+
+  position:absolute;
+  margin-top:0;
+  margin-left:0;
+  border:solid darkgreen 1px;
+}
