@@ -65,7 +65,7 @@ $(document).ready(function() {
       y: iy,
       d: id,
       tc: 0,
-      speed: 3,
+      speed: 2.5,
       rotationSpeed: 0.2,
       leftFlag: false
     };

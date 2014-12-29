@@ -9,6 +9,7 @@ html, body {
 body {
   text-align:center;
   font-family: 'Molengo', Arial, serif;
+  background: url('../resources/oldpaper.jpg');
 }
 
 canvas {
