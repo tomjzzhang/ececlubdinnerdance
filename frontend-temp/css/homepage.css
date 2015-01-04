@@ -110,12 +110,37 @@ h1{
   background-position: right;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  background-image: url("../resources/background1-left.png");
 }
 
 #trans2, #pic2{
   background-position: left;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  background-image: url("../resources/background1-right.png");
+}
+
+/* ANIMATION KEYFRAMES */
+#leftcolumn {
+  -webkit-animation: myfirst 2s ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 2s ease-in-out;
+}
+
+#rightcolumn {
+  -webkit-animation: myfirst 2s reverse ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 2s reverse ease-in-out;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+  from {margin-top: -100vh;}
+  to {margin-top: 0vh;}
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+  from {margin-top: -100vh;}
+  to {margin-top: 0vh;}
 }
 
 

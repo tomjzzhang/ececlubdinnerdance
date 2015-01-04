@@ -85,5 +85,5 @@ $(document).ready(function(){
   //   switchImage("resources/background1-left.png",
   //               "resources/background1-right.png");
   // }, 2000);
-  switchLoop();
+  //switchLoop();
 });
