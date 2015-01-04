@@ -20,8 +20,8 @@ $(document).ready(function() {
   imageObj.src = 'resources/footprint.png';
 
   // mouse position
-  var mousex = 0,
-    mousey = 0;
+  var mousex = 0, mousey = 0;
+
   $("body").mousemove(function(e) {
     mousex = e.pageX;
     mousey = e.pageY;

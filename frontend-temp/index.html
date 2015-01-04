@@ -18,7 +18,8 @@
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 
   <link rel="stylesheet" href="css/homepage.css" />
-  <script src="js/homepage.js"></script>
+  <script src="js/homepage-canvas.js"></script>
+  <script src="js/homepage-backgroundswitch.js"></script>
 </head>
 
 
@@ -36,19 +37,48 @@
 
 
 
+  <div id="main-content">
 
-  <!-- Header -->
-  <div id="header-wrapper">
-    Some header stuff?
+    <!-- Header -->
+    <div id="header-wrapper">
+      Some header stuff?
+    </div>
+
+    <!-- Content wrapper -->
+    <div id="content-wrapper">
+      <h1>ECE Dinner Dance!</h1>
+
+
+    </div>
+
   </div>
 
 
 
-  <!-- Content wrapper -->
-  <div id="content-wrapper">
-    <h1>ECE Dinner Dance!</h1>
+  <!-- Background switching pictures -->
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
 
 
+        <div id="wrapper">
+          <div id="leftcolumn">
+            <div class="col-top" id="trans1">
+            </div>
+            <div class="col-bottom" id="pic1">
+            </div>
+          </div>
+          <div id="rightcolumn">
+            <div class="col-top" id="pic2">
+            </div>
+            <div class="col-bottom" id="trans2">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 
 
