@@ -121,26 +121,26 @@ h1{
 }
 
 /* ANIMATION KEYFRAMES */
-#leftcolumn {
-  -webkit-animation: myfirst 2s ease-in-out; /* Chrome, Safari, Opera */
-  animation: myfirst 2s ease-in-out;
+.animatable {
+  -webkit-animation: myfirst 0.5s ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 0.5s ease-in-out;
 }
 
-#rightcolumn {
-  -webkit-animation: myfirst 2s reverse ease-in-out; /* Chrome, Safari, Opera */
-  animation: myfirst 2s reverse ease-in-out;
+.animatablereverse {
+  -webkit-animation: myfirst 0.5s reverse ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 0.5s reverse ease-in-out;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes myfirst {
-  from {margin-top: -100vh;}
-  to {margin-top: 0vh;}
+  0% {margin-top: -100vh;}
+  100% {margin-top: 0vh;}
 }
 
 /* Standard syntax */
 @keyframes myfirst {
-  from {margin-top: -100vh;}
-  to {margin-top: 0vh;}
+  0% {margin-top: -100vh;}
+  100% {margin-top: 0vh;}
 }
 
 
