@@ -6,6 +6,8 @@ html, body {
   width:  100%;
   height: 100%;
   margin: 0px;
+
+  background-color: black;
 }
 
 body {
@@ -22,6 +24,10 @@ canvas {
   height:100%;
   z-index:3;
   pointer-events:none;
+}
+
+#footprints {
+  z-index: 4;
 }
 
 #main-content, #header-wrapper, #content-wrapper{
@@ -121,31 +127,67 @@ h1{
 }
 
 /* ANIMATION KEYFRAMES */
-#leftcolumn {
-  -webkit-animation: myfirst 2s ease-in-out; /* Chrome, Safari, Opera */
-  animation: myfirst 2s ease-in-out;
+.animatable {
+  -webkit-animation: myfirst 0.5s ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 0.5s ease-in-out;
 }
 
-#rightcolumn {
-  -webkit-animation: myfirst 2s reverse ease-in-out; /* Chrome, Safari, Opera */
-  animation: myfirst 2s reverse ease-in-out;
+.animatablereverse {
+  -webkit-animation: myfirst 0.5s reverse ease-in-out; /* Chrome, Safari, Opera */
+  animation: myfirst 0.5s reverse ease-in-out;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes myfirst {
-  from {margin-top: -100vh;}
-  to {margin-top: 0vh;}
+  0% {margin-top: -100vh;}
+  100% {margin-top: 0vh;}
 }
 
 /* Standard syntax */
 @keyframes myfirst {
-  from {margin-top: -100vh;}
-  to {margin-top: 0vh;}
+  0% {margin-top: -100vh;}
+  100% {margin-top: 0vh;}
 }
+
+
+/********* CSS FOOTPRINTS **********/
+.footprint{
+  position: absolute;
+
+/*   top: 0;
+left: 0; */
+  width: 30px;
+  height: 30px;
+
+  background: url("../resources/footprint.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  z-index: 10;
+
+
+  -webkit-animation: footprintanimation 2s linear forwards; /* Chrome, Safari, Opera */
+  animation: footprintanimation 2s linear forwards;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes footprintanimation {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes footprintanimation {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 
 
 /*********CANVAS DEBUG SETTINGS*********/
 #canvas-debug{
+  display: none;
+
   color: lightgreen;
   background: rgba(1, 1, 1, 0.7);
 

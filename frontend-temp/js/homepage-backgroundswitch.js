@@ -1,66 +1,29 @@
 
-//
-// function setDimensions(){
-//
-//   $("#divs").css("width", $(window).width() + "px");
-//   $("#div1").css("width", $(window).width()/2 + "px");
-//   $("#div2").css("width", $(window).width()/2 + "px");
-//   $("#pic1").css("width", $(window).width()/2 + "px");
-//   $("#pic2").css("width", $(window).width()/2 + "px");
-//   $("#trans1").css("width", $(window).width()/2 + "px");
-//   $("#trans2").css("width", $(window).width()/2 + "px");
-//
-//   $("#divs").css("height", $(window).height() + "px");
-//   $("#div1").css("height", $(window).height() + "px");
-//   $("#div2").css("height", $(window).height() + "px");
-//   $("#pic1").css("height", $(window).height() + "px");
-//   $("#pic2").css("height", $(window).height() + "px");
-//   $("#trans1").css("height", $(window).height() + "px");
-//   $("#trans2").css("height", $(window).height() + "px");
-//
-//   $("#div1").css("margin-top", -$(window).height() + "px");
-// }
+var counter = 1;
+var counterCap = 2;
 
-
-function switchImage(leftAfter, rightAfter){
+function CSSSwitchImage(leftAfter, rightAfter){
   console.log("switching");
 
   // set switching content
   $("#trans1").css("background-image", "url('" + leftAfter + "')");
-  //$("#pic1").html(leftInit);
-
   $("#trans2").css("background-image", "url('" + rightAfter + "')");
-  //$("#pic2").html(rightInit);
-
-  $( "#leftcolumn" ).animate({
-    "margin-top": 0
-  }, 1000, function() {
-    // Animation complete.
-    $( "#leftcolumn" ).css("margin-top", "-100vh");
-    //$("#trans1").html(leftInit);
-    $("#pic1").css("background-image",
-      "url('" + leftAfter + "')");
-
-  });
 
 
-  $( "#rightcolumn" ).animate({
-    "margin-top": "-100vh"
-  }, 1000, function() {
-    // Animation complete.
-    $( "#rightcolumn" ).css("margin-top", "0vh");
-    //$("#trans2").html(rightInit);
-    $("#pic2").css("background-image",
-      "url('" + rightAfter + "')");
+  $("#leftcolumn").attr("class", "animatable");
+  setTimeout(function(){
+    $("#leftcolumn").attr("class", "");
+    $("#pic1").css("background-image", "url('" + leftAfter + "')");
+  }, 500);
 
-  });
+  $("#rightcolumn").attr("class", "animatablereverse");
+  setTimeout(function(){
+    $("#rightcolumn").attr("class", "");
+    $("#pic2").css("background-image", "url('" + rightAfter + "')");
+  }, 500);
 }
 
-
-var counter = 0;
-var counterCap = 2;
-
-function switchLoop(){
+function CSSSwitchLoop(){
 
   counter++;
 
@@ -69,21 +32,18 @@ function switchLoop(){
   }
 
   setTimeout(function(){
-    switchImage("resources/background" + counter + "-left.png",
-                "resources/background" + counter + "-right.png");
+    CSSSwitchImage("resources/background" + counter + "-left.png",
+    "resources/background" + counter + "-right.png");
   }, 2000);
 
   setTimeout(function(){
-    switchLoop();
+    CSSSwitchLoop();
   }, 4000);
 }
 
 $(document).ready(function(){
   //setDimensions();
 
-  // setTimeout(function(){
-  //   switchImage("resources/background1-left.png",
-  //               "resources/background1-right.png");
-  // }, 2000);
-  //switchLoop();
+  CSSSwitchLoop();
+
 });

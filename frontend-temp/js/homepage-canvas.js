@@ -20,7 +20,8 @@ $(document).ready(function() {
   imageObj.src = 'resources/footprint.png';
 
   // mouse position
-  var mousex = 0, mousey = 0;
+  var mousex = 0,
+    mousey = 0;
 
   $("body").mousemove(function(e) {
     mousex = e.pageX;
@@ -50,7 +51,7 @@ $(document).ready(function() {
       x: ix,
       y: iy,
       d: id,
-      op: 1,
+      op: 0.5,
       leftFlag: left
     };
 
@@ -182,7 +183,7 @@ $(document).ready(function() {
     dbinfo += "MOUSE: (" + mousex + ", " + mousey + ") <br>";
 
 
-    document.getElementById("canvas-debug").innerHTML = dbinfo;
+    //document.getElementById("canvas-debug").innerHTML = dbinfo;
   }
 
 
