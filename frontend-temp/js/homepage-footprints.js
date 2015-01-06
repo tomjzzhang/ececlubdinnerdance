@@ -1,8 +1,34 @@
 // footprint object control
 var printList = [];
 
+var idCap = 100;
+var idC = 0;
+
+function scheduleErase(i) {
+  setTimeout(function() {
+    //console.log("removing " + "#ft" + idK);
+    var el = document.getElementById('ft' + i);
+    el.parentNode.removeChild(el);
+  }, 2000);
+}
+
+
 function addCSSFootprint(x, y, d, left) {
-  var newPrint = "<div class='footprint' style='" +
+  idC++;
+
+  if (idC > idCap) {
+    idC = 0;
+  }
+
+
+
+  var newPrint = "<div id=ft" + idC + " class='footprint";
+
+  if (left) {
+    newPrint += "left";
+  }
+
+  newPrint += "' style='" +
     "-webkit-transform: rotate(" + d + "rad);  transform: rotate(" + d +
     "rad); top:" + y + "px; left:" + x + "px;";
 
@@ -14,7 +40,11 @@ function addCSSFootprint(x, y, d, left) {
 
 
   $("#footprints").append(newPrint);
+
+  setTimeout(scheduleErase(idC), 2000);
 }
+
+
 
 function makeObject(ix, iy, id, left) {
 
@@ -38,7 +68,7 @@ function makePrint(ix, iy, id) {
 
 function init() {
 
-  makePrint(400, 400, 1);
+  //makePrint(400, 400, 1);
   makePrint(400, 400, 1);
 
   updateLoop(Date.now());
@@ -78,7 +108,7 @@ function update(deltaTime) {
     // calculate potential object spawning
     ob.tc++;
 
-    if (ob.tc > 7 + 2 * (Math.random() - 0.5)) {
+    if (ob.tc > 5) {
       ob.tc = 0;
       makeObject(ob.x, ob.y, ob.d, ob.leftFlag);
       ob.leftFlag = !ob.leftFlag;
@@ -110,6 +140,18 @@ function update(deltaTime) {
 
 }
 
+var x = 0;
+
+function testLoop() {
+  x += 0.1;
+
+  addCSSFootprint(200, 200, x);
+
+  setTimeout(function() {
+    testLoop();
+  }, 500);
+}
+
 
 
 $(document).ready(function() {
@@ -120,6 +162,10 @@ $(document).ready(function() {
 
   init();
 
+  //testLoop();
+
+  addCSSFootprint(100, 100, 0, true);
+  addCSSFootprint(100, 100, 0, false);
 
 
 });

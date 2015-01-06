@@ -154,14 +154,35 @@ h1{
 .footprint{
   position: absolute;
 
-/*   top: 0;
-left: 0; */
-  width: 30px;
-  height: 30px;
+  /*   top: 0;
+  left: 0; */
+  width: 25px;
+  height: 25px;
 
   background: url("../resources/footprint.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: right;
+
+  z-index: 10;
+
+
+  -webkit-animation: footprintanimation 2s linear forwards; /* Chrome, Safari, Opera */
+  animation: footprintanimation 2s linear forwards;
+}
+
+.footprintleft{
+  position: absolute;
+
+  /*   top: 0;
+  left: 0; */
+  width: 25px;
+  height: 25px;
+
+  background: url("../resources/footprintleft.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
 
   z-index: 10;
 
