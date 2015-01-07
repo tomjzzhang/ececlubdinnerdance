@@ -17,10 +17,11 @@ $(document).ready(function() {
   imageObj.onload = function() {
     //init();
   };
-  imageObj.src = 'resources/footprint.png';
+  imageObj.src = 'images/footprint.png';
 
   // mouse position
-  var mousex = 0, mousey = 0;
+  var mousex = 0,
+    mousey = 0;
 
   $("body").mousemove(function(e) {
     mousex = e.pageX;
