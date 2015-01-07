@@ -1,0 +1,113 @@
+<style>
+body {
+	background-color: #000000;
+	text-align:left;
+	color:#ffffff;
+}
+
+h1.pos {
+	font-family: "Monotype Corsiva";
+	size: 70px;
+	position: relative;
+	left:40px;		
+}
+
+h2.pos {
+	font-family: "Arial";
+	size: 50px;
+	position: relative;
+	left:40px;	
+}
+
+#heading1 {
+	float:left;
+	padding:5px;
+	line-height: 30px;
+	width:500px;
+	position: absolute;
+}
+
+#heading2 {
+	float:left;
+	line-height: 30px;
+	width:200px;
+	position: absolute;
+	color:black;
+	margin-top: 25px;
+	left:300px;
+}
+
+#heading3 {
+	float:left;
+	margin-top:200px;
+	line-height: 30px;
+	width:500px;
+	position: absolute;
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+</style>
+
+<html>
+<head>	<title> SOMETHING </title> </head>
+<body>
+
+	<h1 class ="pos"> 
+	Registration
+	</h1> 
+	<br>
+
+	<div id = "heading1"> 
+	<h2 class = "pos">
+		Full Name
+		<br>
+		Ticket Number 
+		<br>
+		Password
+		<br>
+		Re-enter Password
+		<br>
+		Email Address
+		<br>
+		Year
+		<br>
+	</h2>
+	</div>
+	
+	<div id = "heading2">
+	<form>
+		<input type="text" name ="FullName"> <br>
+		<label><input type="text" name ="TicketNumber"> </label><br>
+		<input type="text" name ="Password"> <br>
+		<input type="text" name ="PasswordAgain"> <br>
+		<input type="text" name ="Email"> <br>
+		<select>
+			<option value ="" disabled selected>Year</option>
+			<option value ="1">1T8</option>
+			<option value ="2">1T7</option>
+			<option value ="3">1T6</option>
+			<option value ="4">1T5</option>
+			<option value ="5">1T4+PEY</option>
+		<select>
+			<br>
+	</form>
+	</div>
+
+	<div id = "heading3">
+		<h2 class = "pos">
+		Bus Departure Time
+		<br>
+		Bus Return Time
+		<br>
+	</h2>
+
+	</div>
+
+
+
+</body>
+
+</html>
