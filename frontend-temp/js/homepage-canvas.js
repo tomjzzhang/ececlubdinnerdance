@@ -4,7 +4,7 @@ $(document).ready(function() {
   var ctx = null;
   var objectList = [];
   var printList = [];
-  var decc = 0.015;
+  var decc = 0.015; // hello!
 
   // canvas control
   var canvas = document.getElementById('background-animation');
