@@ -1,0 +1,220 @@
+@import url(http://fonts.googleapis.com/css?family=Squada+One);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  padding: 0px;
+  margin: 0px;
+}
+
+nav {
+   background: rgba(0,0,0,0.8);
+   padding: 18px;
+	position: fixed;
+	bottom: 50px;
+   height: 55px;
+	left: 50%;
+   width: 800px;
+   margin-left: -400px;
+   z-index: 3;
+
+	.wrapper {
+		padding: 0;
+      width: 785px;
+	}
+
+	.wrapper, svg {
+		height: 100%;
+	}
+
+	svg {
+		margin-right: 15px;
+		cursor: pointer;
+		height: 20px;
+		width: 30px;
+      float: left;
+
+		path, rect {
+			fill: #fff;
+		}
+	}
+
+	.nodes {
+		position: relative;
+		margin-top: -5px;
+		margin-left: 5px;
+		float: left;
+	}
+
+}
+
+.line {
+	position: absolute;
+	width: 705px;
+	height: 1px;
+	top: 14px;
+  
+	.red, .blue {
+		width: 100%;
+		height: 1px;
+	}
+  
+   .red-container {
+		overflow: hidden;
+		height: 1px;
+		width: 58px;
+   }
+  
+	.red {
+		background-color: rgb(75,18,2);
+		@include filter-gradient(#4b1202, #fd8107, horizontal);
+		@include background-image(linear-gradient(left,  rgba(253,129,7,1) 0%,rgba(253,129,7,1) 16%,rgba(224,58,13,1) 58%,rgba(253,129,7,1) 100%));
+  	}
+  
+  	.blue {
+		background-color: rgb(35,46,58);
+    	@include filter-gradient(#232e3a, #446b95, horizontal);
+    	@include background-image(linear-gradient(left,  rgba(35,46,58,1) 0%,rgba(92,125,159,1) 29%,rgba(24,55,87,1) 55%,rgba(68,107,149,1) 100%));
+  	}
+}
+
+.node {
+	margin-left: 90px;
+	width: 20px;
+	height: 20px;
+	margin-top: 5px;
+	float: left;
+	margin-right: -10px;
+	position: relative;
+
+	.splash {
+      box-shadow: 0px 0px 8px 2px rgba(69, 174, 233, 0.53);
+		transform: translateZ(0px) scale( 1 );
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 100%;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+  
+	&.active {
+
+		.active-circle {
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		.splash {
+			transition: transform 1200ms, opacity 1500ms;
+
+			transform: translateZ(0px) scale( 2.5 );
+			opacity: 0 !important;
+		}
+
+		.inactive-circle {
+			transition: opacity 200ms;
+			opacity: 0; 
+		}
+
+	}
+
+	.active-circle {
+   	transition: all 300ms cubic-bezier(.63,.62,.48,1.84);
+		transform: scale(0.7);
+		position: absolute;
+		opacity: 0;
+		width: 20px;
+		height: 20px;
+		border-radius: 100%;
+		background-color: rgb(75,18,2);
+		@include filter-gradient(#4b1202, #fd8107, horizontal);
+		@include background-image(linear-gradient(left bottom,  rgba(75,18,2,1) 0%,rgba(224,58,13,1) 60%,rgba(253,129,7,1) 100%));
+
+
+		.cover {
+			transform: translateZ( 0px );
+			width: 16px;
+			height: 16px;
+			background: black;
+			border-radius: 100%;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+		}
+
+		.white {
+			transition: all 300ms cubic-bezier(.63,.62,.48,1.84);
+			width: 6px;
+			height: 6px;
+			background: #fff;
+			border-radius: 100%;
+			position: absolute;
+			transform: translateX(5px) translateY(5px) scale(1);
+		}
+	}
+
+	.inactive-circle {
+		transition: all 300ms cubic-bezier(.63,.62,.48,1.84);
+		width: 14px;
+		height: 14px;
+		display: block;
+		background: #000;
+		position: absolute;
+		border-radius: 100%;
+		border: 2px solid #5489b1;
+		top: 3px;
+		left: 3px;
+	}
+
+	&:hover {
+      
+    $quickTransition: all 200ms cubic-bezier(.63,.62,.48,1.84);
+    
+		cursor: pointer;
+
+		.active-circle {
+			transition: $quickTransition;
+			transform: scale(0.84);
+
+			.white {
+				transition: $quickTransition;
+				transform: translateX(4.7px) translateY(5px) scale(1.42);	
+			}
+		}
+
+		.inactive-circle {
+			transition: $quickTransition;
+			transform: scale( 0.85 );
+		}
+	}
+}
+
+
+// The page/numbers
+.items {
+  position: relative;
+  
+  .item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    span {
+      font-family: 'Squada One', cursive;
+      color: #fff;
+      display: block;
+      height: 200px;
+      width: 400px;
+      margin: auto;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      text-align: center;
+      font-size: 160px;
+    }  
+  }
+}
