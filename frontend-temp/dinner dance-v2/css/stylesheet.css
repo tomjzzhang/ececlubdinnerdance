@@ -1,0 +1,179 @@
+@font-face {
+    font-family: marion;
+    src: url(../fonts/ufonts.com_marion.ttf);
+}
+
+
+
+li{
+	padding: 0 100px 0 45px;
+	font-family: marion;
+}
+
+a:link{
+	color:white;
+	text-decoration: none;
+}
+
+a:visited{
+	color:white;
+	text-decoration: none;
+}
+
+a:hover{
+	color:red;
+	text-decoration: none;
+
+}
+body{
+
+}
+
+.page{
+	font-family: marion;
+	width:auto; 
+	height:100vh; 
+	background-image: url(../images/main.jpg);
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	overflow: hidden;
+}
+
+.front{
+	text-align: center;
+	padding-top: 50px;
+	background-size: 100% auto;
+	height: 547px;
+	width: 700px;
+	margin: 0 auto;
+}
+
+.front-back{
+	background-image: url(../images/front.png);
+	background-size: 100% auto;
+	height: 494px;
+	width: 700px;
+}
+
+.title{
+	color: white;
+	font-size: 50px;
+    padding-bottom: 50px;
+    float: none;
+	padding-top: 80px;
+}
+
+.feature{
+	color: white;
+	font-size: 18px;
+}
+
+.L{
+	font-size: 60px;
+    color: white;
+    margin-bottom: 0px;
+}
+.T{	
+	color: white;
+	font-size: 50px;
+}
+
+.joinus{
+	height: 50px; width: 250px; 
+	border-color:white; 
+	border-style: solid; 
+	border-width:2px; 
+	margin:auto; 
+	text-align:center; 
+	color:white;
+	font-size: 30px;
+    margin-top: 200px;
+    padding: 5px 0 0 0;
+}
+
+
+.price{
+	color: white;
+	list-style-type: none;
+	font-size: 30px;
+	padding: 100px 0 0 1000px;
+}
+
+footer{
+	height: 130px;
+	width: 400px;
+	background-size:100% auto; 
+	position: fixed; 
+	background-image: url(../images/footer.png);
+	bottom: 0;
+    right: 0;
+}
+
+.navbar{
+	margin-bottom: 0px; 
+	background: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */ border-width:0px;
+}
+
+@media screen and (max-width: 480px) {
+    .front {
+    	height: 210px;
+		width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .front-back {
+    	height: 210px;
+		width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+	.title{
+		font-size: 20px;
+    	padding-bottom: 20px;
+		padding-top: 35px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.feature{
+		font-size: 3px;
+	}
+
+	.L{
+		font-size: 20px;
+	}
+	
+	.T{	
+		font-size: 10px;
+	}
+	
+	.joinus{
+		height: 25px; width: 125px; 
+		 
+		border-width:1px; 
+		font-size: 15px;
+	    margin-top: 100px;
+	    padding:  3px 0 0 0 ;
+}
+
+	footer{
+	height: 65px;
+	width: 200px;
+
+}
+	.price{
+	
+	font-size: 8px;
+	padding: 300px 0 0 100px;
+}
+
+
+}
+
