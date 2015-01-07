@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; overflow:hidden;}
+/* * { margin: 0; padding: 0; overflow:hidden;} */
 
 html, body {
   color: #DDDDDD;
@@ -8,12 +8,6 @@ html, body {
   margin: 0px;
 
   background-color: black;
-}
-
-body {
-  text-align:center;
-  font-family: 'Molengo', Arial, serif;
-  /*background: url('../resources/oldpaper.jpg');*/
 }
 
 canvas {
@@ -60,7 +54,7 @@ h1{
 /******** SWITCHING BACKGROUND **********/
 .outer {
   display: table;
-  position: absolute;
+  position: fixed;
   top: 0;
   left:0;
   height: 100%;
