@@ -4,7 +4,7 @@ $(document).ready(function() {
   var ctx = null;
   var objectList = [];
   var printList = [];
-  var decc = 0.015;
+  var decc = 0.015; // hello!
 
   // canvas control
   var canvas = document.getElementById('background-animation');
@@ -15,9 +15,9 @@ $(document).ready(function() {
   var imageObj = new Image();
 
   imageObj.onload = function() {
-    init();
+    //init();
   };
-  imageObj.src = 'resources/footprint.png';
+  imageObj.src = 'images/footprint.png';
 
   // mouse position
   var mousex = 0,

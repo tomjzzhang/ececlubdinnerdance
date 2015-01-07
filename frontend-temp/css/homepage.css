@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; overflow:hidden;}
+/* * { margin: 0; padding: 0; overflow:hidden;} */
 
 html, body {
   color: #DDDDDD;
@@ -8,12 +8,6 @@ html, body {
   margin: 0px;
 
   background-color: black;
-}
-
-body {
-  text-align:center;
-  font-family: 'Molengo', Arial, serif;
-  /*background: url('../resources/oldpaper.jpg');*/
 }
 
 canvas {
@@ -60,7 +54,7 @@ h1{
 /******** SWITCHING BACKGROUND **********/
 .outer {
   display: table;
-  position: absolute;
+  position: fixed;
   top: 0;
   left:0;
   height: 100%;
@@ -116,14 +110,14 @@ h1{
   background-position: right;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-image: url("../resources/background1-left.png");
+  background-image: url("../images/background1-left.png");
 }
 
 #trans2, #pic2{
   background-position: left;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-image: url("../resources/background1-right.png");
+  background-image: url("../images/background1-right.png");
 }
 
 /* ANIMATION KEYFRAMES */
@@ -147,6 +141,8 @@ h1{
 @keyframes myfirst {
   0% {margin-top: -100vh;}
   100% {margin-top: 0vh;}
+<<<<<<< HEAD
+=======
 }
 
 
@@ -159,7 +155,7 @@ h1{
   width: 25px;
   height: 25px;
 
-  background: url("../resources/footprint.png");
+  background: url("../images/footprint.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
@@ -179,7 +175,7 @@ h1{
   width: 25px;
   height: 25px;
 
-  background: url("../resources/footprintleft.png");
+  background: url("../images/footprintleft.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
@@ -201,6 +197,7 @@ h1{
 @keyframes footprintanimation {
   0% {opacity: 1;}
   100% {opacity: 0;}
+>>>>>>> 2ea37f38f205fba189b76e777bc261796a317d0f
 }
 
 

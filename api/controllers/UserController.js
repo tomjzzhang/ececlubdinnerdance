@@ -21,9 +21,28 @@ module.exports = {
 				return res.redirect('/user/new');
 			}
 
-			//res.json(user);
+			var ticketObj = {
 
-			res.redirect('/user/show/'+user.id);
+        		firstName: values.firstName,
+        		lastName: values.lastName,
+        		email: values.email,
+        		ticketNumber: values.ticket
+      		}
+
+      		Ticket.create(ticketObj, function addTicketToList(err, ticket) {
+      			if (err) {
+      				console.log(err);
+      				req.session.flash={
+      					err: err.validationError
+      				}
+
+      				return res.redirect('/user/new');
+      			}
+
+				//res.json(user);
+
+				res.redirect('/user/show/'+user.id);
+      		});
 		});
 	},
 
