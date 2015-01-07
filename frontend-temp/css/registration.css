@@ -1,0 +1,93 @@
+body {
+	background-color: #000000;
+	text-align:left;
+	color:#ffffff;
+	font-family:"Arial";
+}
+
+h1.pos {
+	font-family: "I AM SHERLOCKED","Impact",sans-serif;
+	font-size: 38px;
+	position: relative;
+	left:40px;		
+}
+
+h2.pos {
+	size: 50px;
+	position: relative;
+	left:40px;	
+}
+
+#title{
+	float:left;
+	width:700px;
+	height:80px;
+	position: absolute;
+}
+
+#heading1 {
+	float:left;
+	padding:5px;
+	margin-top: 80px;
+	line-height: 30px;
+	width:500px;
+	position: absolute;
+}
+
+#heading2 {
+	float:left;
+	line-height: 30px;
+	width:200px;
+	position: absolute;
+	color:black;
+	margin-top: 105px;
+	left:300px;
+}
+
+#heading3 {
+	float:left;
+	margin-top:260px;
+	line-height: 70px;
+	width:500px;
+	position: absolute;
+}
+
+#heading4 {
+	float:left;
+	margin-top: 300px;
+	margin-left: 300px;
+	line-height: 22px;
+	width:350px;
+	position: absolute;
+}
+
+#headingbutton{
+	float:left;
+	margin-top: 510px;
+	margin-left: 50px;
+	line-height: 22px;
+	text-align: cent
+	width:350px;
+	position: absolute;
+}
+
+button {
+	width:500px;
+	min-height: 40px;
+	text-align: center;
+	font-size: 20px;
+	vertical-align: middle;
+	background-color: #f0faff;
+}
+
+button:hover {
+	
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+input[type=radio]:not(old){
+	display:inline-block;
+}
