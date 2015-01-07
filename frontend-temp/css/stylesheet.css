@@ -1,5 +1,6 @@
 @font-face {
     font-family: marion;
+    font-size: 1em;
     src: url(../fonts/ufonts.com_marion.ttf);
 }
 
@@ -125,8 +126,17 @@ footer{
     background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */ 
+    background: white;
     border-width:0px;
     padding: 0 auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navbar-nav{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (max-width: 480px) {
