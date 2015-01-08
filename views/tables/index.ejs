@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/styles/tablespage.css">
+
+<script>
+  function addToTable() {
+      var randNum = Math.random();
+      var node_li = document.createElement("LI");
+      var textNode = document.createTextNode(randNum.toString());
+
+      node_li.appendChild(textNode);
+
+      document.getElementById("table1_names").appendChild(node_li);
+  }
+</script>
+
+<div class="tables_section">
+
+<h1> Table Selection </h1>
+
+<table class="tables">
+<tr>
+  <td>
+   Table 1
+   <br></br>
+   <button onclick="addToTable()" type="submit" id="add_table1"> Add </button>
+    <ol id="table1_names">
+    </ol>
+  </td>
+  <td>
+    Table 2
+    <br></br>
+    <input type="submit" name="add" value="Add">
+  </td>
+  <td>
+    Table 3
+    <br></br>
+    <input type="submit" name="add" value="Add">
+  </td>
+</tr>
+<tr>
+  <td>
+    Table 4
+    <br></br>
+    <input type="submit" name="add" value="Add">
+  </td>
+  <td>
+    Table 5
+    <br></br>
+    <input type="submit" name="add" value="Add">
+  </td>
+  <td>
+    Table 6
+    <br></br>
+    <input type="submit" name="add" value="Add">
+  </td>
+</tr>
+
+</div>

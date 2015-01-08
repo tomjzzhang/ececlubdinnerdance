@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+}
+
+.tables{
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+td {
+  border: 1px solid black;
+  width: 1600px;
+  height: 400px;
+  vertical-align: top;
+}
