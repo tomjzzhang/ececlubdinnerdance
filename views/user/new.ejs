@@ -6,14 +6,15 @@
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
 		<% Object.keys(flash.err).forEach(function(error){ %>
-			<li><%- JSON.stringify(flash.err[error]) %></li>
+			<li><%- flash.err[error].message %></li>
 		<% }) %>
 		</ul>
 	<% } %>
-	<input type="text" class="form-control" placeholder="your first name" name="firstName">
-	<input type="text" class="form-control" placeholder="your last name" name="lastName">
-	<input type="text" class="form-control" placeholder="email address" name="email">
-	<input type="text" class="form-control" placeholder="ticket number" name="ticketNumber">
+	<input type="text" class="form-control" placeholder="Ticket number" name="ticketNumber">
+	<input type="text" class="form-control" placeholder="First name" name="firstName">
+	<input type="text" class="form-control" placeholder="Last name" name="lastName">
+	<input type="text" class="form-control" placeholder="Email address" name="email">
+	<!--
 	<input type="text" class="form-control" placeholder="year" name="year">
 	<input type="text" class="form-control" placeholder="food option" name="foodOption">
 	<input type="text" class="form-control" placeholder="ticket number" name="ticketNumber">
@@ -22,6 +23,7 @@
 	<input type="text" class="form-control" placeholder="allergies" name="allergies">
 	<input type="text" class="form-control" placeholder="Enter your bus departure time" name="busDepartTime">
 	<input type="text" class="form-control" placeholder="Enter the time your bus will leave" name="busLeaveTime">
+	-->
 	<input type="password" class="form-control" placeholder="password" name="password">
 	<input type="password" class="form-control" placeholder="password confirmation" name="confirmation">
 

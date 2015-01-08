@@ -34,6 +34,8 @@ module.exports = {
       unique: true
     },
 
+    /*
+
     year: {
       type: 'string',
       required: true
@@ -56,7 +58,6 @@ module.exports = {
 
     allergies: {
       type: 'string',
-      required: true
     },
 
     busDepartTime: {
@@ -69,34 +70,40 @@ module.exports = {
       required: true
     },
 
+    */
+
   	encryptedPassword:{
   		type: 'string'
   	},
 
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.password;
-      delete obj.confirmation;
-      delete obj.encryptedPassword;
-      delete obj._csrf;
-      return obj;
-    },
 
-    beforeCreate: function(values, next) {
+  },
 
-      // condition to chekc if user's password is valid
-      // or password and password confirmation are identical
-      if(!values.password || values.password != values.confirmation) {
-        return next({err: ["Password doesn't match password confirmation"]});
-      }
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.password;
+    delete obj.confirmation;
+    delete obj.encryptedPassword;
+    delete obj._csrf;
+    return obj;
+  },
 
-      require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
-        if (err) return next(err);
-        values.encryptedPassword = encryptedPassword;
+  beforeCreate: function(values, next) {
 
-        next();
-      });
-
+    // condition to check if user's password is valid
+    // or password and password confirmation are identical
+    if(!values.password || values.password != values.confirmation) {
+      return next({err: ["Password doesn't match password confirmation"]});
     }
+
+    var bcrypt = require('bcryptjs');
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(values.password, salt, function(err, hash) {
+            // Store hash in your password DB.
+            if (err) return next(err);
+            values.encryptedPassword = hash;
+            next();
+        });
+    });
   }
 };

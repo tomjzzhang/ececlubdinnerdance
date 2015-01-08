@@ -26,7 +26,14 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'flash',
+  '*': 'flash', 
+
+  user: {
+    'new' : 'flash',
+    'create' : 'flash',
+    'index' : 'flash', //REMEMBER TO REMOVE ONCE IN PRODUCTION
+    '*' : 'sessionAuth'
+  }
 
   /***************************************************************************
   *                                                                          *

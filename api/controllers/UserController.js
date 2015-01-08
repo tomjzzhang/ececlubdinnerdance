@@ -21,6 +21,12 @@ module.exports = {
 				return res.redirect('/user/new');
 			}
 
+			req.session.authenticated = true;
+			req.session.User = user;
+			
+			res.redirect('/user/show/'+user.id);
+
+			/*
 			var ticketObj = {
 
         		firstName: values.firstName,
@@ -43,6 +49,8 @@ module.exports = {
 
 				res.redirect('/user/show/'+user.id);
       		});
+
+			*/
 		});
 	},
 
