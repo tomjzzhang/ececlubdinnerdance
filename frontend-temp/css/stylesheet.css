@@ -26,10 +26,11 @@ li{
 
 .page{
 	font-family: marion;
-	width:100%; 
-	height:100vh; 
+	width:100%;
+	height:100vh;
 	overflow: hidden;
 	font-size: 1em;
+  position: absolute;
 }
 
 .front{
@@ -66,19 +67,19 @@ li{
     color: white;
     margin-bottom: 0px;
 }
-.T{	
+.T{
 	color: white;
 	font-size: 2.8em;
 }
 
 .joinus{
-	height: 50px; 
-	width: 250px; 
-	border-color:white; 
-	border-style: solid; 
-	border-width:2px; 
-	margin:auto; 
-	text-align:center; 
+	height: 50px;
+	width: 250px;
+	border-color:white;
+	border-style: solid;
+	border-width:2px;
+	margin:auto;
+	text-align:center;
 	color:white;
 	font-size: 2em;
     margin-top: 100px;
@@ -96,8 +97,8 @@ li{
 footer{
 	height: 130px;
 	width: 400px;
-	background-size:100% auto; 
-	position: fixed; 
+	background-size:100% auto;
+	position: fixed;
 	background-image: url(../images/footer.png);
 	bottom: 0;
     right: 0;
@@ -114,11 +115,11 @@ footer{
 
 
 .navbar{
-	margin-bottom: 0px; 
+	margin-bottom: 0px;
 	background: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */ 
+    background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
     border-width:0px;
     padding: 0 auto;
     margin: 0 auto;
@@ -158,14 +159,14 @@ footer{
 	.L{
 		font-size: 20px;
 	}
-	
-	.T{	
+
+	.T{
 		font-size: 10px;
 	}
-	
+
 	.joinus{
-		height: 25px; width: 125px; 		 
-		border-width:1px; 
+		height: 25px; width: 125px;
+		border-width:1px;
 		font-size: 15px;
 	    margin-top: 80px;
 	    padding:  3px 0 0 0 ;
@@ -175,7 +176,7 @@ footer{
 		height: 65px;
 		width: 200px;
 	}
-	
+
 	.price{
 		font-size: 8px;
 		padding: 200px 0 0 100px;
@@ -183,7 +184,7 @@ footer{
 }
 
 @media screen and (max-width: 768px) {
-    
+
     .front {
 		padding-top: 90px;
 
@@ -193,8 +194,8 @@ footer{
     }
 
     .joinus{
-    	height: 25px; width: 125px; 		 
-		border-width:1px; 
+    	height: 25px; width: 125px;
+		border-width:1px;
 		font-size: 15px;
 	    padding:  3px 0 0 0 ;
 	    margin-top: 30px;
@@ -223,4 +224,3 @@ footer{
 	}
 
 }
-
