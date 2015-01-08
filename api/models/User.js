@@ -73,10 +73,13 @@ module.exports = {
     */
 
   	encryptedPassword:{
-  		type: 'string'
+  		type: 'string',
   	},
 
-
+    admin : {
+      type: 'boolean',
+      defaultsTo: false
+    }
   },
 
   toJSON: function() {
