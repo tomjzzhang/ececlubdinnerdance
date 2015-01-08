@@ -28,11 +28,6 @@ li{
 	font-family: marion;
 	width:100%; 
 	height:100vh; 
-	/*background-image: url(../images/main.jpg);*/
-	/*-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;*/
 	overflow: hidden;
 	font-size: 1em;
 }
@@ -116,9 +111,7 @@ footer{
 	height: 50px;
 }
 
-#navinner{
-	margin-left: 0vw;
-}
+
 
 .navbar{
 	margin-bottom: 0px; 
@@ -126,7 +119,6 @@ footer{
     background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */ 
-    background: white;
     border-width:0px;
     padding: 0 auto;
     margin: 0 auto;
@@ -134,9 +126,10 @@ footer{
 }
 
 .navbar-nav{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
+  clear: both;
+  margin: 0 auto;
+
 }
 
 @media screen and (max-width: 480px) {
@@ -215,5 +208,19 @@ footer{
 	.price{
 		padding: 0px 0 0 450px;
 	}
+
+
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+	.navbar-nav{
+	float: none;
+	clear: both;
+	clear: left;
+	}
+
 }
 
