@@ -1,5 +1,4 @@
 body {
-	background-image: url("../images/main.jpg");
  	background-color: #000000;
 }
 
@@ -9,7 +8,7 @@ h1.pos {
 	color: #ffffff;
 	position: static;
 	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-bottom: -15px;
 }
 
 h2.pos {
@@ -17,7 +16,7 @@ h2.pos {
 	font-size: 20px;
 	color: #c78c30;
 	float: left;
-	margin-left: 400px;
+	margin-left: 420px;
 }
 
 h2.pos1 {
@@ -30,14 +29,17 @@ h2.pos1 {
 
 div.top-bar {
 	content: url("../mockup+resources/top-bar.png");
-	margin-left: 400px;
+	width: 365px;
+	height: 40px;
+	margin-left: 455px;
 	margin-bottom: 5px;
+	margin-top: 80px;
 }
 
 div.middle-bar {
 	content: url("../mockup+resources/middle-bar.png");
 	height: 50px;
 	width: 457px;
-	margin-left: 400px;
+	margin-left: 410px;
 	margin-top: 0px;
 }
