@@ -10,7 +10,7 @@ module.exports = {
   schema: true,
 
   attributes: {
-  	
+
     firstName: {
   		type: 'string',
   		required: true

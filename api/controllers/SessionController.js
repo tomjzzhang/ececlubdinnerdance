@@ -8,7 +8,7 @@
  var bcrypt = require('bcryptjs');
 
 module.exports = {
-	
+
 	'new' : function(req, res) {
 		res.view('session/new');
 	},
@@ -63,4 +63,3 @@ module.exports = {
 		res.redirect('/session/new');
 	}
 };
-
