@@ -1,15 +1,17 @@
 body.registration {
 	background-color: #000000; // transparent
 	text-align:left;
-	color:#ff9147;
 	font-family: Arial;
 	font-size:1em;
+	font-weight: lighter;
+	color:rgba(199,140,48,0.8);
 	src: url(../fonts/ufonts.com_marion.ttf);
 }
 
 h1.the_title {
-	font-family: "I AM SHERLOCKED","Impact",sans-serif;
-	font-size: 38px;
+	font-family: "marion", "I AM SHERLOCKED","Impact",sans-serif;
+	font-size:3em;
+	src: url(../fonts/ufonts.com_marion.ttf);
 	position: relative;
 	left:100px;		
 }
@@ -68,6 +70,7 @@ input[type=radio]:not(old){
 	margin-top: 340px;
 	margin-left: 300px;
 	line-height: 22px;
+	color: white;
 	width:350px;
 	position: absolute;
 }
