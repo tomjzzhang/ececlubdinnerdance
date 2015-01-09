@@ -20,7 +20,8 @@ a:hover{
 }
 
 li{
-	font-size: 1em;
+	font-size: 0.5em;
+
 }
 
 .page{
@@ -33,31 +34,34 @@ li{
   	-o-background-size: cover;
   	background-size: cover;
 	overflow: hidden;
+}
+
+body{
 	font-size: 1em;
 }
 
 .front{
 	text-align: center;
-	padding-top: 120px;
-	background-size: 100% auto;
-	height: 367px;
-	width: 520px;
+	padding-top: 80px;
+	background-size 100% auto;
+	height: 281px;
+	width: 400px;
 	margin: 0 auto;
 }
 
 .front-back{
 	background-image: url(../images/front.png);
 	background-size: 100% auto;
-	height: 367px;
-	width: 520px;
+	height: 281px;
+	width: 400px;
 }
 
 .title{
 	color: white;
-	font-size: 2.7em;
-    padding-bottom: 40px;
+	font-size: 3em;
+    padding-bottom: 25px;
     float: none;
-	padding-top: 60px;
+	padding-top: 45px;
 }
 
 .feature{
@@ -66,18 +70,18 @@ li{
 }
 
 .L{
-	font-size: 3em;
+	font-size: 2.9em;
     color: white;
     margin-bottom: 0px;
 }
 .T{	
 	color: white;
-	font-size: 2.8em;
+	font-size: 2.9em;
 }
 
 .joinus{
-	height: 50px; 
-	width: 250px; 
+	height: 40px; 
+	width: 140px; 
 	border-color:white; 
 	border-style: solid; 
 	border-width:2px; 
@@ -98,8 +102,8 @@ li{
 }
 
 footer{
-	height: 130px;
-	width: 400px;
+	height: 100px;
+	width: 300px;
 	background-size:100% auto; 
 	position: fixed; 
 	background-image: url(../images/footer.png);
@@ -119,9 +123,54 @@ footer{
 
 @media screen and (max-width: 480px) {
     .front {
+    	height: 140px;
+		width: 200px;
+		padding-top: 70px;
+
+    }
+
+    .front-back {
+    	height: 140px;
+		width: 200px;
+    }
+
+    body{
+    	font-size:0.5em;
+    }
+
+    .title{
+		padding-top: 23px;
+		padding-bottom: 10px;
+    }
+ 	
+ 	.L{
+    	margin-bottom: -10px;
+ 	}
+
+    .joinus{
+    	height: 20px; width: 65px; 		 
+		border-width:1px; 
+	    padding:  2px 0 0 0 ;
+	    margin-top: 30px;
+
+    }
+    footer{/*3.0769*/
+		height: 48.75px;
+		width: 150px;
+	}
+
+	.price{
+		padding: 0px 0 0 450px;
+	}
+}
+
+/*@media screen and (max-width: 768px) {
+   
+
+    .front {
     	height: 210px;
 		width: 300px;
-		padding-top: 70px;
+		padding-top: 90px;
 
     }
 
@@ -130,49 +179,6 @@ footer{
 		width: 300px;
     }
 
-	.title{
-		font-size: 20px;
-    	padding-bottom: 20px;
-		padding-top: 35px;
-	}
-
-	.feature{
-		font-size: 3px;
-	}
-
-	.L{
-		font-size: 20px;
-	}
-	
-	.T{	
-		font-size: 10px;
-	}
-	
-	.joinus{
-		height: 25px; width: 125px; 		 
-		border-width:1px; 
-		font-size: 15px;
-	    margin-top: 80px;
-	    padding:  3px 0 0 0 ;
-	}
-
-	footer{
-		height: 65px;
-		width: 200px;
-	}
-	
-	.price{
-		font-size: 8px;
-		padding: 200px 0 0 100px;
-	}
-}
-
-@media screen and (max-width: 768px) {
-    
-    .front {
-		padding-top: 90px;
-
-    }
     .page{
     	font-size:0.7em;
     }
@@ -180,7 +186,6 @@ footer{
     .joinus{
     	height: 25px; width: 125px; 		 
 		border-width:1px; 
-		font-size: 15px;
 	    padding:  3px 0 0 0 ;
 	    margin-top: 30px;
 
@@ -194,4 +199,4 @@ footer{
 		padding: 0px 0 0 450px;
 	}
 }
-
+*/
