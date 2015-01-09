@@ -10,7 +10,7 @@ module.exports = {
   schema: true,
 
   attributes: {
-  	
+
     firstName: {
   		type: 'string',
   		required: true
@@ -45,12 +45,11 @@ module.exports = {
       type: 'string',
       required: true
     },
-
+*/
     tableName: {
       type: 'string',
-      required: true
     },
-
+/*
     age: {
       type: 'string',
       required: true
