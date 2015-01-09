@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="css/registration.css">
   
 
   <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -101,25 +102,46 @@
       <div class="front">
         <div class="front-back">
           <div>
-          <p class="title">ECE DINNER DANCE</p>
+          <p class="title">REGISTRATION</p>
           </div>
-          <div>
-            <p class="feature">
-              <a href="#">Open Bar</a>  |
-              <a href="#">One Round Trip</a>  |
-              <a href="#">Murder Mystery</a>  |
-              <a href="#">Drinking</a>
-            </p>
-          </div>
-          <div class="L">
-            <p>Chateau Le Jardin</p>
-          </div>
-          <div class="T">
-            <p>February 13th 2015 </p>
-          </div>
-          <div class="joinus">
-              <a href="#">JOIN US</a>
-          </div>
+          <form>
+          <!--registration -->
+            <div id = "topform">
+              <div id = " lefttext1">
+                <h2 class = "other">
+                Full Name
+                <br>
+                Ticket Number 
+                <br>
+                Password
+                <br>
+                Re-enter Password
+                <br>
+                Email Address
+                <br>
+                Year
+                </h2>
+              </div>
+
+              <div id = "fillboxes">          
+                <input type="text" name ="FullName"> <br>
+                <input type="text" name ="TicketNumber"> <br>
+                <input type="text" name ="Password"> <br>
+                <input type="text" name ="PasswordAgain"> <br>
+                <input type="text" name ="Email"> <br>
+                <select>
+                  <option value ="" disabled selected>Year</option>
+                  <option value ="1">1T8</option>
+                  <option value ="2">1T7</option>
+                  <option value ="3">1T6</option>
+                  <option value ="4">1T5</option>
+                  <option value ="5">1T4+PEY</option>
+                </select>
+                <br>
+              </div>
+
+            </div>
+          </form>
         </div>
       </div>
     </div>
