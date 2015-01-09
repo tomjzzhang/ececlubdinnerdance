@@ -1,5 +1,13 @@
-<form action= "/user/create" method= "POST" class= "form-signin">
+<form action= "/riddles/create" method= "POST" class= "form-signin">
  <h2 class= "form-signin-heading">Please enter your UTmail and answer the riddles below!</h2>
+
+<% if(flash && flash.err) {%>
+  <ul class="alert alert-success">
+  <% Object.keys(flash.err).forEach(function(error){ %>
+    <li><%- flash.err[error].message %></li>
+  <% }) %>
+  </ul>
+<% } %>
 
  <div class= "control-group">
  <input type= "text" class= "form-control" placeholder= "your name" name= "name">
@@ -15,6 +23,6 @@
  </div>
 
  <input type= "submit" class= "btn btn-lg btn-primary btn-block" value= "Submit"/>
- <input type= "hidden" name = "_csrf" value = "<%= _csrf %>" />
+ <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 
 </form>

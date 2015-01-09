@@ -7,7 +7,15 @@
 
 module.exports = {
 
+
+  schema: true,
+
   attributes: {
+
+    name: {
+      type: 'string',
+      required: true
+    },
 
     email: {
       type: 'string',
@@ -17,11 +25,19 @@ module.exports = {
 
     },
 
-    answer1: {
+    ans_Riddle_1: {
       type: 'string',
-      required: true,
-    }
+      required: true
+    },
 
 
+
+
+  },
+
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.ans_Riddle_1;
   }
+
 };

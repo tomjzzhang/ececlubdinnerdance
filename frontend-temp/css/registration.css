@@ -8,44 +8,33 @@ body.registration {
 	src: url(../fonts/ufonts.com_marion.ttf);
 }
 
-h1.the_title {
-	font-family: "marion", "I AM SHERLOCKED","Impact",sans-serif;
-	font-size:3em;
-	src: url(../fonts/ufonts.com_marion.ttf);
-	position: relative;
-	left:100px;		
-}
-
 h2.other {
-	size: 30px;
+	text-align: left;
 	position: relative;
-	left:40px;	
+	font-family: Arial;
+	font-size:15px;
+	font-weight: lighter;
+	color:rgba(199,140,48,0.8);
+	line-height: 22px;
 }
 
-#title{
-	float:left;
-	width:700px;
-	height:80px;
+#topform {
 	position: absolute;
+	background-color: black;
+	width: 445px;
+	margin: 0 auto;
 }
 
 #lefttext1 {
 	float:left;
-	padding:5px;
-	margin-top: 80px;
-	line-height: 30px;
-	width:500px;
-	position: absolute;
+	width: 50%;
 }
 
 #fillboxes {
-	float:left;
-	margin-top: 100px;
-	line-height: 30px;
-	width:500px;
-	position: absolute;
+	float:right;
 	color:black;
-	left:310px;
+	margin-top: 17px;
+	width: 50%;
 }
 
 input{
@@ -107,6 +96,7 @@ button {
 }
 
 button:hover {
+	background-color: rgba(220,161,69,0.8); 
 	
 }
 
