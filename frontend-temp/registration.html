@@ -1,22 +1,24 @@
-
+<!DOCTYPE HTML>
 <html>
-<head>	<title> SOMETHING </title> 
+
+<head>	<title> ECE Dinner Dance - Registration</title> 
 
 <link rel="stylesheet" href="css/registration.css" />
 
 </head>
 
 
-<body>
+<body class = "registration">
+
+	<!--TEXT-->	
 	<div id ="title">
-	<h1 class ="pos"> 
-	REGISTRATION
-	</h1> 
+	<h1 class ="the_title"> REGISTRATION </h1> 
 	</div>
+
 	<br>
 
-	<div id = "heading1"> 
-	<h2 class = "pos">
+	<div id = "lefttext1"> 
+	<h2 class = "other">
 		Full Name
 		<br>
 		Ticket Number 
@@ -32,11 +34,30 @@
 	</h2>
 	</div>
 
+	<div id = "heading3">
+		<h2 class = "other">
+		Bus Departure Time
+		<br>
+		Bus Return Time
+		<br>
+		*The 8:15 p.m. bus is for those with midterms
+		<br>
+		</h2>
+	</div>
+
+	<div id = "lefttext3">
+		<h2 class = "other">
+		19+?
+		</h2>
+	</div>
+
+	<!--FORM-->
+
 	<form>
-	<div id = "heading2">
+	<div id = "fillboxes">
 	
 		<input type="text" name ="FullName"> <br>
-		<label><input type="text" name ="TicketNumber"> </label><br>
+		<input type="text" name ="TicketNumber"> <br>
 		<input type="text" name ="Password"> <br>
 		<input type="text" name ="PasswordAgain"> <br>
 		<input type="text" name ="Email"> <br>
@@ -47,25 +68,10 @@
 			<option value ="3">1T6</option>
 			<option value ="4">1T5</option>
 			<option value ="5">1T4+PEY</option>
-		<select>
+		</select>
 			<br>
 	</div>
-	</form>
 
-
-	<div id = "heading3">
-		<h2 class = "pos">
-		Bus Departure Time
-		<br>
-		Bus Return Time
-		<br>
-		19+?
-		<br>
-		</h2>
-	</div>
-
-
-	<form action="">
 	<div id = "heading4">
 		<input type="radio" name="time" value="1" /> 6:15 p.m. 
 
@@ -73,7 +79,7 @@
 
 		<input type="radio" name="time" value="3" /> 6:45 p.m. <br>
 
-		<input type="radio" name="time" value="4" /> 8:15 p.m. 
+		<input type="radio" name="time" value="4" /> 8:15 p.m.*
 
 		<input type="radio" name="time" value="5" /> Not taking bus
 
@@ -90,18 +96,23 @@
 
 		<br>
 		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 
 		<input type="radio" name="19+" value="1" /> Yes 
 
 		<input type="radio" name="19+" value="2" /> No
 
 	</div>
-	</form>
 
-	<div id = "headingbutton">
-		<button type="button" onclick="alert(' THANK YOU =) ')"> YAY. SIGN ME UP. </button>
+
+	<div id = "bottombutton">
+		<button type="button"> I'm Ready. Sign Me Up! </button>
 	</div>
-	
+
+	</form>
 
 </body>
 

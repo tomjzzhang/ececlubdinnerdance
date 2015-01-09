@@ -5,10 +5,12 @@ h1 {
 .tables{
   border-collapse: separate;
   border-spacing: 10px;
+  border-style: solid;
+  border-color: white;
 }
 
 td {
-  border: 1px solid black;
+  border: 1px solid white;
   width: 1600px;
   height: 400px;
   vertical-align: top;

@@ -1,7 +1,7 @@
 /* * { margin: 0; padding: 0; overflow:hidden;} */
 
 html, body {
-  color: #DDDDDD;
+  color: #000;
 
   width:  100%;
   height: 100%;
@@ -95,7 +95,7 @@ h1{
 
 #rightcolumn {
   width: 50%;
-  background-color: #777;
+  background-color: #111;
 }
 
 .col-top, .col-bottom{
