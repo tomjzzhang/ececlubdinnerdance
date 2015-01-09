@@ -15,7 +15,6 @@ h2.pos {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #c78c30;
-	float: left;
 	margin: zero auto;
 	position: static;
 }
@@ -24,9 +23,12 @@ h2.pos1 {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #ffffff;
-	float: left;
 	margin-left: 10px;
 	position: static;
+}
+
+div.main1 {
+	position: absolute;
 }
 
 div.top-bar {
