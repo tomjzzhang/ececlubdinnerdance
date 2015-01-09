@@ -1,19 +1,23 @@
-body {
-	background-color: #000000;
+body.registration {
+	background-color: #000000; // transparent
 	text-align:left;
-	color:#ffffff;
-	font-family:"Arial";
+	font-family: Arial;
+	font-size:1em;
+	font-weight: lighter;
+	color:rgba(199,140,48,0.8);
+	src: url(../fonts/ufonts.com_marion.ttf);
 }
 
-h1.pos {
-	font-family: "I AM SHERLOCKED","Impact",sans-serif;
-	font-size: 38px;
+h1.the_title {
+	font-family: "marion", "I AM SHERLOCKED","Impact",sans-serif;
+	font-size:3em;
+	src: url(../fonts/ufonts.com_marion.ttf);
 	position: relative;
-	left:40px;		
+	left:100px;		
 }
 
-h2.pos {
-	size: 50px;
+h2.other {
+	size: 30px;
 	position: relative;
 	left:40px;	
 }
@@ -25,7 +29,7 @@ h2.pos {
 	position: absolute;
 }
 
-#heading1 {
+#lefttext1 {
 	float:left;
 	padding:5px;
 	margin-top: 80px;
@@ -34,40 +38,57 @@ h2.pos {
 	position: absolute;
 }
 
-#heading2 {
+#fillboxes {
 	float:left;
+	margin-top: 100px;
 	line-height: 30px;
-	width:200px;
+	width:500px;
 	position: absolute;
 	color:black;
-	margin-top: 105px;
-	left:300px;
+	left:310px;
 }
+
+input{
+	margin-bottom: 6px;
+}
+
+input[type=radio]:not(old){
+	display:inline-block;
+}
+
 
 #heading3 {
 	float:left;
-	margin-top:260px;
+	margin-top:300px;
 	line-height: 70px;
-	width:500px;
+	width:900px;
 	position: absolute;
 }
 
 #heading4 {
 	float:left;
-	margin-top: 300px;
+	margin-top: 340px;
 	margin-left: 300px;
 	line-height: 22px;
+	color: white;
 	width:350px;
 	position: absolute;
 }
 
-#headingbutton{
+#lefttext3 {
 	float:left;
-	margin-top: 510px;
+	margin-top: 520px;
+	line-height: 70px;
+	position: absolute;
+}
+
+#bottombutton{
+	float:left;
+	margin-top: 620px;
 	margin-left: 50px;
 	line-height: 22px;
-	text-align: cent
-	width:350px;
+	text-align: center;
+	width: 350px;
 	position: absolute;
 }
 
@@ -84,10 +105,3 @@ button:hover {
 	
 }
 
-input{
-	margin-bottom: 10px;
-}
-
-input[type=radio]:not(old){
-	display:inline-block;
-}
