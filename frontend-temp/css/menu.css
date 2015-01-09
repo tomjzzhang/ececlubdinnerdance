@@ -1,0 +1,43 @@
+body {
+	background-image: url("../images/main.jpg");
+ 	background-color: #000000;
+}
+
+h1.pos {
+	font-family: "Marion", serif;
+	font-size: 30px;
+	color: #ffffff;
+	position: static;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h2.pos {
+	font-family: "Marion", serif;
+	font-size: 20px;
+	color: #c78c30;
+	float: left;
+	margin-left: 400px;
+}
+
+h2.pos1 {
+	font-family: "Marion", serif;
+	font-size: 20px;
+	color: #ffffff;
+	float: left;
+	margin-left: 10px;
+}
+
+div.top-bar {
+	content: url("../mockup+resources/top-bar.png");
+	margin-left: 400px;
+	margin-bottom: 5px;
+}
+
+div.middle-bar {
+	content: url("../mockup+resources/middle-bar.png");
+	height: 50px;
+	width: 457px;
+	margin-left: 400px;
+	margin-top: 0px;
+}
