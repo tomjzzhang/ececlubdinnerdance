@@ -40,6 +40,45 @@
   </head>
 
   <body>
+    <div id="footprints">
+
+      <div id="ft84" class="footprint" style="-webkit-transform: rotate(-26.1444243303499rad);  transform: rotate(-26.1444243303499rad); top:601.1622684014834px; left:791.0174444091388px;">  </div>
+      <div id="ft85" class="footprintleft" style="-webkit-transform: rotate(-26.320811592507997rad);  transform: rotate(-26.320811592507997rad); top:610.944499480983px; left:819.0025191882418px;">  </div>
+      <div id="ft86" class="footprint" style="-webkit-transform: rotate(-25.963759323581947rad);  transform: rotate(-25.963759323581947rad); top:629.1524980598907px; left:842.3550574617734px;">  </div>
+    </div>
+
+    <canvas id="background-animation">
+
+    </canvas>
+    <div id="canvas-debug">
+
+    </div>
+   
+    <div class="outer">
+    <div class="middle">
+      <div class="inner">
+
+
+        <div id="wrapper">
+          <div id="leftcolumn" class="">
+            <div class="col-top" id="trans1" style="background-image: url(/images/background1-left.png);">
+            </div>
+            <div class="col-bottom" id="pic1" style="background-image: url(/images/background1-left.png);">
+            </div>
+          </div>
+          <div id="rightcolumn" class="">
+            <div class="col-top" id="pic2" style="background-image: url(/images/background1-right.png);">
+            </div>
+            <div class="col-bottom" id="trans2" style="background-image: url(/images/background1-right.png);">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="page">
     <nav class="navbar navbar-default navbar navbar-inverse" id="topnav">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,7 +115,9 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
     <%- body %>
+  </div>
 
     <!--
         Client-side Templates
@@ -129,13 +170,13 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/bootstrap.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/homepage-backgroundswitch.js"></script>
     <script src="/js/homepage-canvas.js"></script>
     <script src="/js/homepage-footprints.js"></script>
     <script src="/js/homepage-sections.js"></script>
     <script src="/js/jquery.min.js"></script>
+    
     <!--SCRIPTS END-->
   </body>
 </html>
