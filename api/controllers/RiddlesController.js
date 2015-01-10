@@ -13,7 +13,11 @@ module.exports = {
 		res.view();
 	},
 
+	'RaffleCongrats' : function (req,res){
+		res.view();
+	},
 
+//.+@mail\.utoronto\.ca$ ->regex to check
 	create: function (req, res, next){
 //hard code riddles here
 	if(req.param('ans_Riddle_1') != "qwerty"){
@@ -37,7 +41,14 @@ module.exports = {
 
 		//After successfully creating the user
 		//redirect to the show action
-		res.json(riddles);
+
+		//for testing purposes
+		//res.json(riddles);
+
+		res.redirect('/riddles/RaffleCongrats');
+		return;
+
+
 
 		} );
 
