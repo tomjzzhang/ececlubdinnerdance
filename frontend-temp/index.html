@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-  
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
+  <link rel="stylesheet" type="text/css" href="css/registration.css">
 
   <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
   <script src="js/jquery.min.js"></script>
@@ -70,7 +71,7 @@
 
 
 
-  <div class="page">
+  <div class="page" id="page-wrap"> 
     <nav class="navbar navbar-default navbar navbar-inverse" id="topnav">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -85,8 +86,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Registration</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="registration-v2.html">Registration</a></li>
             <li><a href="#">Table</a></li>
             <li><a href="#">Event Info</a></li>
             <li><a href="#">Riddle</a></li>
@@ -96,8 +97,8 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-
-    <div class="main-back">
+<section id="main-content">
+    <div id="guts">
       <div class="front">
         <div class="front-back">
           <div>
@@ -123,9 +124,8 @@
         </div>
       </div>
     </div>
-
   </div>
-
+</section>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
@@ -136,5 +136,9 @@
   <script src="js/homepage-backgroundswitch.js"></script>
 <!--   <script src="js/homepage-sections.js"></script>
  -->
+
+ <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+<script type='text/javascript' src='js/jquery.ba-hashchange.min.js'></script>
+<script type='text/javascript' src='js/dynamicpage.js'></script>
 </body>
 </html>
