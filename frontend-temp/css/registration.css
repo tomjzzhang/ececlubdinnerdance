@@ -1,36 +1,36 @@
 
+
 table{
 	margin: 0 auto;
 }
 
-#registration form .title{
+form .title{
+	width: 12em;
+	color: #c68930;
+	font-size: 10px;
+	padding: 2px;
+}
+
+form .notice{
 
 	color: #c68930;
 	font-size: 10px;
 }
 
-#registration form .notice{
+form .info {
 
-	color: #c68930;
-	font-size: 20px;
-}
-
-#registration form .info {
-
-	width: 21em;
 	font-size: 12px;
 	color: white;
 }
 
-#registration form .radio{
-
-	margin-top: 1em;
+form .radiobox{
+	
 }
 
-#registration form .age{
 
-	margin-top: 1em;
-	margin-bottom: 1em;
+form .age{
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 #reg-submit{
