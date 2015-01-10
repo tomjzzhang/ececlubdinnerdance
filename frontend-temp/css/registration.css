@@ -1,4 +1,6 @@
-
+form{
+	padding: 0 auto;
+}
 
 table{
 	margin: 0 auto;
@@ -33,11 +35,20 @@ form .age{
 	margin-bottom: 2px;
 }
 
+tr{
+	padding: 2px;
+}
+
 #reg-submit{
-	font-size: 20px;
+	font-size: 10px;
     background: #c58a2c;
 	color: black;
-    width: 100%; /* width of image */
-    height: 40px; /* height of image */
-    border: 0;
-	padding: 0;
+	width: 200px;
+	margin: auto;
+}
+
+#submit-container{
+	width: 200px;
+	margin: auto;
+
+}
