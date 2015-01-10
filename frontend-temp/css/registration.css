@@ -15,26 +15,26 @@ h2.other {
 	font-size:15px;
 	font-weight: lighter;
 	color:rgba(199,140,48,0.8);
+	line-height: 22px;
 }
 
 #topform {
-	position: absolute;
+	position: center;
 	background-color: black;
 	width: 445px;
-	margin-left: 40px;
+	margin: 0 auto;
 }
 
 #lefttext1 {
 	float:left;
-	line-height: 50px;
-	width: 40%;
+	width: 50%;
 }
 
 #fillboxes {
 	float:right;
-	line-height: 10px;
 	color:black;
-	width: 40%;
+	margin-top: 17px;
+	width: 50%;
 }
 
 input{

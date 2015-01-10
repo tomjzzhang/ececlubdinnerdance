@@ -45,12 +45,11 @@ module.exports = {
       type: 'string',
       required: true
     },
-
+*/
     tableName: {
       type: 'string',
-      required: true
     },
-
+/*
     age: {
       type: 'string',
       required: true

@@ -3,15 +3,18 @@ h1 {
 }
 
 .tables{
-  border-collapse: separate;
-  border-spacing: 10px;
-  border-style: solid;
-  border-color: white;
+  display: block;
 }
 
 td {
   border: 1px solid white;
-  width: 1600px;
+  width: 400px;
   height: 400px;
   vertical-align: top;
+  display: inline-block;
+}
+
+.btn_addTable {
+  width:3em;
+  color: black;
 }

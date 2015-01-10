@@ -2,56 +2,53 @@
 
 <script>
   function addToTable() {
+      alert("hello");
       var randNum = Math.random();
       var node_li = document.createElement("LI");
       var textNode = document.createTextNode(randNum.toString());
 
       node_li.appendChild(textNode);
 
-      document.getElementById("table1_names").appendChild(node_li);
+      document.getElementById("table_1").appendChild(node_li);
+  }
+
+  function tablePost(path, params, method) {
+    method = method || "post";
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+      if(params.hasOwnProperty(key)) {
+          var hiddenField = document.createElement("input");
+          hiddenField.setAttribute("type", "hidden");
+          hiddenField.setAttribute("name", key);
+          hiddenField.setAttribute("value", params[key]);
+
+          form.appendChild(hiddenField);
+       }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
   }
 </script>
 
 <div class="tables_section">
+  <h1> Table Selection </h1>
 
-<h1> Table Selection </h1>
-
-<table class="tables">
-<tr>
-  <td>
-   Table 1
-   <br></br>
-   <button onclick="addToTable()" type="submit" color:black id="add_table1"> Add </button>
-    <ol id="table1_names">
-    </ol>
-  </td>
-  <td>
-    Table 2
-    <br></br>
-    <input type="submit" name="add" value="Add">
-  </td>
-  <td>
-    Table 3
-    <br></br>
-    <input type="submit" name="add" value="Add">
-  </td>
-</tr>
-<tr>
-  <td>
-    Table 4
-    <br></br>
-    <input type="submit" name="add" value="Add">
-  </td>
-  <td>
-    Table 5
-    <br></br>
-    <input type="submit" name="add" value="Add">
-  </td>
-  <td>
-    Table 6
-    <br></br>
-    <input type="submit" name="add" value="Add">
-  </td>
-</tr>
-
+  <table class="tables">
+    <tr>
+    <% for (i = 1; i <= 6; i++) { %>
+        <td id="table_<%= i %>" >
+          Table <%= i %>
+          <br></br>
+          <button onclick="tablePost('/tables/addUser', {tableName:<%= i %>})" type="submit" color:black class="btn_addTable"> Add </button>
+          <ol id="table1_names">
+          </ol>
+        </td>
+    <%} %>
+    </tr>
+  </table>
 </div>

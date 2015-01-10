@@ -15,31 +15,37 @@ h2.pos {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #c78c30;
-	float: left;
-	margin-left: 420px;
+	margin: zero auto;
+	position: static;
 }
 
 h2.pos1 {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #ffffff;
-	float: left;
 	margin-left: 10px;
+	position: static;
+}
+
+div.main1 {
+	position: absolute;
 }
 
 div.top-bar {
 	content: url("../mockup+resources/top-bar.png");
 	width: 365px;
 	height: 40px;
-	margin-left: 455px;
+	margin: zero auto;
 	margin-bottom: 5px;
 	margin-top: 80px;
+	position: static;
 }
 
 div.middle-bar {
 	content: url("../mockup+resources/middle-bar.png");
 	height: 50px;
 	width: 457px;
-	margin-left: 410px;
+	margin: zero auto;
 	margin-top: 0px;
+	position: static;
 }
