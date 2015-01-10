@@ -1,5 +1,4 @@
 body {
-	background-image: url("../images/main.jpg");
  	background-color: #000000;
 }
 
@@ -9,35 +8,44 @@ h1.pos {
 	color: #ffffff;
 	position: static;
 	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-bottom: -15px;
 }
 
 h2.pos {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #c78c30;
-	float: left;
-	margin-left: 400px;
+	margin: zero auto;
+	position: static;
 }
 
 h2.pos1 {
 	font-family: "Marion", serif;
 	font-size: 20px;
 	color: #ffffff;
-	float: left;
 	margin-left: 10px;
+	position: static;
+}
+
+div.main1 {
+	position: absolute;
 }
 
 div.top-bar {
 	content: url("../mockup+resources/top-bar.png");
-	margin-left: 400px;
+	width: 365px;
+	height: 40px;
+	margin: zero auto;
 	margin-bottom: 5px;
+	margin-top: 80px;
+	position: static;
 }
 
 div.middle-bar {
 	content: url("../mockup+resources/middle-bar.png");
 	height: 50px;
 	width: 457px;
-	margin-left: 400px;
+	margin: zero auto;
 	margin-top: 0px;
+	position: static;
 }

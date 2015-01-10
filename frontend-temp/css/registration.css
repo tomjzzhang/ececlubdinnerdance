@@ -1,115 +1,43 @@
-body.registration {
-	background-color: #000000; // transparent
-	text-align:left;
-	font-family: Arial;
-	font-size:1em;
-	font-weight: lighter;
-	color:rgba(199,140,48,0.8);
-	src: url(../fonts/ufonts.com_marion.ttf);
+
+table{
+	margin: 0 auto;
 }
 
-h1.the_title {
-	font-family: "marion", "I AM SHERLOCKED","Impact",sans-serif;
-	font-size:3em;
-	src: url(../fonts/ufonts.com_marion.ttf);
-	position: relative;
-	left:100px;		
+#registration form .title{
+
+	color: #c68930;
+	font-size: 10px;
 }
 
-h2.other {
-	size: 30px;
-	position: relative;
-	left:40px;	
-}
+#registration form .notice{
 
-#title{
-	float:left;
-	width:700px;
-	height:80px;
-	position: absolute;
-}
-
-#lefttext1 {
-	float:left;
-	padding:5px;
-	margin-top: 80px;
-	line-height: 30px;
-	width:500px;
-	position: absolute;
-}
-
-#fillboxes {
-	float:left;
-	margin-top: 100px;
-	line-height: 30px;
-	width:500px;
-	position: absolute;
-	color:black;
-	left:310px;
-}
-
-input{
-	margin-bottom: 6px;
-}
-
-input[type=radio]:not(old){
-	display:inline-block;
-}
-
-
-#heading3 {
-	float:left;
-	margin-top:300px;
-	line-height: 70px;
-	width:900px;
-	position: absolute;
-}
-
-#heading4 {
-	float:left;
-	margin-top: 340px;
-	margin-left: 300px;
-	line-height: 22px;
-	color: white;
-	width:350px;
-	position: absolute;
-}
-
-#lefttext3 {
-	float:left;
-	margin-top: 520px;
-	line-height: 70px;
-	position: absolute;
-}
-
-#bottombutton{
-	float:left;
-	margin-top: 620px;
-	margin-left: 50px;
-	line-height: 22px;
-	text-align: center;
-	width: 350px;
-	position: absolute;
-}
-
-button {
-	width:500px;
-	min-height: 40px;
-	text-align: center;
+	color: #c68930;
 	font-size: 20px;
-	font-family: "Impact",serif;
-	vertical-align: middle;
-	background-color: rgba(199,140,48,0.8); 
-	font-weight: bolder;
-	border:none;
-	text-decoration: none;
-	cursor: pointer;
 }
 
-button:hover {
-	
+#registration form .info {
+
+	width: 21em;
+	font-size: 12px;
+	color: white;
 }
 
-#submit {
+#registration form .radio{
+
+	margin-top: 1em;
 }
 
+#registration form .age{
+
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#reg-submit{
+	font-size: 20px;
+    background: #c58a2c;
+	color: black;
+    width: 100%; /* width of image */
+    height: 40px; /* height of image */
+    border: 0;
+	padding: 0;
