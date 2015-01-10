@@ -11,27 +11,49 @@ h1.pos {
 	margin-bottom: -15px;
 }
 
-h2.pos {
+.titlebox h2 {
 	font-family: "Marion", serif;
-	font-size: 20px;
+	font-size: 17px;
 	color: #c78c30;
-	margin: zero auto;
-	position: static;
 }
 
-h2.pos1 {
+.titlebox {
+	float: left;
+	margin: 0 auto;
+	width: 40%;
+}
+
+.textbox h2 {
 	font-family: "Marion", serif;
-	font-size: 20px;
+	font-size: 17px;
 	color: #ffffff;
-	margin-left: 10px;
-	position: static;
 }
 
-div.main1 {
+.textbox {
+	float: right;
+	margin: 0 auto;
+	width: 60%;
+}
+
+#main1 {
 	position: absolute;
+	margin: 0 auto;
+	width: 400px;
+	margin-bottom: 60px;
+	left: 0;
+	right: 0;
 }
 
-div.top-bar {
+#main2 {
+	position: absolute;
+	margin: 0 auto;
+	width: 400px;
+	margin-top: 60px;
+	left: 0;
+	right: 0;
+}
+
+.top-bar {
 	content: url("../mockup+resources/top-bar.png");
 	width: 365px;
 	height: 40px;
@@ -41,7 +63,7 @@ div.top-bar {
 	position: static;
 }
 
-div.middle-bar {
+.middle-bar {
 	content: url("../mockup+resources/middle-bar.png");
 	height: 50px;
 	width: 457px;
