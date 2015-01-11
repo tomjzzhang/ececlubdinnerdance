@@ -20,7 +20,7 @@ h1.pos {
 .boxleft {
 	float: left;
 	margin: 0 auto;
-	width: 40%;
+	width: 20%;
 }
 
 .boxright p {
@@ -32,24 +32,25 @@ h1.pos {
 .boxright {
 	float: right;
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 }
 
 #block1 {
 	position: absolute;
 	margin: 0 auto;
-	width: 600px;
+	width: 400px;
+	margin-top: 40px;
 	margin-bottom: 60px;
 	left: 0;
 	right: 0;
 }
 
 #block2 {
-	position: absolute;
+	position: static;
 	margin: 0 auto;
-	width: 600px;
-	margin-top: 60px;
-	margin-bottom: 60px;
+	width: 400px;
+	margin-top: 70px;
+	margin-bottom: 40px;
 	left: 0;
 	right: 0;
 }
@@ -57,8 +58,8 @@ h1.pos {
 #block3 {
 	position: absolute;
 	margin: 0 auto;
-	width: 600px;
-	margin-top: 60px;
+	width: 400px;
+	margin-top: 30px;
 	left: 0;
 	right: 0;
 }
