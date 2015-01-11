@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
    <link rel="stylesheet" type="text/css" href="css/menu.css">
-  <link rel="stylesheet" type="text/css" href="css/registration.css">
+  <link rel="stylesheet" type="text/css" href="css/event-info.css">
   
 
   <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -69,7 +69,7 @@
 
 
 
-  <div class="page">
+  <div class="page" id="page-wrap">
     <nav class="navbar navbar-default navbar navbar-inverse" id="topnav">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -97,107 +97,40 @@
 
 
     <!--TEXT--> 
-<section id="main-content">
+    <section id="main-content">
    <div id="guts">  
-   <center> <div class = "top-bar"> </div> </center>
-    <div id = "title">
-      <h1 class = "pos">
-      <center> REGISTRATION </center>
-      </h1>
-    </div>
-    <center> <div class = "middle-bar"> </div> </center> <br> <br>
-
-  <form>
-    <table>
-    <tr>
-      <td class="title">Full Name</td>
-      <td class="info">
-        <input type='text' name='firstname'><br/>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Ticket Number</td>
-      <td class="info">
-        <input type='text' name='firstname'><br/>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Password</td>
-      <td class="info">
-        <input type='text' name='firstname'><br/>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Re-enter Password</td>
-      <td class="info">
-        <input type='text' name='firstname'><br/>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Email Address</td>
-      <td class="info">
-        <input type='text' name='firstname'><br>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Year</td>
-      <td class="info">
-        <select>
-            <option value="7">1T7</option>
-            <option value="6">1T6</option>
-            <option value="5">1T5</option>
-            <option value="4">1T4</option>
-            <option value="3">1T3</option>
-            <option value="2">1T3+PEY</option>
-            <option value="prof">Professor</option>
-            <option value="grad">Grad/Other</option>
-        </select>
-      </td>
-    </tr>
-    </table>
-
-    <table class='radio-box'>
-    <tr>
-      <td class="title radio">Bus Departure Time</td>
-      <td class="info">
-        <input type="radio" name="timeDep" value="1" checked>6:15 p.m.
-        <input type="radio" name="timeDep" value="2">6:30 p.m.
-        <input type="radio" name="timeDep" value="3">6:45 p.m. <br>
-        <input type="radio" name="timeDep" value="4">8:15 p.m.
-        <input type="radio" name="timeDep" value="5">Not taking bus
-      </td>
-    </tr>
-    <tr>
-      <td class="title">Bus Return Time</td>
-      <td class="info">
-        <input type="radio" name="timeRtn" value="1" checked>11:00 p.m.
-        <input type="radio" name="timeRtn" value="2">12:00 a.m.
-        <input type="radio" name="timeRtn" value="3">1:00 a.m. <br>
-        <input type="radio" name="timeRtn" value="4">Not taking bus
-      </td>
-    </tr>
-    </table>
-    <table>
-    <tr>
-      <br>
-      <td class="notice">*The 8:15 p.m. bus is for those with midterms</td>
-    </tr>
-    </table>
-
-    <table class='age'>
-    <tr>
-      <td class="title">19+?</td>
-      <td class="info">
-        <input type="radio" name="adult" value="true">Yes
-        <input type="radio" name="adult" value="false" checked>No
-      </td>
-    </tr>
-    </table>
-    <br><br>
-    <div id="submit-container">
-      <input id="reg-submit" type="submit" value="I'm Ready. Sign Me Up!">
-    </div>
-  </form>
+     <center> <div class = "top-bar"> </div> </center>
+      <div id = "title">
+        <h1 class = "pos">
+        <center> Event Information </center>
+        </h1>
+      </div>
+      <center> <div class = "middle-bar"> </div> </center> <br>
+      <div id = "block1">
+        <div class = "boxleft">
+          <p> What: </p>
+        </div>
+        <div class = "boxright">
+          <p> ECE Semi-Formal Dinner Dance </p>
+        </div>
+      </div>
+      <div id = "block2">
+        <div class = "boxleft">
+          <p> Where: </p>
+        </div>
+        <div class = "boxright">
+          <p> Chateau Le Jardin, give the address here </p>
+        </div>
+      </div>
+      <div id = "block3">
+        <div class = "boxleft">
+          <p> When: </p>
+        </div>
+        <div class = "boxright">
+          <p> Friday February 13, 2015, 7PM - 1PM </p>
+        </div>
+      </div>
+ 
 </div>  
 </section>
 
@@ -214,7 +147,8 @@
   <script src="js/homepage-backgroundswitch.js"></script>
 <!--   <script src="js/homepage-sections.js"></script>
  -->
- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
 <script type='text/javascript' src='js/jquery.ba-hashchange.min.js'></script>
 <script type='text/javascript' src='js/dynamicpage.js'></script>
 </body>

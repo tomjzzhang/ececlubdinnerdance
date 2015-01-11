@@ -34,25 +34,21 @@ module.exports = {
       unique: true
     },
 
-    /*
-
+//add in year, foodoption, tablename ,age allergies, busDepartTime , bus leave 
     year: {
       type: 'string',
-      required: true
     },
 
     foodOption: {
       type: 'string',
-      required: true
     },
-*/
+
     tableName: {
       type: 'string',
     },
-/*
+
     age: {
-      type: 'string',
-      required: true
+      type: 'boolean',
     },
 
     allergies: {
@@ -61,15 +57,13 @@ module.exports = {
 
     busDepartTime: {
       type: 'string',
-      required: true
     },
 
     busLeaveTime: {
       type: 'string',
-      required: true
     },
 
-    */
+    
 
   	encryptedPassword:{
   		type: 'string',

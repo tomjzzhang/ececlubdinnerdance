@@ -11,44 +11,55 @@ h1.pos {
 	margin-bottom: -15px;
 }
 
-.titlebox h2 {
+.boxleft p {
 	font-family: "Marion", serif;
 	font-size: 17px;
 	color: #c78c30;
 }
 
-.titlebox {
+.boxleft {
 	float: left;
 	margin: 0 auto;
-	width: 40%;
+	width: 20%;
 }
 
-.textbox h2 {
+.boxright p {
 	font-family: "Marion", serif;
 	font-size: 17px;
 	color: #ffffff;
 }
 
-.textbox {
+.boxright {
 	float: right;
 	margin: 0 auto;
-	width: 60%;
+	width: 80%;
 }
 
-#main1 {
+#block1 {
 	position: absolute;
 	margin: 0 auto;
 	width: 400px;
+	margin-top: 40px;
 	margin-bottom: 60px;
 	left: 0;
 	right: 0;
 }
 
-#main2 {
+#block2 {
+	position: static;
+	margin: 0 auto;
+	width: 400px;
+	margin-top: 70px;
+	margin-bottom: 40px;
+	left: 0;
+	right: 0;
+}
+
+#block3 {
 	position: absolute;
 	margin: 0 auto;
 	width: 400px;
-	margin-top: 60px;
+	margin-top: 30px;
 	left: 0;
 	right: 0;
 }

@@ -5,6 +5,13 @@
 			<th>Ticket #</th>
 			<th>Name</th>
 			<th>Email</th>
+			<th>Year</th>
+			<th>Food Option</th>
+			<th>Table Name</th>
+			<th>Age</th>
+			<th>Allergies</th>
+			<th>Bus Departure Time</th>
+			<th>Bus Leave Time</th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -15,6 +22,14 @@
 			<td><%= user.ticketNumber %></td>
 			<td><%= user.firstName + ' ' + user.lastName %></td>
 			<td><%= user.email %></td>
+			<td><%= user.year %></td>
+			<td><%= user.foodOption %></td>
+			<td><%= user.tableName %></td>
+			<td><%= user.age %></td>
+			<td><%= user.allergies %></td>
+			<td><%= user.busDepartTime %></td>
+			<td><%= user.busLeaveTime %></td>
+			
 			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Show</a></td>
 			<td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Edit</a></td>
 			<td>
