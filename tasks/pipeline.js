@@ -18,7 +18,7 @@ var cssFilesToInject = [
   'fonts/ufonts.com_marion.ttf',
 
   'styles/normalize.css',
-  'styles/bootstrap.css',
+  'styles/bootstrap.min.css',
   'styles/importer.css',
   'styles/homepage.css'
 
@@ -36,6 +36,8 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/jquery.min.js',
+
   'js/dependencies/**/*.js',
 
   'js/homepage-backgroundswitch.js',

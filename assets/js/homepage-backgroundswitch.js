@@ -1,9 +1,8 @@
-
 var counter = 1;
 var counterCap = 2;
 
-function CSSSwitchImage(leftAfter, rightAfter){
-  console.log("switching");
+function CSSSwitchImage(leftAfter, rightAfter) {
+  //console.log("switching");
 
   // set switching content
   $("#trans1").css("background-image", "url('" + leftAfter + "')");
@@ -11,37 +10,37 @@ function CSSSwitchImage(leftAfter, rightAfter){
 
 
   $("#leftcolumn").attr("class", "animatable");
-  setTimeout(function(){
+  setTimeout(function() {
     $("#leftcolumn").attr("class", "");
     $("#pic1").css("background-image", "url('" + leftAfter + "')");
   }, 500);
 
   $("#rightcolumn").attr("class", "animatablereverse");
-  setTimeout(function(){
+  setTimeout(function() {
     $("#rightcolumn").attr("class", "");
     $("#pic2").css("background-image", "url('" + rightAfter + "')");
   }, 500);
 }
 
-function CSSSwitchLoop(){
+function CSSSwitchLoop() {
 
   counter++;
 
-  if(counter > counterCap){
+  if (counter > counterCap) {
     counter = 1;
   }
 
-  setTimeout(function(){
+  setTimeout(function() {
     CSSSwitchImage("images/background" + counter + "-left.png",
-    "images/background" + counter + "-right.png");
+      "images/background" + counter + "-right.png");
   }, 2000);
 
-  setTimeout(function(){
+  setTimeout(function() {
     CSSSwitchLoop();
   }, 4000);
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
   //setDimensions();
 
   CSSSwitchLoop();
