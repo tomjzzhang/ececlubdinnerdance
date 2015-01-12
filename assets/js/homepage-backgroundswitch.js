@@ -31,8 +31,8 @@ function CSSSwitchLoop() {
   }
 
   setTimeout(function() {
-    CSSSwitchImage("images/background" + counter + "-left.png",
-      "images/background" + counter + "-right.png");
+    CSSSwitchImage("/images/background" + counter + "-left.png",
+      "/images/background" + counter + "-right.png");
   }, 2000);
 
   setTimeout(function() {
