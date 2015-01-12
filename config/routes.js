@@ -47,5 +47,10 @@ module.exports.routes = {
   ***************************************************************************/
   '/static/riddlePage':{
     view: 'static/riddlePage'
-  }
+  },
+
+
+  '/eventinfo' : {
+    view: 'eventinfo'
+  },
 };

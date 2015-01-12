@@ -7,7 +7,7 @@
       </div>
       <center> <div class = "middle-bar"> </div> </center> <br> <br>
 
-  <form>
+  <form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
     <table>
     <tr>
       <td class="title">Full Name</td>
@@ -18,7 +18,7 @@
     <tr>
       <td class="title">Ticket Number</td>
       <td class="info">
-        <input type='text' name='ticketNumber' value="<%= user.ticketNumber %>"><br/>
+        <%= user.ticketNumber %>
       </td>
     </tr>
    
@@ -31,15 +31,15 @@
     <tr>
       <td class="title">Year</td>
       <td class="info">	
-        <select>
-            <option value="7" <%if (user.year == 7) { %><%= selected %><% } %>>1T7</option> 
-            <option value="6" <%if (user.year == 6) { %><%= selected %><% } %>>1T6</option>
-            <option value="5" <%if (user.year == 5) { %><%= selected %><% } %>>1T5</option>
-            <option value="4" <%if (user.year == 4) { %><%= selected %><% } %>>1T4</option>
-            <option value="3" <%if (user.year == 3) { %><%= selected %><% } %>>1T3</option>
-            <option value="2" <%if (user.year == 2) { %><%= selected %><% } %>>1T3+PEY</option>
-            <option value="prof" <%if (user.year == 'prof') { %><%= selected %><% } %>>Professor</option>
-            <option value="grad" <%if (user.year == 'grad') { %><%= selected %><% } %>>Grad/Other</option>
+        <select name="year">
+            <option value="1T8" <%if (user.year == '1T8') { %><%= 'selected' %><% } %>>1T8</option> 
+            <option value="1T7" <%if (user.year == '1T7') { %><%= 'selected' %><% } %>>1T7</option>
+            <option value="1T6" <%if (user.year == '1T6') { %><%= 'selected' %><% } %>>1T6</option>
+            <option value="1T5" <%if (user.year == '1T5') { %><%= 'selected' %><% } %>>1T5</option>
+            <option value="1T4" <%if (user.year == '1T4') { %><%= 'selected' %><% } %>>1T4</option>
+            <option value="1T4+PEY" <%if (user.year == '1T4+PEY') { %><%= 'selected' %><% } %>>1T4+PEY</option>
+            <option value="prof" <%if (user.year == 'prof') { %><%= 'selected' %><% } %>>Professor</option>
+            <option value="grad" <%if (user.year == 'grad') { %><%= 'selected' %><% } %>>Grad/Other</option>
         </select>
       </td>
     </tr>
@@ -49,21 +49,20 @@
     <tr>
       <td class="title radio">Bus Departure Time</td>
       <td class="info">
-
-        <input type="radio" name="busDepartTime" value="1" <% if (user.busDepartTime == 1) { %><%= checked %><% } %>>6:15 p.m.
-        <input type="radio" name="busDepartTime" value="2" <% if (user.busDepartTime == 2) { %><%= checked %><% } %>>6:30 p.m.
-        <input type="radio" name="busDepartTime" value="3" <% if (user.busDepartTime == 3) { %><%= checked %><% } %>>6:45 p.m. <br>
-        <input type="radio" name="busDepartTime" value="4" <% if (user.busDepartTime == 4) { %><%= checked %><% } %>>8:15 p.m.
-        <input type="radio" name="busDepartTime" value="5" <% if (user.busDepartTime == 5) { %><%= checked %><% } %>>Not taking bus
+        <input type="radio" name="busDepartTime" value="1" <% if (user.busDepartTime == 1) { %><%= 'checked' %><% } %>>6:15 p.m.
+        <input type="radio" name="busDepartTime" value="2" <% if (user.busDepartTime == 2) { %><%= 'checked' %><% } %>>6:30 p.m.
+        <input type="radio" name="busDepartTime" value="3" <% if (user.busDepartTime == 3) { %><%= 'checked' %><% } %>>6:45 p.m. <br>
+        <input type="radio" name="busDepartTime" value="4" <% if (user.busDepartTime == 4) { %><%= 'checked' %><% } %>>8:15 p.m.
+        <input type="radio" name="busDepartTime" value="5" <% if (user.busDepartTime == 5) { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
     <tr>
       <td class="title">Bus Return Time</td>
       <td class="info">
-        <input type="radio" name="busLeaveTime" value="1" <% if (user.busLeaveTime == 1) { %><%= checked %><% } %>>11:00 p.m.
-        <input type="radio" name="busLeaveTime" value="2" <% if (user.busLeaveTime == 2) { %><%= checked %><% } %>>12:00 a.m.
-        <input type="radio" name="busLeaveTime" value="3" <% if (user.busLeaveTime == 3) { %><%= checked %><% } %>>1:00 a.m. <br>
-        <input type="radio" name="busLeaveTime" value="4" <% if (user.busLeaveTime == 4) { %><%= checked %><% } %>>Not taking bus
+        <input type="radio" name="busLeaveTime" value="1" <% if (user.busLeaveTime == 1) { %><%= 'checked' %><% } %>>11:00 p.m.
+        <input type="radio" name="busLeaveTime" value="2" <% if (user.busLeaveTime == 2) { %><%= 'checked' %><% } %>>12:00 a.m.
+        <input type="radio" name="busLeaveTime" value="3" <% if (user.busLeaveTime == 3) { %><%= 'checked' %><% } %>>1:00 a.m. <br>
+        <input type="radio" name="busLeaveTime" value="4" <% if (user.busLeaveTime == 4) { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
     </table>
@@ -78,8 +77,8 @@
     <tr>
       <td class="title">19+?</td>
       <td class="info">
-        <input type="radio" name="overDrinkingAge" value="true" <% if (user.overDrinkingAge == true) { %><%= checked %><% } %>>Yes
-        <input type="radio" name="overDrinkingAge" value="false" <% if (user.overDrinkingAge == false) { %><%= checked %><% } %>>No
+        <input type="radio" name="overDrinkingAge" value="true" <% if (user.overDrinkingAge == true) { %><%= 'checked' %><% } %>>Yes
+        <input type="radio" name="overDrinkingAge" value="false" <% if (user.overDrinkingAge == false) { %><%= 'checked' %><% } %>>No
       </td>
     </tr>
     </table>

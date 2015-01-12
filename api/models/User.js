@@ -28,8 +28,8 @@ module.exports = {
       required: true,
       unique: true
     },
-
-//add in year, foodoption, tablename ,age allergies, busDepartTime , bus leave 
+    
+    //add in year, foodoption, tablename ,age allergies, busDepartTime , bus leave 
     year: {
       type: 'string',
     },
