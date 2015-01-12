@@ -180,6 +180,36 @@ footer{
 	}
 }
 
+/*@media screen and (max-width: 768px) {
+
+    .front {
+		padding-top: 90px;
+
+    }
+    .page{
+    	font-size:0.7em;
+    }
+
+    .joinus{
+    	height: 25px; width: 125px;
+		border-width:1px;
+		font-size: 15px;
+	    padding:  3px 0 0 0 ;
+	    margin-top: 30px;
+
+    }
+    footer{
+		height: 65px;
+		width: 200px;
+	}
+
+	.price{
+		padding: 0px 0 0 450px;
+	}
+
+
+
+}*/
 
 
 @media screen and (min-width: 768px) {
