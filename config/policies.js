@@ -33,6 +33,7 @@ module.exports.policies = {
     'create' : 'flash',
     'show' : 'restrict',
     'index' : 'flash', //REMEMBER TO REMOVE ONCE IN PRODUCTION
+    'changepassword' : ['sessionAuth', 'flash'],
     '*' : 'sessionAuth'
   },
 
