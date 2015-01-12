@@ -1,9 +1,21 @@
+<link rel="stylesheet" href="../styles/menu.css">
 <link rel="stylesheet" href="../styles/login.css">
+
+<section class="main-content">
+  <div id="guts">
+    <center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Login </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+
+
 
 <div class="form-container">
 	<form action="/session/create" method="POST" class="form-signin">
-		<h2 class="form-signin-heading">Sign in </h2>
-
+	
 		<% if (flash && flash.err) { %>
 			<ul class="alert alert-success">
 				<% Object.keys(flash.err).forEach(function(error){ %>
@@ -19,4 +31,9 @@
 
 		<a href="/password/reset">Forgot password?</a>
 	</form>
-<div>
+</div>
+
+
+
+</div>
+</section>

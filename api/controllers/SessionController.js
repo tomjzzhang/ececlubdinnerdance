@@ -10,7 +10,7 @@
 module.exports = {
 
 	'new' : function(req, res) {
-		res.view({layout: 'mainlayout'});
+		res.view();
 	},
 
 	'create' : function(req, res, next){
