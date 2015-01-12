@@ -80,7 +80,7 @@
 
     <table class='radio-box'>
     <tr>
-      <td class="title radio">Bus Departure Time</td>
+      <td class="title radio" id="titletest">Bus Departure Time</td>
       <td class="info">
         <input type="radio" name="busDepartTime" value="1" <% if (user.busDepartTime == 1) { %><%= 'checked' %><% } %>>6:15 p.m.
         <input type="radio" name="busDepartTime" value="2" <% if (user.busDepartTime == 2) { %><%= 'checked' %><% } %>>6:30 p.m.
@@ -90,7 +90,7 @@
       </td>
     </tr>
     <tr>
-      <td class="title">Bus Return Time</td>
+      <td class="title" id="titletest">Bus Return Time</td>
       <td class="info">
         <input type="radio" name="busLeaveTime" value="1" <% if (user.busLeaveTime == 1) { %><%= 'checked' %><% } %>>11:00 p.m.
         <input type="radio" name="busLeaveTime" value="2" <% if (user.busLeaveTime == 2) { %><%= 'checked' %><% } %>>12:00 a.m.
