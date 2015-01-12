@@ -6,6 +6,7 @@
  */
 
 var maxTables = 35;
+var maxSeats = 10;
 
 module.exports = {
 
@@ -48,17 +49,37 @@ module.exports = {
 	},
 
 	'addUser': function(req, res, next) {
-	//remember to validate tableName req.param
-	//TODO perform check before adding user to table
-		var tableObj = {tableNum: req.param('tableName')};
-		User.update(req.session.User.id, tableObj, function userUpdated (err){
-			if (err){
-				return next(err);
-			}
-			req.session.User.tableNum = req.param('tableName');
+		if (req.param('tableName') <= 0 || req.param('tableName') > maxTables){
+			//TODO Bad parameter Error
+			res.redirect('/tables');
+			return;
+		}
 
-			res.redirect('/tables/');
+		var tableObj = {tableNum: req.param('tableName')};
+		User.count(tableObj, function numAdmins (err, num){
+			if (err) return next(err);
+
+			var limit = maxSeats;
+			if (req.param('tableName') == 1 || req.param('tableName') == 2){
+				limit = 12;
+			}
+
+			if (num <= limit){
+				User.update(req.session.User.id, tableObj, function userUpdated (err){
+					if (err){
+						return next(err);
+					}
+
+					res.redirect('/tables/');
+					return;
+				});
+			}
+
+			//TODO DISPLAY TABLE TOO FULL ERROR
+			res.redirect('/tables');
+			return;
 		});
+		
 	},
 
 	'removeUser' : function(req, res, next) {

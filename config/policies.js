@@ -32,9 +32,9 @@ module.exports.policies = {
     'new' : 'flash',
     'newAdmin' : 'flash',
     'createAdmin' : 'flash',
-    'create' : 'flash',
+    'create' : 'flash', //add admin for production
     'show' : ['restrict', 'flash'],
-    'index' : 'flash', //REMEMBER TO REMOVE ONCE IN PRODUCTION
+    'index' : 'admin',
     '*' : 'sessionAuth'
   },
 
