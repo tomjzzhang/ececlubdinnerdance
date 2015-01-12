@@ -18,6 +18,15 @@
   position: static;
 }
 
+h1.pos {
+  font-family: "Marion", serif;
+  font-size: 30px;
+  color: #ffffff;
+  position: static;
+  margin-top: 0px;
+  margin-bottom: -15px;
+}
+
 input{
   margin-top: 3px;
 }
