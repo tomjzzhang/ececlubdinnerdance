@@ -40,13 +40,13 @@
     <tr>
       <td class="title">Full Name</td>
       <td class="info">
-        <input type='text' name='name' value="<%= user.name %>"><br/>
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" > 
       </td>
     </tr>
     <tr>
       <td class="title">Email</td>
       <td class="info">
-        <input type='text' name='email' value= "<%= user.email %>"><br/>
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" > 
       </td>
     </tr>
     <tr>
@@ -68,7 +68,7 @@
 
     <table class='radio-box'>
     <tr>
-      <td class="title">Dietary Restrictions</td>
+      <td class="title" id="titletest">Dietary Restrictions</td>
       <td class="info">
         <input type="radio" name="dietaryRestrictions" value="None" <% if (user.dietaryRestrictions == "None") { %><%= 'checked' %><% } %>>None
         <input type="radio" name="dietaryRestrictions" value="Vegetarian" <% if (user.dietaryRestrictions == "Vegetarian") { %><%= 'checked' %><% } %>>Vegetarian
