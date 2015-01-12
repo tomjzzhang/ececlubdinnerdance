@@ -54,7 +54,7 @@ h1.pos {
 }
 
 .top-bar {
-	content: url("../mockup+resources/top-bar.png");
+	content: url("../images/top-bar.png");
 	width: 365px;
 	height: 40px;
 	margin: zero auto;
@@ -64,7 +64,7 @@ h1.pos {
 }
 
 .middle-bar {
-	content: url("../mockup+resources/middle-bar.png");
+	content: url("../images/middle-bar.png");
 	height: 50px;
 	width: 457px;
 	margin: zero auto;
