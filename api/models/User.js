@@ -31,6 +31,7 @@ module.exports = {
 
     ticketType:{
       type: 'string',
+      defaultsTo: 'Drinking',
     },
     
     //add in year, foodoption, tablename ,age allergies, busDepartTime , bus leave 
