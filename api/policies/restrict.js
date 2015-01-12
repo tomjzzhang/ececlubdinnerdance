@@ -1,5 +1,5 @@
 module.exports = function(req, res, ok){
-	if (!req.session){	
+	if (!req.session || (typeof req.session.User == 'undefined')){	
 		var requireLoginError = [{name: 'requireLogin', message: 'You must be signed in to access this page'}]
 		req.session.flash = {
 			err: requireLoginError
