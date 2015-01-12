@@ -15,7 +15,7 @@ module.exports = {
 		var count = 0;
 		for (i = 0; i < maxTables; i++) {
 			var userObj = { tableNum: i+1};
-			User.find(userObj, function foundUser (err,users){
+			User.find(userObj, function foundTable (err,users){
 				if (err) return next(err);
 				if (!users) return next();
 				
@@ -30,11 +30,16 @@ module.exports = {
 
 				count++;
 				if (count == maxTables){	
-					res.view({
-						numTables : maxTables,
-						tableSeating: tableSeating,
-						userTable: req.session.User.tableNum
+					User.findOne(req.session.User.id, function foundUser(err, user){
+						if (err) return next(err);
+						if (!user) return next();
+						res.view({
+							numTables : maxTables,
+							tableSeating: tableSeating,
+							userTable: user.tableNum
+						});
 					});
+					
 				}
 
 			});
