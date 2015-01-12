@@ -86,6 +86,16 @@ module.exports = {
 			res.redirect('/password/reset');
 			return;
 		}
+		
+		if(isNaN(parseInt(req.param('ticketNumber'))) || parseInt(req.param('ticketNumber')) <= 0){
+			var invalidTicketNumberError = [{name: 'invalidTicketNumber', message: 'Invalid Ticket Number'}]
+			req.session.flash = {
+				err: invalidTicketNumberError
+			}
+
+			res.redirect('/password/reset');
+			return;
+		}
 
 		if (!process.env.MAILUSER || process.env.MAILPASS){
 			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
