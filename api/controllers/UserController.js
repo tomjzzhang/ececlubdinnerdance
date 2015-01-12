@@ -15,6 +15,7 @@ module.exports = {
 	create: function (req, res, next) {
 		var userObj = req.params.all();
 		delete userObj.admin;
+		delete userObj.tableNum;
 
 		User.create(userObj, function userCreated(err, user){
 			if (err) {
@@ -59,6 +60,7 @@ module.exports = {
 		var userObj = req.params.all();
 		delete userObj.admin;
 		delete userObj.ticketNumber;
+		delete userObj.tableNum;
 
 		if (userObj.dietaryRestrictions =='Other' && userObj.otherDietaryRestrictions){
 			userObj.dietaryRestrictions = userObj.otherDietaryRestrictions;
@@ -146,7 +148,8 @@ module.exports = {
 	},
 
 	registerUser: function(req, res, next){
-		if (!process.env.MAILUSER || process.env.MAILPASS){
+		if (!sails.config.emailAuth){
+			console.log('Please set emailAuth: {user: user_email, pass: password } in local.js');
 			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
 			req.session.flash = {
 				err: serviceUnavailableError
@@ -158,13 +161,11 @@ module.exports = {
 		// Generate a 16 character alpha-numeric token:
 		var newPass = randtoken.generate(10);
 
-		var userObj = {
-			ticketNumber: req.param('ticketNumber'),
-			ticketType: req.param('ticketType'),
-			name: req.param('name'),
-			password: newPass,
-			confirmation: newPass
-		}
+		var userObj = req.params.all();
+		delete userObj.admin;
+		delete userObj.tableNum;
+		userObj.password = newPass;
+		userObj.confirmation = newPass;
 
 		User.create(userObj, function userCreated(err, user){
 			if (err) {
@@ -181,10 +182,7 @@ module.exports = {
 			// create reusable transporter object using SMTP transport
 			var transporter = nodemailer.createTransport({
 			    service: 'Gmail',
-			    auth: {
-			        user: process.env.MAILUSER,
-			        pass: process.env.MAILPASS
-			    },
+			    auth: sails.config.emailAuth,
 			});
 
 			var signinLink = req.get('host') + '/session/new';

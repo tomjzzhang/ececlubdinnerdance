@@ -77,6 +77,7 @@ module.exports = {
 	},
 
 	'sendEmail' : function(req, res, next){
+		//TODO should send back temporary link and then reset password
 		if (!req.param('ticketNumber')){
 			var ticketNumberRequiredError = [{name: 'ticketNumberRequired', message: 'Ticket Number is required'}]
 			req.session.flash = {
@@ -97,7 +98,8 @@ module.exports = {
 			return;
 		}
 
-		if (!process.env.MAILUSER || process.env.MAILPASS){
+		if (!sails.config.emailAuth){
+			console.log('Please set emailAuth: {user: user_email, pass: password } in local.js');
 			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
 			req.session.flash = {
 				err: serviceUnavailableError
@@ -140,13 +142,10 @@ module.exports = {
 						// create reusable transporter object using SMTP transport
 						var transporter = nodemailer.createTransport({
 						    service: 'Gmail',
-						    auth: {
-						        user: process.env.MAILUSER,
-						        pass: process.env.MAILPASS
-						    },
+						    auth: sails.config.emailAuth,
 						});
 
-						var signinLink = 'localhost:1337'+ '/session/new';
+						var signinLink = req.get('host') + '/session/new';
 						// NB! No need to recreate the transporter object. You can use
 						// the same transporter object for all e-mails
 						var text = 'Your password has been reset with the following credentials: \n Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
