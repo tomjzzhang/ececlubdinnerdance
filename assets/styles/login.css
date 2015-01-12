@@ -1,3 +1,22 @@
+.top-bar {
+  content: url("../images/top-bar.png");
+  width: 365px;
+  height: 40px;
+  margin: zero auto;
+  margin-bottom: 5px;
+  margin-top: 80px;
+  position: static;
+}
+
+.middle-bar {
+  content: url("../images/middle-bar.png");
+  height: 50px;
+  width: 457px;
+  margin: zero auto;
+  margin-top: 0px;
+  margin-left: 20px;
+  position: static;
+}
 
 input{
   margin-top: 3px;
@@ -6,14 +25,18 @@ input{
 .btn{
   margin-top: 15px;
   background: black;
+  width: 200px;
+  margin-bottom: 10px;
 }
 
 
 .form-container {
   position: absolute;
-  width: 400px;
-  margin-left: -200px;
-  left: 50%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  margin-top: -90px;
+  padding-left: 30px;
 }
 
 .form-signin{

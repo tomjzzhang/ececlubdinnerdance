@@ -1,3 +1,8 @@
+<!--  wenxin-added-temp --> 
+<link rel="stylesheet" href="/styles/menu.css">
+<link rel="stylesheet" href="/styles/registration.css">
+
+
   <!--TEXT--> 
      <center> <div class = "top-bar"> </div> </center>
       <div id = "title">
@@ -6,26 +11,42 @@
         </h1>
       </div>
       <center> <div class = "middle-bar"> </div> </center> <br> <br>
+ <!--  wenxin-added-temp -->
+
 
   <form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
+    <% if(flash && flash.err) {%>
+      <ul class="alert alert-success">
+      <% Object.keys(flash.err).forEach(function(error){ %>
+        <%flash.err[error].forEach(function(obj){ %>
+          <li><%- obj.message %></li>
+        <% }) %>
+      <% }) %>
+      </ul>
+    <% } %>
     <table>
-    <tr>
-      <td class="title">Full Name</td>
-      <td class="info">
-        <input type='text' name='name' value="<%= user.name %>"><br/>
-      </td>
-    </tr>
     <tr>
       <td class="title">Ticket Number</td>
       <td class="info">
         <%= user.ticketNumber %>
       </td>
     </tr>
-   
+    <tr>
+      <td class="title"></td>
+      <td class="info">
+        <a href="/password/index">Change Password</a>
+      </td>
+    </tr>
+    <tr>
+      <td class="title">Full Name</td>
+      <td class="info">
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" > 
+      </td>
+    </tr>
     <tr>
       <td class="title">Email</td>
       <td class="info">
-        <input type='text' name='email' value= "<%= user.email %>"><br/>
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" > 
       </td>
     </tr>
     <tr>
@@ -47,7 +68,17 @@
 
     <table class='radio-box'>
     <tr>
-      <td class="title radio">Bus Departure Time</td>
+      <td class="title" id="titletest">Dietary Restrictions</td>
+      <td class="info">
+        <input type="radio" name="dietaryRestrictions" value="None" <% if (user.dietaryRestrictions == "None") { %><%= 'checked' %><% } %>>None
+        <input type="radio" name="dietaryRestrictions" value="Vegetarian" <% if (user.dietaryRestrictions == "Vegetarian") { %><%= 'checked' %><% } %>>Vegetarian
+        <input type="radio" name="dietaryRestrictions" value="Halal" <% if (user.dietaryRestrictions == "Halal") { %><%= 'checked' %><% } %>>Halal<br>
+        <input type="radio" name="dietaryRestrictions" value="Other" <% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') { %><%= 'checked' %><% } %>>Other
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>"> 
+      </td>
+    </tr>
+    <tr>
+      <td class="title radio" id="titletest">Bus Departure Time</td>
       <td class="info">
         <input type="radio" name="busDepartTime" value="1" <% if (user.busDepartTime == 1) { %><%= 'checked' %><% } %>>6:15 p.m.
         <input type="radio" name="busDepartTime" value="2" <% if (user.busDepartTime == 2) { %><%= 'checked' %><% } %>>6:30 p.m.
@@ -57,7 +88,7 @@
       </td>
     </tr>
     <tr>
-      <td class="title">Bus Return Time</td>
+      <td class="title" id="titletest">Bus Return Time</td>
       <td class="info">
         <input type="radio" name="busLeaveTime" value="1" <% if (user.busLeaveTime == 1) { %><%= 'checked' %><% } %>>11:00 p.m.
         <input type="radio" name="busLeaveTime" value="2" <% if (user.busLeaveTime == 2) { %><%= 'checked' %><% } %>>12:00 a.m.
@@ -65,6 +96,7 @@
         <input type="radio" name="busLeaveTime" value="4" <% if (user.busLeaveTime == 4) { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
+
     </table>
     <table>
     <tr>

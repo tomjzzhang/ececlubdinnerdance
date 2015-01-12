@@ -34,7 +34,7 @@ module.exports = {
       type: 'string',
     },
 
-    foodOption: {
+    dietaryRestrictions: {
       type: 'string',
     },
 
@@ -58,6 +58,7 @@ module.exports = {
       type: 'string',
     },
 
+    //TODO add min length
   	encryptedPassword:{
   		type: 'string',
   	},

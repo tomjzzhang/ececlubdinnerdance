@@ -30,14 +30,22 @@ module.exports.policies = {
 
   user: {
     'new' : 'flash',
-    'create' : 'flash',
-    'show' : 'restrict',
-    'index' : 'flash', //REMEMBER TO REMOVE ONCE IN PRODUCTION
-    'changepassword' : ['sessionAuth', 'flash'],
+    'newAdmin' : 'flash',
+    'createAdmin' : 'flash',
+    'create' : 'flash', //add admin for production
+    'show' : ['restrict', 'flash'],
+    'index' : 'admin',
     '*' : 'sessionAuth'
   },
 
   tables: {
+    '*' : 'sessionAuth'
+  },
+
+  password: {
+    'index' : ['sessionAuth', 'flash'], 
+    'reset' : 'flash',
+    'sendEmail' : [], 
     '*' : 'sessionAuth'
   }
 

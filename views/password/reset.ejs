@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="center-block col-md-6 col-md-offset-3">
+	<form role="form" action="/password/sendEmail" method="POST" class="form-horizontal">
+		<h2>Reset Password</h2>
+
+		<% if(flash && flash.err) {%>
+			<ul class="alert alert-success">
+			<% Object.keys(flash.err).forEach(function(error){ %>
+				<li><%- flash.err[error].message %></li>
+			<% }) %>
+			</ul>
+		<% } %>
+		<input type="text" class="form-control" placeholder="ticketNumber" name="ticketNumber">
+
+		<input type="submit" class="btn btn-lg btn-primary" value="Reset Password"/>
+		<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+	</form>
+	</div>
+</div>

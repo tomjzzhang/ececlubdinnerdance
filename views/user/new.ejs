@@ -1,3 +1,25 @@
+ <!--  wenxin-added-temp -->
+<link rel="stylesheet" href="../styles/menu.css">
+<link rel="stylesheet" href="../styles/registration.css">
+
+
+<section class="main-content">
+  <div id="guts">
+	<center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Event Information </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+
+ <!--  wenxin-added-temp -->
+
+
+
+
+
+
 <div class="container">
 <div class="center-block col-md-6 col-md-offset-3">
 <form role="form" action="/user/create" method="POST" class="form-horizontal">
@@ -6,7 +28,9 @@
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
 		<% Object.keys(flash.err).forEach(function(error){ %>
-			<li><%- flash.err[error].message %></li>
+			<%flash.err[error].forEach(function(obj){ %>
+				<li><%- obj.message %></li>
+			<% }) %>
 		<% }) %>
 		</ul>
 	<% } %>
@@ -15,9 +39,14 @@
 	<input type="text" class="form-control" placeholder="Email address" name="email">
 	<input type="password" class="form-control" placeholder="password" name="password">
 	<input type="password" class="form-control" placeholder="password confirmation" name="confirmation">
-
 	<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
 	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 </form>
 </div>
 </div>
+
+
+
+
+  </div>
+</section>

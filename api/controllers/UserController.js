@@ -7,11 +7,16 @@
 
 module.exports = {
 	'new': function(req, res) {
-		res.view();
+		res.view({
+      		layout: 'mainlayout'
+		});
 	},
 
 	create: function (req, res, next) {
-		User.create(req.params.all(), function userCreated(err, user){
+		var userObj = req.params.all();
+		delete userObj.admin;
+
+		User.create(userObj, function userCreated(err, user){
 			if (err) {
 				console.log(err);
 				req.session.flash={
@@ -27,32 +32,6 @@ module.exports = {
 			req.session.User = user;
 			
 			res.redirect('/user/show/'+user.id);
-
-			/*
-			var ticketObj = {
-
-        		firstName: values.firstName,
-        		lastName: values.lastName,
-        		email: values.email,
-        		ticketNumber: values.ticket
-      		}
-
-      		Ticket.create(ticketObj, function addTicketToList(err, ticket) {
-      			if (err) {
-      				console.log(err);
-      				req.session.flash={
-      					err: err.validationError
-      				}
-
-      				return res.redirect('/user/new');
-      			}
-
-				//res.json(user);
-
-				res.redirect('/user/show/'+user.id);
-      		});
-
-			*/
 		});
 	},
 
@@ -76,22 +55,23 @@ module.exports = {
 		})
 	},
 
-	edit: function (req, res, next){
-		//TODO
-		User.findOne(req.param('id'), function foundUser (err,user){
-			if (err) return next(err);
-			if (!user) return next();
-
-			res.view({
-				user: user
-			});
-		});
-	},
-
 	update: function(req, res, next){
-		User.update(req.param('id'), req.params.all(), function userUpdated (err){
+		var userObj = req.params.all();
+		delete userObj.admin;
+		delete userObj.ticketNumber;
+
+		if (userObj.dietaryRestrictions =='Other' && userObj.otherDietaryRestrictions){
+			userObj.dietaryRestrictions = userObj.otherDietaryRestrictions;
+			delete userObj.otherDietaryRestrictions;
+		}
+
+		User.update(req.param('id'), userObj, function userUpdated (err){
 			if (err){
-				return res.redirect('/user/edit/' + req.param('id'));
+				console.log(err);
+				req.session.flash={
+					err: err.ValidationError
+				}
+				return res.redirect('/user/show/' + req.param('id'));
 			}
 
 			res.redirect('/user/show/' + req.param('id'));
@@ -112,70 +92,54 @@ module.exports = {
 		})
 	},
 
-	'changePassword': function(req, res) {
+	newAdmin: function(req, res, next){
 		res.view();
 	},
 
-	'changePass': function(req, res, next) {
-
-		var bcrypt = require('bcryptjs');
-
-		if(typeof req.param('old_password') == 'undefined'){
-			var passwordRequiredError = [{name: 'passwordRequired', message: 'Current Password Required'}]
-			req.session.flash = {
-				err: passwordRequiredError
-			}
-			res.redirect('/user/changepassword');
-			return;
-		}
-
-		User.findOne(req.session.User.id, function foundUser(err, user){
+	createAdmin: function(req,res, next){
+		var criteria = {admin : true};
+		User.count(criteria, function numAdmins (err, num){
 			if (err) return next(err);
 
-			if (!user) return next('User doesn\'t exists.');
+			console.log('Num admins: ' + num);
 
-			bcrypt.compare(req.param('old_password'), user.encryptedPassword, function (err, valid){
-				if (err) return next(err);
-
-				if (!valid){
-					var incorrectPasswordError = [{name: 'incorrectPassword', message: 'Invalid password'}]
-					req.session.flash = {
-						err: incorrectPasswordError
-					}
-					res.redirect('/user/changepassword');
-					return;
+			if (num > 0){
+				var multipleAdminsError = [{name: 'multipleAdmins', message: 'Stop trying to create another admin user!'}]
+				req.session.flash = {
+					err: multipleAdminsError
+				}
+				res.redirect('/user/newAdmin');
+				return;
+			}else{
+				var adminObj = {
+					ticketNumber: 0,
+					name: 'Admin',
+					email: 'ececlub@ecf.utoronto.ca',
+					password: req.param('password'),
+					confirmation: req.param('confirmation'),
+					admin: true,
 				}
 
-				if(!req.param('new_password') || req.param('new_password') != req.param('confirmation')) {
-     				var passwordMismatchError = [{name: 'passwordMismatch', message: 'Password does not match confirmation'}]
-					req.session.flash = {
-						err: passwordMismatchError
+				User.create(adminObj, function adminCreated(err, user){
+					if (err) {
+						console.log(err);
+						req.session.flash={
+							err: err.ValidationError
+						}
+
+						return res.redirect('/user/newAdmin');
 					}
-					res.redirect('/user/changepassword');
-					return;
-    			}
 
-				bcrypt.genSalt(10, function(err, salt) {
-				    bcrypt.hash(req.param('new_password'), salt, function(err, hash) {
-				        // Store hash in your password DB.
-				        if (err) return next(err);
-				        
-				        var passwordObj = {encryptedPassword: hash}; 
-				        User.update(req.session.User.id, passwordObj, function passUpdated (err){
-							if (err){
-								return next(err);
-							}
+					req.session.authenticated = true;
 
-							var passwordUpdated = [{name: 'passwordUpdated', message: 'Password successfully updated!'}]
-							req.session.flash = {
-								err: passwordUpdated
-							}
-							res.redirect('/user/changepassword');
-						});
-				    });
+					delete user.encryptedPassword;
+					req.session.User = user;
+					
+					res.redirect('/user/show/'+user.id);
 				});
-			});
-		})
-	},
+			}
+		});
+	}
+
 };
 

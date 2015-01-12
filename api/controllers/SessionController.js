@@ -10,7 +10,7 @@
 module.exports = {
 
 	'new' : function(req, res) {
-		res.view('session/new');
+		res.view();
 	},
 
 	'create' : function(req, res, next){
@@ -29,7 +29,7 @@ module.exports = {
 			if (err) return next(err);
 
 			if (!user) {
-				var noAccountError = [{name: 'noAccount', message: 'The email address ' + req.param('email') + ' not found'}]
+				var noAccountError = [{name: 'noAccount', message: 'Ticket Number ' + req.param('ticketNumber') + ' was not found'}]
 				req.session.flash = {
 					err: noAccountError
 				}

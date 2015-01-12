@@ -16,6 +16,11 @@ form .title{
 	padding-left: 0px;
 }
 
+form #titletest{
+	padding-left: 26px;
+}
+
+
 form .notice{
 
 	color: #c68930;
