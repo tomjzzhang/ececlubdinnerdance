@@ -7,7 +7,9 @@
 
 module.exports = {
 	'new': function(req, res) {
-		res.view();
+		res.view({
+      		layout: 'mainlayout'
+		});
 	},
 
 	create: function (req, res, next) {
