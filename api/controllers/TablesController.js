@@ -49,6 +49,7 @@ module.exports = {
 
 	'addUser': function(req, res, next) {
 	//remember to validate tableName req.param
+	//TODO perform check before adding user to table
 		var tableObj = {tableNum: req.param('tableName')};
 		User.update(req.session.User.id, tableObj, function userUpdated (err){
 			if (err){

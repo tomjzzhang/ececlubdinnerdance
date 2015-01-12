@@ -27,32 +27,6 @@ module.exports = {
 			req.session.User = user;
 			
 			res.redirect('/user/show/'+user.id);
-
-			/*
-			var ticketObj = {
-
-        		firstName: values.firstName,
-        		lastName: values.lastName,
-        		email: values.email,
-        		ticketNumber: values.ticket
-      		}
-
-      		Ticket.create(ticketObj, function addTicketToList(err, ticket) {
-      			if (err) {
-      				console.log(err);
-      				req.session.flash={
-      					err: err.validationError
-      				}
-
-      				return res.redirect('/user/new');
-      			}
-
-				//res.json(user);
-
-				res.redirect('/user/show/'+user.id);
-      		});
-
-			*/
 		});
 	},
 
@@ -76,22 +50,14 @@ module.exports = {
 		})
 	},
 
-	edit: function (req, res, next){
-		//TODO
-		User.findOne(req.param('id'), function foundUser (err,user){
-			if (err) return next(err);
-			if (!user) return next();
-
-			res.view({
-				user: user
-			});
-		});
-	},
-
 	update: function(req, res, next){
+		//TODO marshall parameters
+
+		//TODO double check params are valid, client side validation
+
 		User.update(req.param('id'), req.params.all(), function userUpdated (err){
 			if (err){
-				return res.redirect('/user/edit/' + req.param('id'));
+				return res.redirect('/user/show/' + req.param('id'));
 			}
 
 			res.redirect('/user/show/' + req.param('id'));
@@ -111,6 +77,17 @@ module.exports = {
 			res.redirect('/user');
 		})
 	},
+
+	newAdmin: function(req, res, next){
+		//TODO create view
+		res.view();
+	},
+
+	createAdmin: function(req,res, next){
+		//TODO
+		//count existing admins
+		//if zero, create one, otherwise produce error
+	}
 
 };
 
