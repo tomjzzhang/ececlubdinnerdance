@@ -139,6 +139,86 @@ module.exports = {
 				});
 			}
 		});
+	},
+
+	register: function(req, res, next){
+		res.view();
+	},
+
+	registerUser: function(req, res, next){
+		if (!process.env.MAILUSER || process.env.MAILPASS){
+			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
+			req.session.flash = {
+				err: serviceUnavailableError
+			}
+			return res.redirect('/user/register');
+		}
+
+		var randtoken = require('rand-token');
+		// Generate a 16 character alpha-numeric token:
+		var newPass = randtoken.generate(10);
+
+		var userObj = {
+			ticketNumber: req.param('ticketNumber'),
+			ticketType: req.param('ticketType'),
+			name: req.param('name'),
+			password: newPass,
+			confirmation: newPass
+		}
+
+		User.create(userObj, function userCreated(err, user){
+			if (err) {
+				console.log(err);
+				req.session.flash={
+					err: err.ValidationError
+				}
+
+				return res.redirect('/user/register');
+			}
+			
+			var nodemailer = require('nodemailer');
+
+			// create reusable transporter object using SMTP transport
+			var transporter = nodemailer.createTransport({
+			    service: 'Gmail',
+			    auth: {
+			        user: process.env.MAILUSER,
+			        pass: process.env.MAILPASS
+			    },
+			});
+
+			var signinLink = req.get('host') + '/session/new';
+			// NB! No need to recreate the transporter object. You can use
+			// the same transporter object for all e-mails
+			var text = 'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
+
+			var html = '<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p><div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div><p>Please sign in with these credentials at <a href="'+ signinLink + '">' + signinLink + '</a> and change your password as soon as possible. </p>';
+
+			// setup e-mail data with unicode symbols
+			var mailOptions = {
+			    from: 'ECE Club <dinnerdance@ece.skule.ca>', // sender address
+			    to: user.email, // list of receivers
+			    subject: 'ECE Dinner Dance Password Reset', // Subject line
+			    text: text, // plaintext body
+			    html: html // html body
+			};
+
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, function(error, info){
+			    if(error){
+			        console.log(error);
+			    }else{
+			    	var passwordReset = [{name: 'passwordReset', message: 'Account successfully created! Please check your email for further instructions.'}]
+					req.session.flash = {
+						err: passwordReset
+					}
+			        console.log('Message sent: ' + info.response);
+			    }
+			});
+
+
+			return res.redirect('/user/register');
+		});
 	}
 
 };

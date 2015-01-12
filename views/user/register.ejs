@@ -1,0 +1,45 @@
+ <!--  wenxin-added-temp -->
+<link rel="stylesheet" href="../styles/menu.css">
+<link rel="stylesheet" href="../styles/registration.css">
+
+
+<section class="main-content">
+  <div id="guts">
+	<center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Register Accounts </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+
+<div class="container">
+<div class="center-block col-md-6 col-md-offset-3">
+<form role="form" action="/user/registerUser" method="POST" class="form-horizontal">
+	<% if(flash && flash.err) {%>
+		<ul class="alert alert-success">
+		<% Object.keys(flash.err).forEach(function(error){ %>
+			<%flash.err[error].forEach(function(obj){ %>
+				<li><%- obj.message %></li>
+			<% }) %>
+		<% }) %>
+		</ul>
+	<% } %>
+	<input type="text" class="form-control" placeholder="Ticket number" name="ticketNumber">
+	<input type="text" class="form-control" placeholder="Name" name="name">
+	<input type="text" class="form-control" placeholder="Email address" name="email">
+	<label> Ticket Type</label>
+	<input type="radio" name="ticketType" value="Early Bird">Early Bird
+    <input type="radio" name="ticketType" value="Drinking">Drinking
+    <input type="radio" name="ticketType" value="Non-Drinking">Non-Drinking 
+	<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>
+</div>
+</div>
+
+
+
+
+  </div>
+</section>

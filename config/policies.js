@@ -35,6 +35,8 @@ module.exports.policies = {
     'create' : 'flash', //add admin for production
     'show' : ['restrict', 'flash'],
     'index' : 'admin',
+    'register' : ['admin', 'flash'],
+    'registerUser': 'admin',
     '*' : 'sessionAuth'
   },
 
