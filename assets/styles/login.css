@@ -1,0 +1,26 @@
+
+input{
+  margin-top: 3px;
+}
+
+.btn{
+  margin-top: 15px;
+  background: black;
+}
+
+
+.form-container {
+  position: absolute;
+  width: 400px;
+  margin-left: -200px;
+  left: 50%;
+}
+
+.form-signin{
+  color: white;
+  width: 200px;
+  margin: auto;
+  font-family: marion;
+  font-size: 1em;
+  margin-top: 100px;
+}

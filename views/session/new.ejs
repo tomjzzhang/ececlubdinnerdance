@@ -1,18 +1,22 @@
-<form action="/session/create" method="POST" class="form-signin">
-	<h2 class="form-signin-heading">Sign in </h2>
+<link rel="stylesheet" href="../styles/login.css">
 
-	<% if (flash && flash.err) { %>
-		<ul class="alert alert-success">
-			<% Object.keys(flash.err).forEach(function(error){ %>
-				<li><%- flash.err[error].message %></li>
-			<% }) %>
-		</ul>
+<div class="form-container">
+	<form action="/session/create" method="POST" class="form-signin">
+		<h2 class="form-signin-heading">Sign in </h2>
 
-	<% } %>
-	<input type="text" class="form-control" placeholder="Ticket Number" name="ticketNumber">
-	<input type="password" class="form-control" placeholder="Password" name="password">
-	<input type="submit" class="btn btn-lg btn-primary btn-black" value="Sign-in" />
-	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+		<% if (flash && flash.err) { %>
+			<ul class="alert alert-success">
+				<% Object.keys(flash.err).forEach(function(error){ %>
+					<li><%- flash.err[error].message %></li>
+				<% }) %>
+			</ul>
 
-	<a href"/user/forgotpassword">Forgot password?</a>
-</form>
+		<% } %>
+		<input type="text" class="form-control" placeholder="Ticket Number" name="ticketNumber">
+		<input type="password" class="form-control" placeholder="Password" name="password">
+		<input type="submit" class="btn btn-lg btn-primary btn-black" value="Sign-in" />
+		<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+		<a href"/user/forgotpassword">Forgot password?</a>
+	</form>
+<div>
