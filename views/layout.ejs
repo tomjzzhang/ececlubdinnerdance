@@ -33,14 +33,12 @@
     <link rel="stylesheet" href="/styles/normalize.css">
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/homepage.css">
+    <link rel="stylesheet" href="/styles/sharedstyles.css">
     <!--STYLES END-->
   </head>
 
   <body>
 
-    <!-- Default home page -->
-    <link rel="stylesheet" href="/styles/homepage.css">
     <!-- Background Animations -->
     <div id="footprints">
 
@@ -48,22 +46,22 @@
 
 
     <!--   Background switching pictures -->
-    <div class="outer">
-      <div class="middle">
-        <div class="inner">
+    <div class="backgroundswitch-outer">
+      <div class="backgroundswitch-middle">
+        <div class="backgroundswitch-inner">
 
 
-          <div id="wrapper">
-            <div id="leftcolumn">
-              <div class="col-top" id="trans1">
+          <div id="backgroundswitch-wrapper">
+            <div id="backgroundswitch-leftcolumn">
+              <div class="backgroundswitch-col-top" id="trans1">
               </div>
-              <div class="col-bottom" id="pic1">
+              <div class="backgroundswitch-col-bottom" id="pic1">
               </div>
             </div>
-            <div id="rightcolumn">
-              <div class="col-top" id="pic2">
+            <div id="backgroundswitch-rightcolumn">
+              <div class="backgroundswitch-col-top" id="pic2">
               </div>
-              <div class="col-bottom" id="trans2">
+              <div class="backgroundswitch-col-bottom" id="trans2">
               </div>
             </div>
           </div>
@@ -91,7 +89,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav" style="font-size:20px">
+          <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <% if (session.authenticated) { %>
               <li><a href="/user/show/<%= session.User.id %>">Profile</a></li>

@@ -9,15 +9,15 @@ function CSSSwitchImage(leftAfter, rightAfter) {
   $("#trans2").css("background-image", "url('" + rightAfter + "')");
 
 
-  $("#leftcolumn").attr("class", "animatable");
+  $("#backgroundswitch-leftcolumn").attr("class", "animatable");
   setTimeout(function() {
-    $("#leftcolumn").attr("class", "");
+    $("#backgroundswitch-leftcolumn").attr("class", "");
     $("#pic1").css("background-image", "url('" + leftAfter + "')");
   }, 500);
 
-  $("#rightcolumn").attr("class", "animatablereverse");
+  $("#backgroundswitch-rightcolumn").attr("class", "animatablereverse");
   setTimeout(function() {
-    $("#rightcolumn").attr("class", "");
+    $("#backgroundswitch-rightcolumn").attr("class", "");
     $("#pic2").css("background-image", "url('" + rightAfter + "')");
   }, 500);
 }

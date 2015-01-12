@@ -20,7 +20,7 @@ var cssFilesToInject = [
   'styles/normalize.css',
   'styles/bootstrap.min.css',
   'styles/importer.css',
-  'styles/homepage.css'
+  'styles/sharedstyles.css'
 
   //'styles/**/*.css'
 ];
