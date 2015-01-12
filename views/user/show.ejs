@@ -64,21 +64,19 @@
         </select>
       </td>
     </tr>
-    <tr>
-      <td class="title">Dietary Restrictions</td>
-      <td class="info"> 
-        <select name="dietaryRestrictions">
-            <option value="None" <%if (user.dietaryRestrictions == 'None') { %><%= 'selected' %><% } %>>None</option> 
-            <option value="Vegetarian" <%if (user.dietaryRestrictions == 'Vegetarian') { %><%= 'selected' %><% } %>>Vegetarian</option>
-            <option value="Halal" <%if (user.dietaryRestrictions == 'Halal') { %><%= 'selected' %><% } %>>Halal</option>
-            <option value="Other" <%if (user.dietaryRestrictions == 'Other') { %><%= 'selected' %><% } %>>Other</option>
-            <!-- TODO SHOULD HAVE PLEASE SPECIFY -->
-        </select>
-      </td>
-    </tr>
     </table>
 
     <table class='radio-box'>
+    <tr>
+      <td class="title">Dietary Restrictions</td>
+      <td class="info">
+        <input type="radio" name="dietaryRestrictions" value="None" <% if (user.dietaryRestrictions == "None") { %><%= 'checked' %><% } %>>None
+        <input type="radio" name="dietaryRestrictions" value="Vegetarian" <% if (user.dietaryRestrictions == "Vegetarian") { %><%= 'checked' %><% } %>>Vegetarian
+        <input type="radio" name="dietaryRestrictions" value="Halal" <% if (user.dietaryRestrictions == "Halal") { %><%= 'checked' %><% } %>>Halal<br>
+        <input type="radio" name="dietaryRestrictions" value="Other" <% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') { %><%= 'checked' %><% } %>>Other
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>"> 
+      </td>
+    </tr>
     <tr>
       <td class="title radio" id="titletest">Bus Departure Time</td>
       <td class="info">
@@ -98,6 +96,7 @@
         <input type="radio" name="busLeaveTime" value="4" <% if (user.busLeaveTime == 4) { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
+
     </table>
     <table>
     <tr>
