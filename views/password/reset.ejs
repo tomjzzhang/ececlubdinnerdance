@@ -1,8 +1,23 @@
+<link rel="stylesheet" href="../styles/menu.css">
+<link rel="stylesheet" href="../styles/resetpsw.css">
+
+
+
+<section class="main-content">
+  <div id="guts">
+    <center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Reset Password </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+
+
 <div class="container">
 	<div class="center-block col-md-6 col-md-offset-3">
 	<form role="form" action="/password/sendEmail" method="POST" class="form-horizontal">
-		<h2>Reset Password</h2>
-
+	
 		<% if(flash && flash.err) {%>
 			<ul class="alert alert-success">
 			<% Object.keys(flash.err).forEach(function(error){ %>
@@ -11,10 +26,15 @@
 			</ul>
 		<% } %>
 		<input type="text" class="form-control" placeholder="ticketNumber" name="ticketNumber">
-
+	</br>
 		<input type="submit" class="btn btn-lg btn-primary" value="Reset Password"/>
 		<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 
 	</form>
 	</div>
 </div>
+
+
+
+ </div>
+</section>

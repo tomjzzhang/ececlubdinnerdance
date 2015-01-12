@@ -1,0 +1,13 @@
+.container{
+	width: 500px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	padding-left: 100px;
+}
+
+
+
+.form-control{
+	width: 300px;
+}
