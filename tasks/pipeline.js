@@ -17,10 +17,11 @@
 var cssFilesToInject = [
   'fonts/ufonts.com_marion.ttf',
 
-  'styles/normalize.css',
-  'styles/bootstrap.min.css',
+  'styles/dependencies/normalize.css',
+  'styles/dependencies/bootstrap.min.css',
   'styles/importer.css',
-  'styles/sharedstyles.css'
+  'styles/sharedstyles.css',
+  'styles/sharedheader.css'
 
   //'styles/**/*.css'
 ];

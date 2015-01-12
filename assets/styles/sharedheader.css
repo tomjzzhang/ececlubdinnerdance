@@ -1,0 +1,86 @@
+
+/*************** navbar styles ******************/
+
+#topnav{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 50px;
+}
+
+
+
+.navbar{
+  margin-bottom: 0px;
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
+  border-width:0px;
+  padding: 0 auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.navbar-nav{
+  display: inline-block;
+  clear: both;
+  margin: 0 auto;
+
+}
+
+@media screen and (max-width: 480px) {
+  .front {
+    height: 140px;
+    width: 200px;
+    padding-top: 70px;
+
+  }
+
+  .front-back {
+    height: 140px;
+    width: 200px;
+  }
+
+  body{
+    font-size:0.5em;
+  }
+
+  .title{
+    padding-top: 23px;
+    padding-bottom: 10px;
+  }
+
+  .L{
+    margin-bottom: -10px;
+  }
+
+  .joinus{
+    height: 20px; width: 65px;
+    border-width:1px;
+    padding:  2px 0 0 0 ;
+    margin-top: 30px;
+
+  }
+  footer{/*3.0769*/
+    height: 48.75px;
+    width: 150px;
+  }
+
+  .price{
+    padding: 0px 0 0 450px;
+  }
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  .navbar-nav{
+    float: none;
+    clear: both;
+    clear: left;
+  }
+
+}
