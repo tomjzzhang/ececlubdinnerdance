@@ -6,7 +6,6 @@
 	margin-bottom: 5px;
 	margin-top: 80px;
 	position: static;
-	margin-left: 40px;
 }
 
 .middle-bar {
@@ -16,6 +15,7 @@
 	margin: zero auto;
 	margin-top: 0px;
 	position: static;
+	margin-left: -25px;
 }
 
 

@@ -1,5 +1,5 @@
 body {
- 	background-color: tomato;
+ 	
 }
 
 h1.pos {
@@ -69,5 +69,6 @@ h1.pos {
 	width: 457px;
 	margin: zero auto;
 	margin-top: 0px;
+	margin-left: 20px;
 	position: static;
 }
