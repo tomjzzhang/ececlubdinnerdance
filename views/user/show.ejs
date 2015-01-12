@@ -8,6 +8,15 @@
       <center> <div class = "middle-bar"> </div> </center> <br> <br>
 
   <form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
+    <% if(flash && flash.err) {%>
+      <ul class="alert alert-success">
+      <% Object.keys(flash.err).forEach(function(error){ %>
+        <%flash.err[error].forEach(function(obj){ %>
+          <li><%- obj.message %></li>
+        <% }) %>
+      <% }) %>
+      </ul>
+    <% } %>
     <table>
     <tr>
       <td class="title">Full Name</td>

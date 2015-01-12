@@ -11,7 +11,10 @@ module.exports = {
 	},
 
 	create: function (req, res, next) {
-		User.create(req.params.all(), function userCreated(err, user){
+		var userObj = req.params.all();
+		delete userObj.admin;
+
+		User.create(userObj, function userCreated(err, user){
 			if (err) {
 				console.log(err);
 				req.session.flash={
@@ -51,12 +54,15 @@ module.exports = {
 	},
 
 	update: function(req, res, next){
-		//TODO marshall parameters
+		var userObj = req.params.all();
+		delete userObj.admin;
 
-		//TODO double check params are valid, client side validation
-
-		User.update(req.param('id'), req.params.all(), function userUpdated (err){
+		User.update(req.param('id'), userObj, function userUpdated (err){
 			if (err){
+				console.log(err);
+				req.session.flash={
+					err: err.ValidationError
+				}
 				return res.redirect('/user/show/' + req.param('id'));
 			}
 
@@ -79,14 +85,52 @@ module.exports = {
 	},
 
 	newAdmin: function(req, res, next){
-		//TODO create view
 		res.view();
 	},
 
 	createAdmin: function(req,res, next){
-		//TODO
-		//count existing admins
-		//if zero, create one, otherwise produce error
+		var criteria = {admin : true};
+		User.count(criteria, function numAdmins (err, num){
+			if (err) return next(err);
+
+			console.log('Num admins: ' + num);
+
+			if (num > 0){
+				var multipleAdminsError = [{name: 'multipleAdmins', message: 'Stop trying to create another admin user!'}]
+				req.session.flash = {
+					err: multipleAdminsError
+				}
+				res.redirect('/user/newAdmin');
+				return;
+			}else{
+				var adminObj = {
+					ticketNumber: 0,
+					name: 'Admin',
+					email: 'ececlub@ecf.utoronto.ca',
+					password: req.param('password'),
+					confirmation: req.param('confirmation'),
+					admin: true,
+				}
+
+				User.create(adminObj, function adminCreated(err, user){
+					if (err) {
+						console.log(err);
+						req.session.flash={
+							err: err.ValidationError
+						}
+
+						return res.redirect('/user/newAdmin');
+					}
+
+					req.session.authenticated = true;
+
+					delete user.encryptedPassword;
+					req.session.User = user;
+					
+					res.redirect('/user/show/'+user.id);
+				});
+			}
+		});
 	}
 
 };

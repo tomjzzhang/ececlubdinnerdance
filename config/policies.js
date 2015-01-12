@@ -30,8 +30,10 @@ module.exports.policies = {
 
   user: {
     'new' : 'flash',
+    'newAdmin' : 'flash',
+    'createAdmin' : 'flash',
     'create' : 'flash',
-    'show' : 'restrict',
+    'show' : ['restrict', 'flash'],
     'index' : 'flash', //REMEMBER TO REMOVE ONCE IN PRODUCTION
     '*' : 'sessionAuth'
   },
