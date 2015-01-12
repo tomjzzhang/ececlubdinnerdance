@@ -58,6 +58,12 @@ module.exports = {
 	update: function(req, res, next){
 		var userObj = req.params.all();
 		delete userObj.admin;
+		delete userObj.ticketNumber;
+
+		if (userObj.dietaryRestrictions =='Other' && userObj.otherDietaryRestrictions){
+			userObj.dietaryRestrictions = userObj.otherDietaryRestrictions;
+			delete userObj.otherDietaryRestrictions;
+		}
 
 		User.update(req.param('id'), userObj, function userUpdated (err){
 			if (err){
