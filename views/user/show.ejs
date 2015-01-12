@@ -12,7 +12,7 @@
     <tr>
       <td class="title">Full Name</td>
       <td class="info">
-        <input type='text' name='firstname' value="<%= user.firstName + ' ' + user.lastName %>"><br/>
+        <input type='text' name='name' value="<%= user.name %>"><br/>
       </td>
     </tr>
     <tr>
@@ -38,8 +38,8 @@
             <option value="4" <%if (user.year == 4) { %><%= selected %><% } %>>1T4</option>
             <option value="3" <%if (user.year == 3) { %><%= selected %><% } %>>1T3</option>
             <option value="2" <%if (user.year == 2) { %><%= selected %><% } %>>1T3+PEY</option>
-            <option value="prof" <%if (user.year == prof) { %><%= selected %><% } %>>Professor</option>
-            <option value="grad" <%if (user.year == grad) { %><%= selected %><% } %>>Grad/Other</option>
+            <option value="prof" <%if (user.year == 'prof') { %><%= selected %><% } %>>Professor</option>
+            <option value="grad" <%if (user.year == 'grad') { %><%= selected %><% } %>>Grad/Other</option>
         </select>
       </td>
     </tr>
@@ -78,8 +78,8 @@
     <tr>
       <td class="title">19+?</td>
       <td class="info">
-        <input type="radio" name="age" value="true" <% if (user.age == true) { %><%= checked %><% } %>>Yes
-        <input type="radio" name="age" value="false" <% if (user.age == false) { %><%= checked %><% } %>>No
+        <input type="radio" name="overDrinkingAge" value="true" <% if (user.overDrinkingAge == true) { %><%= checked %><% } %>>Yes
+        <input type="radio" name="overDrinkingAge" value="false" <% if (user.overDrinkingAge == false) { %><%= checked %><% } %>>No
       </td>
     </tr>
     </table>

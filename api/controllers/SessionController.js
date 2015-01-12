@@ -51,6 +51,7 @@ module.exports = {
 				}
 
 				req.session.authenticated = true;
+				delete user.encryptedPassword;
 				req.session.User = user;
 
 				res.redirect('/user/show/' + user.id);

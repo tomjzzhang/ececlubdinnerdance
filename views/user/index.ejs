@@ -7,7 +7,7 @@
 			<th>Email</th>
 			<th>Year</th>
 			<th>Food Option</th>
-			<th>Table Name</th>
+			<th>Table #</th>
 			<th>Age</th>
 			<th>Allergies</th>
 			<th>Bus Departure Time</th>
@@ -20,11 +20,11 @@
 		<% _.each(users, function(user) { %>
 		<tr data-id="<%= user.id %>" data-model="user">
 			<td><%= user.ticketNumber %></td>
-			<td><%= user.firstName + ' ' + user.lastName %></td>
+			<td><%= user.name %></td>
 			<td><%= user.email %></td>
 			<td><%= user.year %></td>
 			<td><%= user.foodOption %></td>
-			<td><%= user.tableName %></td>
+			<td><%= user.tableNum %></td>
 			<td><%= user.age %></td>
 			<td><%= user.allergies %></td>
 			<td><%= user.busDepartTime %></td>

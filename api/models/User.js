@@ -11,15 +11,10 @@ module.exports = {
 
   attributes: {
 
-    firstName: {
+    name: {
   		type: 'string',
   		required: true
   	},
-
-    lastName: {
-      type: 'string',
-      required: true
-    },
 
     email: {
       type: 'string',
@@ -29,7 +24,7 @@ module.exports = {
     },
 
     ticketNumber: {
-      type: 'string',
+      type: 'integer',
       required: true,
       unique: true
     },
@@ -43,11 +38,11 @@ module.exports = {
       type: 'string',
     },
 
-    tableName: {
-      type: 'string',
+    tableNum: {
+      type: 'integer',
     },
 
-    age: {
+    overDrinkingAge: {
       type: 'boolean',
     },
 
@@ -62,8 +57,6 @@ module.exports = {
     busLeaveTime: {
       type: 'string',
     },
-
-    
 
   	encryptedPassword:{
   		type: 'string',

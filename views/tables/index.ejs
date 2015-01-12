@@ -1,17 +1,6 @@
 <link rel="stylesheet" href="/styles/tablespage.css">
 
 <script>
-  function addToTable() {
-      alert("hello");
-      var randNum = Math.random();
-      var node_li = document.createElement("LI");
-      var textNode = document.createTextNode(randNum.toString());
-
-      node_li.appendChild(textNode);
-
-      document.getElementById("table_1").appendChild(node_li);
-  }
-
   function tablePost(path, params, method) {
     method = method || "post";
 
@@ -38,17 +27,20 @@
 <div class="tables_section">
   <h1> Table Selection </h1>
 
-  <table class="tables">
-    <tr>
-    <% for (i = 1; i <= 6; i++) { %>
-        <td id="table_<%= i %>" >
-          Table <%= i %>
-          <br></br>
-          <button onclick="tablePost('/tables/addUser', {tableName:<%= i %>})" type="submit" color:black class="btn_addTable"> Add </button>
-          <ol id="table1_names">
-          </ol>
-        </td>
-    <%} %>
-    </tr>
-  </table>
+  <% for (i = 0; i < numTables; i++) { %>
+      <div id="table_<%= i %>" >
+        Table <%= i+1 %>
+        <br></br>
+        <ol class="table_names">
+          <% _.each(tableSeating[i], function(name) { %>
+            <li><%= name %></li>
+          <% }) %>
+        </ol>
+        <% if(typeof userTable === 'undefined') { %>
+          <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>})" type="submit"> Add </button>
+        <% } else if (userTable === i+1){ %>
+          <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>})" type="submit"> Remove> </button>
+        <% } %> 
+      </div>
+  <%} %>
 </div>
