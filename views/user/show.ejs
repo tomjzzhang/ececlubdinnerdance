@@ -19,18 +19,23 @@
     <% } %>
     <table>
     <tr>
-      <td class="title">Full Name</td>
-      <td class="info">
-        <input type='text' name='name' value="<%= user.name %>"><br/>
-      </td>
-    </tr>
-    <tr>
       <td class="title">Ticket Number</td>
       <td class="info">
         <%= user.ticketNumber %>
       </td>
     </tr>
-   
+    <tr>
+      <td class="title"></td>
+      <td class="info">
+        <a href="/password/index">Change Password</a>
+      </td>
+    </tr>
+    <tr>
+      <td class="title">Full Name</td>
+      <td class="info">
+        <input type='text' name='name' value="<%= user.name %>"><br/>
+      </td>
+    </tr>
     <tr>
       <td class="title">Email</td>
       <td class="info">
@@ -49,6 +54,18 @@
             <option value="1T4+PEY" <%if (user.year == '1T4+PEY') { %><%= 'selected' %><% } %>>1T4+PEY</option>
             <option value="prof" <%if (user.year == 'prof') { %><%= 'selected' %><% } %>>Professor</option>
             <option value="grad" <%if (user.year == 'grad') { %><%= 'selected' %><% } %>>Grad/Other</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="title">Dietary Restrictions</td>
+      <td class="info"> 
+        <select name="dietaryRestrictions">
+            <option value="None" <%if (user.dietaryRestrictions == 'None') { %><%= 'selected' %><% } %>>None</option> 
+            <option value="Vegetarian" <%if (user.dietaryRestrictions == 'Vegetarian') { %><%= 'selected' %><% } %>>Vegetarian</option>
+            <option value="Halal" <%if (user.dietaryRestrictions == 'Halal') { %><%= 'selected' %><% } %>>Halal</option>
+            <option value="Other" <%if (user.dietaryRestrictions == 'Other') { %><%= 'selected' %><% } %>>Other</option>
+            <!-- TODO SHOULD HAVE PLEASE SPECIFY -->
         </select>
       </td>
     </tr>
