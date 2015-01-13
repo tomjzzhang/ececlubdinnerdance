@@ -49,9 +49,9 @@
           <% }) %>
         </ol>
         <% if (userTable === i+1) { %>
-          <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>})" type="submit"> Remove </button>
+          <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
         <% } else { %>
-          <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>})" type="submit"> Add </button>
+          <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
         <% } %> 
       </div>
   <%} %>
