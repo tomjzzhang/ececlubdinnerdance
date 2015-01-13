@@ -26,7 +26,19 @@
 
 <div class="tables_section">
   <h1> Table Selection </h1>
-
+  <% if(flash && flash.err) {%>
+    <ul class="alert alert-success">
+      <% Object.keys(flash.err).forEach(function(error){ %>
+        <% if (flash.err[error].constructor === Array){
+          flash.err[error].forEach(function(obj){ %>
+            <li><%- obj.message %></li>
+          <% }) 
+        } else { %>
+          <li><%- flash.err[error].message %></li>
+        <% } %>
+      <% }) %>
+    </ul>
+  <% } %>
   <% for (i = 0; i < numTables; i++) { %>
       <div id="table_<%= i %>" >
         Table <%= i+1 %>

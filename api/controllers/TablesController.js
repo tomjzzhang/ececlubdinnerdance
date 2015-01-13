@@ -67,7 +67,10 @@ module.exports = {
 			if (num <= limit){
 				User.update(req.session.User.id, tableObj, function userUpdated (err){
 					if (err){
-						return next(err);
+						req.session.flash={
+							err: err.ValidationError
+						}
+						return res.redirect('/tables/index');
 					}
 
 					res.redirect('/tables/index');
@@ -75,7 +78,11 @@ module.exports = {
 				});
 			}else{
 				//TODO: display table too full error
-				return res.redirect('/tables');
+				var tableFullError = [{name: 'tableFull', message: 'The table is full!'}]
+				req.session.flash = {
+					err: tableFullError
+				}
+				return res.redirect('/tables/index');
 			}
 
 			

@@ -41,6 +41,7 @@ module.exports.policies = {
   },
 
   tables: {
+    'index' : ['sessionAuth', 'flash'],
     '*' : 'sessionAuth'
   },
 
