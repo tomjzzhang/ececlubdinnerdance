@@ -4,30 +4,8 @@ var nodemailer = require('nodemailer');
 
 var service = 'Gmail';
 var auth = {
-    user: '',
-    pass: ''
-}
-
-if (!sails.config.mailer){
-    console.log("Please configure mailer object in local.js");
-    console.log("ex. mailer: { \n " +
-            "service: 'Gmail', \n" +
-            "auth: { \n" +
-            "  user: <username>, \n" +
-            "  pass: <password> \n" +
-            "}, \n" +
-            "defaultFromAddress: 'ECE Club <dinnerdance@ece.skule.ca>' \n" +
-          "}");
-}else{
-    if (!sails.config.mailer.auth){
-        console.log('mailer.auth required');
-    }else{
-        auth = sails.config.mailer.auth;
-    }
-
-    if (sails.config.mailer.service){
-        service = sails.config.mailer.service;
-    }
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
 }
 
 // create reusable transporter object using SMTP transport
@@ -39,6 +17,13 @@ var transporter = nodemailer.createTransport({
 module.exports = {
 
     sendOneEmail: function(options, next) {
+        if (!process.env.MAIL_USER || !process.env.MAIL_PASS){
+            var serviceUnavailableError = new Error("Service is currently unavailable");
+            console.log(serviceUnavailableError);
+            console.log(serviceUnavailableError.stack);
+            next(serviceUnavailableError);
+        }
+
         if (!options.email || !options.subject){
             var noEmailError = new Error("Email and Subject Required");
             console.log(noEmailError);
