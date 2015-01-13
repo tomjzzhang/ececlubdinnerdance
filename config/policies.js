@@ -29,10 +29,10 @@ module.exports.policies = {
   '*': 'flash',
 
   user: {
-    'new' : 'flash',
     'newAdmin' : 'flash',
     'createAdmin' : 'flash',
-    'create' : 'flash', //add admin for production
+    'new' : ['flash', 'admin'],
+    'create' : ['flash', 'admin'], 
     'show' : ['restrict', 'flash'],
     'index' : 'admin',
     'register' : ['admin', 'flash'],
