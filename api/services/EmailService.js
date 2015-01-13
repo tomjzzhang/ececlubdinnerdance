@@ -2,10 +2,38 @@
 
 var nodemailer = require('nodemailer');
 
+var service = 'Gmail';
+var auth = {
+    user: '',
+    pass: ''
+}
+
+if (!sails.config.mailer){
+    console.log("Please configure mailer object in local.js");
+    console.log("ex. mailer: { \n " +
+            "service: 'Gmail', \n" +
+            "auth: { \n" +
+            "  user: <username>, \n" +
+            "  pass: <password> \n" +
+            "}, \n" +
+            "defaultFromAddress: 'ECE Club <dinnerdance@ece.skule.ca>' \n" +
+          "}");
+}else{
+    if (!sails.config.mailer.auth){
+        console.log('mailer.auth required');
+    }else{
+        auth = sails.config.mailer.auth;
+    }
+
+    if (sails.config.mailer.service){
+        service = sails.config.mailer.service;
+    }
+}
+
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
-    service: sails.config.mailer.service,
-    auth: sails.config.mailer.auth,
+    service: service,
+    auth: auth,
 });
 
 module.exports = {
