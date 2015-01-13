@@ -76,8 +76,7 @@ module.exports = {
 		res.view();
 	},
 
-	'sendEmail' : function(req, res, next){
-		//TODO should send back temporary link and then reset password
+	'generateLink' : function(req, res, next){
 		if (!req.param('ticketNumber')){
 			var ticketNumberRequiredError = [{name: 'ticketNumberRequired', message: 'Ticket Number is required'}]
 			req.session.flash = {
@@ -98,16 +97,6 @@ module.exports = {
 			return;
 		}
 
-		if (!sails.config.emailAuth){
-			console.log('Please set emailAuth: {user: user_email, pass: password } in local.js');
-			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
-			req.session.flash = {
-				err: serviceUnavailableError
-			}
-			res.redirect('/password/reset');
-			return;
-		}
-
 		User.findOneByTicketNumber(req.param('ticketNumber')).exec(function(err, user){
 			if (err) return next(err);
 
@@ -115,6 +104,74 @@ module.exports = {
 				var noAccountError = [{name: 'noAccount', message: 'The ticket number ' + req.param('ticketNumber') + ' was not found'}]
 				req.session.flash = {
 					err: noAccountError
+				}
+
+				res.redirect('/password/reset');
+				return;
+			}
+
+			var randtoken = require('rand-token');
+			// Generate a 16 character alpha-numeric token:
+			var resetToken = randtoken.generate(20);
+
+			var criteria = {passwordResetLink: resetToken + user.id};
+			User.update(user.id, criteria, function userUpdated (err){
+				if (err){
+					console.log(err);
+					req.session.flash={
+						err: err.ValidationError
+					}
+					res.redirect('/password/reset');
+					return;
+				}
+
+				//TODO should make link expire
+				var link = 'http://' + req.get('host') + '/password/sendEmail?passwordResetLink=' + resetToken + user.id;
+
+				var text = 	'Hi ' +  user.name + ' \n'+
+							'Someone has requested to reset your password. If this is you, please follow the link: \n'+
+							link + '\n' +
+							'If this is not you, please feel free to ignore this email \n';
+
+				var html = 	'<p>Hi ' +  user.name + ' </p>'+
+							'<p>Someone has requested to reset your password. If this is you, please follow the link:</p>'+
+							'<a href="'+ link + '" target="_blank"">' + link + '</a>' +
+							'<p>If this is not you, please feel free to ignore this email</p>';
+
+				var emailOptions = {
+					email: user.email,
+					subject: 'ECE Dinnerdance - Password Reset Request',
+					html: html,
+					text: text
+				}
+
+				EmailService.sendOneEmail(emailOptions, function emailSent(err){
+					if(err){
+						console.log(err);
+						req.session.flash={
+							err: err
+						}
+					}else{
+						var passwordResetRequestSuccess = [{name: 'passwordResetRequest', message: 'Request for password reset has been successfully sent! Check your email for further instructions.'}]
+						req.session.flash={
+							err: passwordResetRequestSuccess
+						}
+					}
+					return res.redirect('/password/reset');
+				});
+
+			});
+		});
+	},
+
+	'sendEmail' : function(req, res, next){
+		User.findOneByPasswordResetLink(req.param('passwordResetLink')).exec(function(err, user){
+			if (err) return next(err);
+
+			if (!user) {
+				var invalidResetLinkError = [{name: 'invalidResetLinkError', message: 'The reset link sent is no longer valid'}]
+				req.session.flash = {
+					err: invalidResetLinkError
 				}
 
 				res.redirect('/password/reset');
@@ -131,51 +188,53 @@ module.exports = {
 			        // Store hash in your password DB.
 			        if (err) return next(err);
 			        
-			        var passwordObj = {encryptedPassword: hash}; 
-			        User.update(user.id, passwordObj, function passUpdated (err){
+			        var userObj = {
+			        	encryptedPassword: hash,
+			        	passwordResetLink: undefined
+			        }; 
+
+			        User.update(user.id, userObj, function passUpdated (err){
 						if (err){
 							return next(err);
 						}
 
-						var nodemailer = require('nodemailer');
-
-						// create reusable transporter object using SMTP transport
-						var transporter = nodemailer.createTransport({
-						    service: 'Gmail',
-						    auth: sails.config.emailAuth,
-						});
 
 						var signinLink = req.get('host') + '/session/new';
 						// NB! No need to recreate the transporter object. You can use
 						// the same transporter object for all e-mails
-						var text = 'Your password has been reset with the following credentials: \n Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
+						var text = 	'Hi ' +  user.name + ' \n'+
+									'Your password has been reset with the following credentials: \n' +
+									'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n' +
+									'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
 
-						var html = '<p>Your password has been reset with the following credentials: </p><div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div><p>Please sign in with these credentials at <a href="'+ signinLink + '">' + signinLink + '</a> and change your password as soon as possible. </p>';
+						var html = 	'<p>Hi ' +  user.name + ' </p>'+
+									'<p>Your password has been reset with the following credentials: </p>' +
+									'<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br>' +
+									'<strong>Password: </strong>' + newPass + '</div>' +
+									'<p>Please sign in with these credentials at <a href="'+ signinLink + '" target="_blank">' + signinLink + '</a> and change your password as soon as possible. </p>';
 
 						// setup e-mail data with unicode symbols
-						var mailOptions = {
-						    from: 'ECE Club <dinnerdance@ece.skule.ca>', // sender address
-						    to: user.email, // list of receivers
-						    subject: 'ECE Dinner Dance Password Reset', // Subject line
-						    text: text, // plaintext body
-						    html: html // html body
-						};
+						var emailOptions = {
+							email: user.email,
+							subject: 'ECE Dinnerdance - Password Reset',
+							html: html,
+							text: text
+						}
 
-						// send mail with defined transport object
-						transporter.sendMail(mailOptions, function(error, info){
-						    if(error){
-						        console.log(error);
-						    }else{
-						    	var passwordReset = [{name: 'passwordReset', message: 'Password successfully reset! Please check your email for further instructions.'}]
-								req.session.flash = {
-									err: passwordReset
+						EmailService.sendOneEmail(emailOptions, function emailSent(err){
+							if(err){
+								console.log(err);
+								req.session.flash={
+									err: err
 								}
-						        console.log('Message sent: ' + info.response);
-						    }
+							}else{
+								var passwordResetRequestSuccess = [{name: 'passwordResetRequest', message: 'Request for password reset has been successfully sent! Check your email for further instructions.'}]
+								req.session.flash={
+									err: passwordResetRequestSuccess
+								}
+							}
+							return res.redirect('/password/reset');
 						});
-
-						
-						res.redirect('/password/reset');
 					});
 			    });
 			});

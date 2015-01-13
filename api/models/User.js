@@ -52,10 +52,6 @@ module.exports = {
       type: 'boolean',
     },
 
-    allergies: {
-      type: 'string',
-    },
-
     busDepartTime: {
       type: 'string',
     },
@@ -64,10 +60,14 @@ module.exports = {
       type: 'string',
     },
 
-    //TODO add min length
   	encryptedPassword:{
   		type: 'string',
   	},
+
+    passwordResetLink: {
+      type: 'string',
+      unique: true
+    },
 
     admin : {
       type: 'boolean',

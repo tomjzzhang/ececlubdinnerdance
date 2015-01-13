@@ -16,6 +16,7 @@ module.exports = {
 		var userObj = req.params.all();
 		delete userObj.admin;
 		delete userObj.tableNum;
+		delete passwordResetLink;
 
 		User.create(userObj, function userCreated(err, user){
 			if (err) {
@@ -61,6 +62,7 @@ module.exports = {
 		delete userObj.admin;
 		delete userObj.ticketNumber;
 		delete userObj.tableNum;
+		delete passwordResetLink;
 
 		if (userObj.dietaryRestrictions =='Other' && userObj.otherDietaryRestrictions){
 			userObj.dietaryRestrictions = userObj.otherDietaryRestrictions;
@@ -148,15 +150,6 @@ module.exports = {
 	},
 
 	registerUser: function(req, res, next){
-		if (!sails.config.emailAuth){
-			console.log('Please set emailAuth: {user: user_email, pass: password } in local.js');
-			var serviceUnavailableError = [{name: 'serviceUnavailable', message: 'Service is currently unavailable.'}]
-			req.session.flash = {
-				err: serviceUnavailableError
-			}
-			return res.redirect('/user/register');
-		}
-
 		var randtoken = require('rand-token');
 		// Generate a 16 character alpha-numeric token:
 		var newPass = randtoken.generate(10);
@@ -164,6 +157,7 @@ module.exports = {
 		var userObj = req.params.all();
 		delete userObj.admin;
 		delete userObj.tableNum;
+		delete passwordResetLink;
 		userObj.password = newPass;
 		userObj.confirmation = newPass;
 
@@ -177,45 +171,43 @@ module.exports = {
 				return res.redirect('/user/register');
 			}
 			
-			var nodemailer = require('nodemailer');
-
-			// create reusable transporter object using SMTP transport
-			var transporter = nodemailer.createTransport({
-			    service: 'Gmail',
-			    auth: sails.config.emailAuth,
-			});
-
-			var signinLink = req.get('host') + '/session/new';
+			var signinLink = 'http://' + req.get('host') + '/session/new';
 			// NB! No need to recreate the transporter object. You can use
 			// the same transporter object for all e-mails
-			var text = 'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
+			var text = 	'Hi' + user.name + '\n'
+						'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n' +
+						'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n' +
+						'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
 
-			var html = '<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p><div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div><p>Please sign in with these credentials at <a href="'+ signinLink + '">' + signinLink + '</a> and change your password as soon as possible. </p>';
+			var html = '<p>Hi ' +  user.name + ' </p>'+
+						'<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p>'+
+						'<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div>' +
+						'<p>Please sign in with these credentials at <a href="'+ signinLink + '" target="_blank">' + signinLink + '</a> '+
+						'and change your password as soon as possible.</p>';
 
-			// setup e-mail data with unicode symbols
-			var mailOptions = {
-			    from: 'ECE Club <dinnerdance@ece.skule.ca>', // sender address
-			    to: user.email, // list of receivers
-			    subject: 'ECE Dinner Dance Password Reset', // Subject line
-			    text: text, // plaintext body
-			    html: html // html body
-			};
+			var emailOptions = {
+				email: user.email,
+				subject: 'Welcome to ECE Dinnerdance',
+				html: html,
+				text: text
+			}
 
-			// send mail with defined transport object
-			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        console.log(error);
-			    }else{
-			    	var passwordReset = [{name: 'passwordReset', message: 'Account successfully created! Please check your email for further instructions.'}]
-					req.session.flash = {
-						err: passwordReset
+			EmailService.sendOneEmail(emailOptions, function emailSent(err){
+				if(err){
+					console.log(err);
+					req.session.flash={
+						err: err
 					}
-			        console.log('Message sent: ' + info.response);
-			    }
+				}else{
+					var accountCreationSuccess = [{name: 'accountCreation', message: 'Account successfully created! Check your email for further instructions.'}]
+					req.session.flash={
+						err: accountCreationSuccess
+					}
+				}
+				return res.redirect('/user/register');
 			});
 
-
-			return res.redirect('/user/register');
+			
 		});
 	}
 

@@ -47,6 +47,7 @@ module.exports.policies = {
   password: {
     'index' : ['sessionAuth', 'flash'], 
     'reset' : 'flash',
+    'generateLink' : [],
     'sendEmail' : [], 
     '*' : 'sessionAuth'
   }

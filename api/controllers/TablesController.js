@@ -70,14 +70,15 @@ module.exports = {
 						return next(err);
 					}
 
-					res.redirect('/tables/');
+					res.redirect('/tables/index');
 					return;
 				});
+			}else{
+				//TODO: display table too full error
+				return res.redirect('/tables');
 			}
 
-			//TODO DISPLAY TABLE TOO FULL ERROR
-			res.redirect('/tables');
-			return;
+			
 		});
 		
 	},

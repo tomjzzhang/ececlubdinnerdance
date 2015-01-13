@@ -18,11 +18,15 @@
 <form role="form" action="/user/registerUser" method="POST" class="form-horizontal">
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
-		<% Object.keys(flash.err).forEach(function(error){ %>
-			<%flash.err[error].forEach(function(obj){ %>
-				<li><%- obj.message %></li>
+			<% Object.keys(flash.err).forEach(function(error){ %>
+				<% if (flash.err[error].constructor === Array){
+					flash.err[error].forEach(function(obj){ %>
+						<li><%- obj.message %></li>
+					<% }) 
+				} else { %>
+					<li><%- flash.err[error].message %></li>
+				<% } %>
 			<% }) %>
-		<% }) %>
 		</ul>
 	<% } %>
 	<input type="text" class="form-control" placeholder="Ticket number" name="ticketNumber">
