@@ -64,7 +64,7 @@ module.exports.connections = {
     // user: 'username',
     // password: 'password',
     // database: 'your_mongo_db_name_here'
-    url: process.env.DB_URL,
+    url: process.env.MONGOLAB_URI,
     schema: true
   },
 
