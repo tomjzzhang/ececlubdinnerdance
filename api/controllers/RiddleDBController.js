@@ -13,7 +13,7 @@ module.exports = {
 
 	create: function (req, res, next){
 
-		RiddleDB.create(req.params.all(), function riddleDBCreated (err, riddles) {
+		RiddleDB.create(req.params.all(), function RiddleDBCreated (err, RiddleDB) {
 
 			//if there's an error
 			if(err)
@@ -23,7 +23,7 @@ module.exports = {
 			//redirect to the show action
 
 
-			res.json(riddles);
+			res.json(RiddleDB);
 
 
 
