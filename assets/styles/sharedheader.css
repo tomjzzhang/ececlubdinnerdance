@@ -27,7 +27,7 @@
   display: inline-block;
   clear: both;
   margin: 0 auto;
-
+  font-size: 1em;
 }
 
 @media screen and (max-width: 480px) {
