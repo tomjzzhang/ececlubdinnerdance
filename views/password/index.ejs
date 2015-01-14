@@ -2,12 +2,22 @@
 <link rel="stylesheet" href="/styles/changepassword.css">
 
 
+<section class="main-content">
+  <div id="guts">
+	<center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Change Password </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
 
-<div class="container changepassword">
+
+
+
+<div class="container">
 <div class="center-block col-md-6 col-md-offset-3 cpdiv">
 <form role="form" action="/password/change" method="POST" class="form-horizontal">
-
-	<h2 class="title">Change Password</h2>
 
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
@@ -17,7 +27,9 @@
 		</ul>
 	<% } %>
 		<input type="password" class="form-control" placeholder="old password" name="old_password">
+	</br>
 		<input type="password" class="form-control" placeholder="new password" name="new_password">
+	</br>
 		<input type="password" class="form-control" placeholder="new password confirmation" name="confirmation">
 
 <br><br>
@@ -31,3 +43,6 @@
 </form>
 </div>
 </div>
+
+</div>
+</section>

@@ -1,0 +1,11 @@
+#register-box .container{
+	margin: 0 auto;
+	left:0;
+	right: 0;
+}
+
+.ticket-info, form input{
+	font-family: "Marion", serif;
+    font-size: 12px;
+    color: #ffffff;
+}
