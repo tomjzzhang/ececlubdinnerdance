@@ -86,3 +86,11 @@ tr{
 	margin:100px;
 	border: solid grey 5px;
 }
+
+.btn{
+  margin-top: 15px;
+  background: black;
+  width: 200px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
