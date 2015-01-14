@@ -59,4 +59,11 @@ module.exports.routes = {
       layout: 'mainlayout'
     }
   },
+
+  '/menu' : {
+    view: 'menu',
+    locals: {
+      layout: 'mainlayout'
+    }
+  },
 };
