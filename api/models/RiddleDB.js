@@ -11,12 +11,12 @@ module.exports = {
 
   attributes: {
 
-    RiddleQuest: {
+    riddle_Q: {
       type : 'string',
       required : true
     },
 
-    RiddleAns: {
+    riddle_A: {
       type : 'string',
       required : true
     }
