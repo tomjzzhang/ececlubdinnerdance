@@ -1,7 +1,13 @@
-<div class="container">
-<div class="center-block col-md-6 col-md-offset-3">
+<link rel="stylesheet" href="/styles/menu.css">
+<link rel="stylesheet" href="/styles/changepassword.css">
+
+
+
+<div class="container changepassword">
+<div class="center-block col-md-6 col-md-offset-3 cpdiv">
 <form role="form" action="/password/change" method="POST" class="form-horizontal">
-	<h2>Change Password</h2>
+
+	<h2 class="title">Change Password</h2>
 
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
@@ -10,11 +16,17 @@
 		<% }) %>
 		</ul>
 	<% } %>
-	<input type="password" class="form-control" placeholder="old password" name="old_password">
-	<input type="password" class="form-control" placeholder="new password" name="new_password">
-	<input type="password" class="form-control" placeholder="new password confirmation" name="confirmation">
+		<input type="password" class="form-control" placeholder="old password" name="old_password">
+		<input type="password" class="form-control" placeholder="new password" name="new_password">
+		<input type="password" class="form-control" placeholder="new password confirmation" name="confirmation">
 
-	<input type="submit" class="btn btn-lg btn-primary" value="Change Password"/>
+<br><br>
+    <div id="submit-container">
+      <input id="reg-submit" type="submit" value="Change Password">
+    </div>
+
+	<!-- <input type="submit" class="btn btn-lg btn-primary" value="Change Password"/> -->
+
 	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 </form>
 </div>
