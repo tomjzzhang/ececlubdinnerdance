@@ -25,34 +25,39 @@
 </script>
 
 <div class="tables_section">
-  <h1> Table Selection </h1>
-  <% if(flash && flash.err) {%>
-    <ul class="alert alert-success">
-      <% Object.keys(flash.err).forEach(function(error){ %>
-        <% if (flash.err[error].constructor === Array){
-          flash.err[error].forEach(function(obj){ %>
-            <li><%- obj.message %></li>
-          <% }) 
-        } else { %>
-          <li><%- flash.err[error].message %></li>
-        <% } %>
-      <% }) %>
-    </ul>
-  <% } %>
-  <% for (i = 0; i < numTables; i++) { %>
-      <div id="table_<%= i %>" >
-        Table <%= i+1 %>
-        <br></br>
-        <ol class="table_names">
-          <% _.each(tableSeating[i], function(name) { %>
-            <li><%= name %></li>
-          <% }) %>
-        </ol>
-        <% if (userTable === i+1) { %>
-          <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
-        <% } else { %>
-          <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
-        <% } %> 
-      </div>
-  <%} %>
+
+  <div class="cardholder">
+
+    <h1> Table Selection </h1>
+    <% if(flash && flash.err) {%>
+      <ul class="alert alert-success">
+        <% Object.keys(flash.err).forEach(function(error){ %>
+          <% if (flash.err[error].constructor === Array){
+            flash.err[error].forEach(function(obj){ %>
+              <li><%- obj.message %></li>
+            <% })
+          } else { %>
+            <li><%- flash.err[error].message %></li>
+          <% } %>
+        <% }) %>
+      </ul>
+    <% } %>
+
+    <% for (i = 0; i < numTables; i++) { %>
+        <div id="table_<%= i %>" class="card">
+          <h3> Table <%= i+1 %> </h3>
+          
+          <ol class="table_names">
+            <% _.each(tableSeating[i], function(name) { %>
+              <li><%= name %></li>
+            <% }) %>
+          </ol>
+          <% if (userTable === i+1) { %>
+            <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
+          <% } else { %>
+            <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+          <% } %>
+        </div>
+    <%} %>
+  </div>
 </div>

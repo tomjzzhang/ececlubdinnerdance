@@ -1,16 +1,17 @@
-<!--  wenxin-added-temp --> 
+<!--  wenxin-added-temp -->
 <link rel="stylesheet" href="/styles/menu.css">
 <link rel="stylesheet" href="/styles/registration.css">
 
 
-  <!--TEXT--> 
-     <center> <div class = "top-bar"> </div> </center>
-      <div id = "title">
-        <h1 class = "pos">
-        <center> PROFILE </center>
-        </h1>
-      </div>
-      <center> <div class = "middle-bar"> </div> </center> <br> <br>
+<div class="horizontalcenter">
+<!--TEXT-->
+<center> <div class = "top-bar"> </div> </center>
+<div id = "title">
+  <h1 class = "pos">
+  <center> PROFILE </center>
+  </h1>
+</div>
+<center> <div class = "middle-bar"> </div> </center> <br> <br>
  <!--  wenxin-added-temp -->
 
 
@@ -44,20 +45,20 @@
     <tr>
       <td class="title">Full Name</td>
       <td class="info">
-        <input type="text" class="form-control" placeholder="Name" name="name" value="<%= user.name %>"> 
+        <input type="text" class="form-control" placeholder="Name" name="name" value="<%= user.name %>">
       </td>
     </tr>
     <tr>
       <td class="title">Email</td>
       <td class="info">
-        <input type="text" class="form-control" placeholder="Email" name="email" value="<%= user.email %>"> 
+        <input type="text" class="form-control" placeholder="Email" name="email" value="<%= user.email %>">
       </td>
     </tr>
     <tr>
       <td class="title">Year</td>
-      <td class="info">	
+      <td class="info">
         <select name="year">
-            <option value="1T8" <%if (user.year == '1T8') { %><%= 'selected' %><% } %>>1T8</option> 
+            <option value="1T8" <%if (user.year == '1T8') { %><%= 'selected' %><% } %>>1T8</option>
             <option value="1T7" <%if (user.year == '1T7') { %><%= 'selected' %><% } %>>1T7</option>
             <option value="1T6" <%if (user.year == '1T6') { %><%= 'selected' %><% } %>>1T6</option>
             <option value="1T5" <%if (user.year == '1T5') { %><%= 'selected' %><% } %>>1T5</option>
@@ -78,7 +79,7 @@
         <input type="radio" name="dietaryRestrictions" value="Vegetarian" <% if (user.dietaryRestrictions == "Vegetarian") { %><%= 'checked' %><% } %>>Vegetarian
         <input type="radio" name="dietaryRestrictions" value="Halal" <% if (user.dietaryRestrictions == "Halal") { %><%= 'checked' %><% } %>>Halal<br>
         <input type="radio" name="dietaryRestrictions" value="Other" <% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') { %><%= 'checked' %><% } %>>Other
-        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>"> 
+        <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>">
       </td>
     </tr>
     <tr>
@@ -124,6 +125,7 @@
     <div id="submit-container">
       <input id="reg-submit" type="submit" value="I'm Ready. Sign Me Up!">
     </div>
-  
+
   <input type="hidden" name="_csrf" value="<%= _csrf %>" />
   </form>
+</div>

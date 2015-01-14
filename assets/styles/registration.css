@@ -73,3 +73,16 @@ tr{
 
 }
 
+.horizontalcenter{
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+}
+
+.indexlistcontainer{
+	color:white;
+	margin:100px;
+	border: solid grey 5px;
+}

@@ -32,7 +32,7 @@ module.exports = {
 
 			delete user.encryptedPassword;
 			req.session.User = user;
-			
+
 			res.redirect('/user/show/'+user.id);
 		});
 	},
@@ -42,7 +42,8 @@ module.exports = {
 			if (err) return next(err);
 			if (!user) return next();
 			res.view({
-				user: user
+				user: user,
+				layout: 'mainlayout'
 			});
 		});
 	},
@@ -138,7 +139,7 @@ module.exports = {
 
 					delete user.encryptedPassword;
 					req.session.User = user;
-					
+
 					res.redirect('/user/show/'+user.id);
 				});
 			}
@@ -146,7 +147,9 @@ module.exports = {
 	},
 
 	register: function(req, res, next){
-		res.view();
+		res.view({
+			layout: 'mainlayout'
+		});
 	},
 
 	registerUser: function(req, res, next){
@@ -170,7 +173,7 @@ module.exports = {
 
 				return res.redirect('/user/register');
 			}
-			
+
 			var signinLink = 'http://' + req.get('host') + '/session/new';
 			// NB! No need to recreate the transporter object. You can use
 			// the same transporter object for all e-mails
@@ -207,9 +210,8 @@ module.exports = {
 				return res.redirect('/user/register');
 			});
 
-			
+
 		});
 	}
 
 };
-

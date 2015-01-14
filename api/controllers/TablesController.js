@@ -11,7 +11,7 @@ var maxSeats = 10;
 module.exports = {
 
 	'index': function(req, res, next) {
-			
+
 		var tableSeating = new Array(maxTables);
 		var count = 0;
 		for (i = 0; i < maxTables; i++) {
@@ -19,7 +19,7 @@ module.exports = {
 			User.find(userObj, function foundTable (err,users){
 				if (err) return next(err);
 				if (!users) return next();
-				
+
 				if (typeof users.length !== undefined && users.length > 0){
 					var tableNum = users[0].tableNum;
 					var studentNames = users.map(function extractName(item){
@@ -30,17 +30,18 @@ module.exports = {
 				}
 
 				count++;
-				if (count == maxTables){	
+				if (count == maxTables){
 					User.findOne(req.session.User.id, function foundUser(err, user){
 						if (err) return next(err);
 						if (!user) return next();
 						res.view({
 							numTables : maxTables,
 							tableSeating: tableSeating,
-							userTable: user.tableNum
+							userTable: user.tableNum,
+							layout: 'mainlayout'
 						});
 					});
-					
+
 				}
 
 			});
@@ -85,9 +86,9 @@ module.exports = {
 				return res.redirect('/tables/index');
 			}
 
-			
+
 		});
-		
+
 	},
 
 	'removeUser' : function(req, res, next) {

@@ -1,4 +1,7 @@
-<div class="container">
+
+<link rel="stylesheet" href="/styles/registration.css">
+
+<div class="indexlistcontainer">
 	<h3>Users</h3>
 	<table class="table">
 		<tr>
@@ -29,7 +32,7 @@
 			<td><%= user.overDrinkingAge %></td>
 			<td><%= user.busDepartTime %></td>
 			<td><%= user.busLeaveTime %></td>
-			
+
 			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Show</a></td>
 			<td>
 				<form action="/user/destroy/<%= user.id %>" method="POST">
