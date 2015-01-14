@@ -56,3 +56,10 @@ input{
   font-size: 1em;
   margin-top: 100px;
 }
+
+.main-content{
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}

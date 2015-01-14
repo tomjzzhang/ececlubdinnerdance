@@ -24,6 +24,9 @@
       <% }) %>
       </ul>
     <% } %>
+
+
+  <div id="table-container">
     <table>
     <tr>
       <td class="title">Ticket Number</td>
@@ -35,6 +38,7 @@
       <td class="title"></td>
       <td class="info">
         <a href="/password/index">Change Password</a>
+
       </td>
     </tr>
     <tr>
@@ -66,9 +70,9 @@
     </tr>
     </table>
 
-    <table class='radio-box'>
+    <table>
     <tr>
-      <td class="title" id="titletest">Dietary Restrictions</td>
+      <td class="title">Dietary Restrictions</td>
       <td class="info">
         <input type="radio" name="dietaryRestrictions" value="None" <% if (user.dietaryRestrictions == "None") { %><%= 'checked' %><% } %>>None
         <input type="radio" name="dietaryRestrictions" value="Vegetarian" <% if (user.dietaryRestrictions == "Vegetarian") { %><%= 'checked' %><% } %>>Vegetarian
@@ -101,7 +105,7 @@
     <table>
     <tr>
       <br>
-      <td class="notice">*The 8:15 p.m. bus is for those with midterms</td>
+      <td class="notice">** The 8:15 p.m. bus is for those with midterms **</td>
     </tr>
     </table>
 
@@ -114,6 +118,8 @@
       </td>
     </tr>
     </table>
+
+  </div>
     <br><br>
     <div id="submit-container">
       <input id="reg-submit" type="submit" value="I'm Ready. Sign Me Up!">
