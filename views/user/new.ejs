@@ -1,30 +1,27 @@
  <!--  wenxin-added-temp -->
 <link rel="stylesheet" href="../styles/menu.css">
 <link rel="stylesheet" href="../styles/registration.css">
-
-
-<section class="main-content">
-  <div id="guts">
-	<center> <div class = "top-bar"> </div> </center>
-    <div id = "title">
-      <h1 class = "pos">
-        <center> Event Information </center>
-      </h1>
-    </div>
-    <center> <div class = "middle-bar"> </div> </center>
-
- <!--  wenxin-added-temp -->
+<link rel="stylesheet" href="../styles/register-account.css">
 
 
 
 
+
+<div class="horizontalcenter">
+
+		<center> <div class = "top-bar"> </div> </center>
+	    <div id = "title">
+	      <h1 class = "pos">
+	        <center> Create - Internal Use </center>
+	      </h1>
+	    </div>
+	    <center> <div class = "middle-bar"> </div> </center>
+	    <br>
 
 
 <div class="container">
 <div class="center-block col-md-6 col-md-offset-3">
 <form role="form" action="/user/create" method="POST" class="form-horizontal">
-	<h2>Create an account</h2>
-
 	<% if(flash && flash.err) {%>
 		<ul class="alert alert-success">
 		<% Object.keys(flash.err).forEach(function(error){ %>
@@ -35,10 +32,15 @@
 		</ul>
 	<% } %>
 	<input type="text" class="form-control" placeholder="Ticket number" name="ticketNumber">
+	<br>
 	<input type="text" class="form-control" placeholder="Name" name="name">
+	<br>
 	<input type="text" class="form-control" placeholder="Email address" name="email">
+	<br>
 	<input type="password" class="form-control" placeholder="password" name="password">
+	<br>
 	<input type="password" class="form-control" placeholder="password confirmation" name="confirmation">
+	<br><br>
 	<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
 	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 </form>
@@ -46,7 +48,4 @@
 </div>
 
 
-
-
-  </div>
-</section>
+</div>
