@@ -39,15 +39,15 @@ module.exports = {
         var smtpapi    = require('smtpapi');
         var header = new smtpapi();
 
-        var ticketNumbers = users.map(function extractName(item)){
+        var ticketNumbers = users.map(function extractTicketNumber(item){
             return item.ticketNumber;
-        }
+        });
 
-        var emails = users.map(function extractName(item)){
+        var emails = users.map(function extractEmails(item){
             return item.email;
-        }
+        });
 
-        var passwords = users.map(function extractName(item){
+        var passwords = users.map(function extractPasswords(item){
             return item.password;
         });
     }
