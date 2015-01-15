@@ -1,6 +1,6 @@
 // EmailService.js - in api/services
 
-var sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.PASSWORD);
+var sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 module.exports = {
 
