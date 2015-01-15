@@ -6,7 +6,7 @@ module.exports = {
 
     sendOneEmail: function(options, next) {
         var mailOptions = {
-            from: 'ECE Club <dinnerdance@ece.skule.ca>', // sender address
+            from: 'dinnerdance@ece.skule.ca', // sender address
             to: options.email, // list of receivers
             subject: options.subject, // Subject line
             text: options.text, // plaintext body
@@ -17,7 +17,8 @@ module.exports = {
             if(error){
                 console.log(error);
                 console.log(error.stack);
-                return next(error);
+                var emailFailedError = [{name: 'emailFailedError', message: 'Email Service Failed'}]
+                return next(emailFailedError);
             }else{
                 console.log(json);
                 return next();
