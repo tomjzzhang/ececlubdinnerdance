@@ -13,7 +13,7 @@ module.exports = {
             html: options.html // html body
         };
 
-        sendgrid.sendMail(mailOptions, function(error, json){
+        sendgrid.send(mailOptions, function(error, json){
             if(error){
                 console.log(error);
                 console.log(error.stack);
