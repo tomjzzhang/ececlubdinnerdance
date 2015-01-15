@@ -183,7 +183,7 @@ module.exports = {
 						'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible.';
 
 			var html = '<p>Hi ' +  user.name + ' </p>'+
-						'<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p>'+
+						'<p>Thank you for registering for ECE dinnerdance! Your account -account- has been created with the following credentials: </p>'+
 						'<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div>' +
 						'<p>Please sign in with these credentials at <a href="'+ signinLink + '" target="_blank">' + signinLink + '</a> '+
 						'and change your password as soon as possible.</p>';

@@ -25,7 +25,8 @@
     "sails": "~0.10.5",
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.10.5",
-    "sendgrid": "^1.5.0"
+    "sendgrid": "^1.5.0",
+    "smtpapi": "^1.0.5"
   },
   "scripts": {
     "start": "node app.js",
