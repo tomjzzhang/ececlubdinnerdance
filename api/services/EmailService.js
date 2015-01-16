@@ -8,7 +8,7 @@ module.exports = {
         var smtpapi    = require('smtpapi');
         var header = new smtpapi();
 
-        header.addSubstitions('account', ['secret']);
+        header.addSubstitution('account', ['secret']);
         // Add the smtpapi header to the general headers
         var headers    = { 'x-smtpapi': header.jsonString() };
 
