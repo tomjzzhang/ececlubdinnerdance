@@ -1,74 +1,22 @@
-body {
- 	
+.bottom-bar{
+  margin-top: 400px;
+
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
 }
 
-h1.pos {
-	font-family: "Marion", serif;
-	font-size: 30px;
-	color: #ffffff;
-	position: static;
-	margin-top: 0px;
-	margin-bottom: -15px;
+.second-main-content{
+  border: solid gray 3px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 405px;
 }
 
-.titlebox h2 {
-	font-family: "Marion", serif;
-	font-size: 17px;
-	color: #c78c30;
-}
-
-.titlebox {
-	float: left;
-	margin: 0 auto;
-	width: 40%;
-}
-
-.textbox h2 {
-	font-family: "Marion", serif;
-	font-size: 17px;
-	color: #ffffff;
-}
-
-.textbox {
-	float: right;
-	margin: 0 auto;
-	width: 60%;
-}
-
-#main1 {
-	position: absolute;
-	margin: 0 auto;
-	width: 400px;
-	margin-bottom: 60px;
-	left: 0;
-	right: 0;
-}
-
-#main2 {
-	position: absolute;
-	margin: 0 auto;
-	width: 400px;
-	margin-top: 60px;
-	left: 0;
-	right: 0;
-}
-
-.top-bar {
-	content: url("../images/top-bar.png");
-	width: 365px;
-	height: 40px;
-	margin: zero auto;
-	margin-bottom: 5px;
-	margin-top: 80px;
-	position: static;
-}
-
-.middle-bar {
-	content: url("../images/middle-bar.png");
-	height: 50px;
-	width: 457px;
-	margin: zero auto;
-	margin-top: 0px;
-	margin-left: 20px;
-	position: static;
+.info-font{
+  padding: 0px;
+  margin: 19px;
+  font-size: 1.4em;
 }
