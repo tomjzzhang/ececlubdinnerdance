@@ -51,7 +51,7 @@ module.exports = {
 	index: function(req, res, next){
 		User.find(function foundUsers (err, users){
 			if (err) return next(err);
-			//pass the array down to the /views/index.ejs page
+			
 			res.view({
 				users: users
 			})

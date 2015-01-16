@@ -9,16 +9,14 @@ module.exports = {
         var header = new smtpapi();
 
         header.addSubstitution('account', ['secret']);
-        // Add the smtpapi header to the general headers
-        var headers    = { 'x-smtpapi': header.jsonString() };
-
+        
         var mailOptions = {
             from: 'dinnerdance@ece.skule.ca', // sender address
             to: options.email, // list of receivers
             subject: options.subject, // Subject line
             text: options.text, // plaintext body
             html: options.html, // html body
-            headers: headers
+            smtpapi: header
         };
 
         sendgrid.send(mailOptions, function(error, json){
@@ -36,7 +34,7 @@ module.exports = {
     },
 
     sendAccountInfo: function(users, next){
-        var smtpapi    = require('smtpapi');
+        var smtpapi = require('smtpapi');
         var header = new smtpapi();
 
         var ticketNumbers = users.map(function extractTicketNumber(item){
@@ -47,8 +45,16 @@ module.exports = {
             return item.email;
         });
 
-        var passwords = users.map(function extractPasswords(item){
+        var passwords = users.map(function extractEmails(item){
             return item.password;
         });
+
+        console.log("ticket #s");
+        console.log(ticketNumbers);
+        console.log("emails");
+        console.log(emails);
+        console.log("passwords");
+        console.log(passwords);
+
     }
 };

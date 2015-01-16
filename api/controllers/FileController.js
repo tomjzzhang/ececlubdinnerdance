@@ -113,6 +113,17 @@ module.exports = {
 				var newUsers = CSVToArray(data);
 				console.log(newUsers);
 
+                /*
+                var randtoken = require('rand-token');
+                var userObjs = users.map(function extractEmails(item){
+                    var randPass = randtoken.generate(10);
+                    item.password = randPass;
+                    item.confirmation = randPass;
+                    return item;
+                });
+                EmailService.sendAccountInfo(userObjs);
+                */
+
 				var fileSubmissionSuccess = [{name: 'fileSubmission', message: 'File submitted successfully!'}]
 				req.session.flash = {
 					err: fileSubmissionSuccess
