@@ -119,21 +119,21 @@ function update(deltaTime) {
     var height = window.innerHeight;
 
     if (ob.x < 0) {
-      ob.x = width;
+      ob.x = width - 50;
     }
 
     if (ob.y < 0) {
-      ob.y = height;
+      ob.y = height - 50;
     }
 
 
     if (ob.x > width) {
-      ob.x = 0;
+      ob.x = 50;
     }
 
 
     if (ob.y > height) {
-      ob.y = 0;
+      ob.y = 50;
     }
 
   });
