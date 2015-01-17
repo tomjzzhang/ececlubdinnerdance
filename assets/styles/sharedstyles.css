@@ -31,7 +31,7 @@ html, body {
   margin: 0px;
 
   background-color: black;
-  overflow-x:hidden; 
+  overflow-x:hidden;
 }
 
 
@@ -78,13 +78,13 @@ html, body {
 
 #backgroundswitch-leftcolumn {
   width: 50%;
-  background-color: #111;
+  background-color: #000;
   margin-top: -100vh;
 }
 
 #backgroundswitch-rightcolumn {
   width: 50%;
-  background-color: #111;
+  background-color: #000;
 }
 
 .backgroundswitch-col-top, .backgroundswitch-col-bottom{
