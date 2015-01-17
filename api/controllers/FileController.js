@@ -4,88 +4,28 @@
  * @description :: Server-side logic for managing files
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+//var csv is the CSV file with headers
+function csvToArray(csv){
+    csv = csv.replace(/(\r)/gm,"");
+    var lines=csv.split("\n");
 
-function CSVToArray( strData, strDelimiter ){
-    // Check to see if the delimiter is defined. If not,
-    // then default to comma.
-    strDelimiter = (strDelimiter || ",");
+    var result = [];
 
-    // Create a regular expression to parse the CSV values.
-    var objPattern = new RegExp(
-        (
-            // Delimiters.
-            "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+    var headers=lines[0].split(",");
 
-            // Quoted fields.
-            "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+    for(var i=1;i<lines.length;i++){
+        var obj = {};
+        var currentline=lines[i].split(",");
+        if (currentline.length == headers.length){
+            for(var j=0;j<headers.length;j++){
+                obj[headers[j]] = currentline[j];
+            }
 
-            // Standard fields.
-            "([^\"\\" + strDelimiter + "\\r\\n]*))"
-        ),
-        "gi"
-        );
-
-
-    // Create an array to hold our data. Give the array
-    // a default empty first row.
-    var arrData = [[]];
-
-    // Create an array to hold our individual pattern
-    // matching groups.
-    var arrMatches = null;
-
-
-    // Keep looping over the regular expression matches
-    // until we can no longer find a match.
-    while (arrMatches = objPattern.exec( strData )){
-
-        // Get the delimiter that was found.
-        var strMatchedDelimiter = arrMatches[ 1 ];
-
-        // Check to see if the given delimiter has a length
-        // (is not the start of string) and if it matches
-        // field delimiter. If id does not, then we know
-        // that this delimiter is a row delimiter.
-        if (
-            strMatchedDelimiter.length &&
-            strMatchedDelimiter !== strDelimiter
-            ){
-
-            // Since we have reached a new row of data,
-            // add an empty row to our data array.
-            arrData.push( [] );
-
+            result.push(obj);
         }
-
-        var strMatchedValue;
-
-        // Now that we have our delimiter out of the way,
-        // let's check to see which kind of value we
-        // captured (quoted or unquoted).
-        if (arrMatches[ 2 ]){
-
-            // We found a quoted value. When we capture
-            // this value, unescape any double quotes.
-            strMatchedValue = arrMatches[ 2 ].replace(
-                new RegExp( "\"\"", "g" ),
-                "\""
-                );
-
-        } else {
-
-            // We found a non-quoted value.
-            strMatchedValue = arrMatches[ 3 ];
-
-        }
-
-
-        // Now that we have our value string, let's add
-        // it to the data array.
-        arrData[ arrData.length - 1 ].push( strMatchedValue );
     }
 
-    // Return the parsed data.
-    return( arrData );
+    return result;
 }
 
 module.exports = {
@@ -101,34 +41,56 @@ module.exports = {
 		req.file('csv').upload(function (err, uploadedFiles) {
 			if (err) return res.send(500, err);
 
-			console.log(uploadedFiles);
-
 			fs = require('fs');
-			
-			console.log(uploadedFiles[0].fd);
 			fs.readFile(uploadedFiles[0].fd, 'utf8', function (err,data) {
 				if (err) {
 					console.log(err);
+                    var fileReadError = [{name: 'fileRead', message: 'Error reading file!'}]
+                    req.session.flash={
+                        err: fileReadError
+                    }
+                    return res.redirect('/file/index');
 				}
-				var newUsers = CSVToArray(data);
-				console.log(newUsers);
 
-                /*
+				var users = csvToArray(data);
+
+                var usersCreated = 0;
+
                 var randtoken = require('rand-token');
-                var userObjs = users.map(function extractEmails(item){
+                var userObjs = users.map(function generatePasswords(item){
                     var randPass = randtoken.generate(10);
                     item.password = randPass;
                     item.confirmation = randPass;
+
+                    User.create(item, function userCreated(err, user){
+                        if (err) {
+                            console.log('The following user was unable to be created:');
+                            console.log(item);
+                            console.log(err);
+                        }
+
+                        usersCreated++;
+                    });
+
                     return item;
                 });
-                EmailService.sendAccountInfo(userObjs);
-                */
 
-				var fileSubmissionSuccess = [{name: 'fileSubmission', message: 'File submitted successfully!'}]
-				req.session.flash = {
-					err: fileSubmissionSuccess
-				}
-				return res.redirect('/file/index');
+                console.log(userObjs);
+
+                EmailService.sendAccountInfo(req, userObjs, function emailSent(err){
+                    if(err){
+                        console.log(err);
+                        req.session.flash={
+                            err: err
+                        }
+                    }else{
+                        var accountCreationSuccess = [{name: 'accountCreation', message: 'Account successfully created! Check your email for further instructions.'}]
+                        req.session.flash={
+                            err: accountCreationSuccess
+                        }
+                    }
+                    return res.redirect('/file/index');
+                });
 			});
 			
 		});
