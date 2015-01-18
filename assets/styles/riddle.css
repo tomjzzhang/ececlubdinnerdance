@@ -3,9 +3,11 @@
 }
 
 .second-main-content{
-
+	opacity: 1;
 }
 
 .bottom-bar{
   margin-top: 300px;
+  margin-bottom: -50px;
 }
+

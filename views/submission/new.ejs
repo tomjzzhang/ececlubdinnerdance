@@ -22,7 +22,7 @@
     	<div class="second-main-content">
 	
 		<div class="center-block col-md-6 col-md-offset-3">
-			<form role="form" action="/submission/create" method="POST" class="form-horizontal">
+			<form role="form" action="/submission/create" method="POST" class="form-horizontal" style="color:#fff">
 				<% if(flash && flash.err) {%>
 					<ul class="alert alert-success">
 						<% Object.keys(flash.err).forEach(function(error){ %>
@@ -42,12 +42,12 @@
 					<div>
 						<%- riddle.riddle %>
 					</div>
-					Answer: <input type="text" class="form-control" name="<%= riddle.id %>"><br>
+					Answer: <input type="text" class="form-control" placeholder="Answer" name="<%= riddle.id %>"><br>
 				</div>
 				<%	}) %>
 
 				<input type="text" class="form-control" placeholder="Email address" name="email"><br>
-				<input type="checkbox" name="isECE" value="true"> I am an ECE <br>
+				<input type="checkbox" name="isECE" value="true"> <p>I am an ECE</p> <br>
 				<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
 				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 			</form>

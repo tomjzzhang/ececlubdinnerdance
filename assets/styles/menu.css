@@ -13,6 +13,7 @@
   border: solid gray 3px;
   background: rgba(0, 0, 0, 0.7);
   width: 405px;
+  opacity: 0.8;
 }
 
 .info-font{
