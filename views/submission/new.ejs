@@ -1,23 +1,26 @@
  <!--  wenxin-added-temp -->
-<link rel="stylesheet" href="/styles/menu.css">
+
 <link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/homepage.css">
+<link rel="stylesheet" href="/styles/eventinfo.css">
+<link rel="stylesheet" href="/styles/menu.css">
 <link rel="stylesheet" href="/styles/register-account.css">
 <link rel="stylesheet" href="/styles/riddle.css">
 
 
-<div class="horizontalcenter">
 
-	<center> <div class = "top-bar"> </div> </center>
+<section class="main-content">
+    <center> <div class = "top-bar"> </div> </center>
     <div id = "title">
       <h1 class = "pos">
-        <center>Riddles</center>
+        <center> Riddle Submission </center>
       </h1>
     </div>
     <center> <div class = "middle-bar"> </div> </center>
-    <br>
 
 
-	<div class="container">
+    	<div class="second-main-content">
+	
 		<div class="center-block col-md-6 col-md-offset-3">
 			<form role="form" action="/submission/create" method="POST" class="form-horizontal">
 				<% if(flash && flash.err) {%>
@@ -48,8 +51,12 @@
 				<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
 				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
 			</form>
-		</div>
 	</div>
 
 
-</div>
+<center> <div class = "bottom-bar middle-bar"> </div> </center>
+
+
+
+  </div>
+</section>

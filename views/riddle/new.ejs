@@ -15,7 +15,7 @@
     <center> <div class = "middle-bar"> </div> </center>
     <br>
 
-	<div class="container">
+	<div class="container" id="upload-riddle-form">
 		<div class="center-block col-md-6 col-md-offset-3">
 			<form role="form" action="/riddle/create" method="POST" class="form-horizontal" id="riddleForm">
 				<% if(flash && flash.err) {%>
@@ -34,10 +34,11 @@
 				You may enter HTML in the riddle to style it better<br>
 				<textarea name="riddle" form="riddleForm">Enter Riddle Here</textarea><br>
 				Possible Answers: <input type="text" class="form-control" placeholder="answer" name="answer"><br>
+
 				*enter as comma separated list*<br>
-				Publish Date: <input type="date" name="publishDate"><br>
-				Expiry Date: <input type="date" name="expiryDate"><br>
-				<input type="submit" class="btn btn-lg btn-primary" value="Create Riddle"/><br>
+				Publish Date: <input type="date" name="publishDate"><br><br>
+				Expiry Date: <input type="date" name="expiryDate"><br><br>
+				<input type="submit" class="btn btn-lg btn-primary" style="color:#fff" value="Create Riddle"/><br>
 				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 			<table class='ticket-type-container'>
 			</form>
