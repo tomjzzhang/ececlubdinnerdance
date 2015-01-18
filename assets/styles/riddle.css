@@ -23,3 +23,11 @@
 	}
 }
 
+.container div{
+	width: 80%;
+}
+
+
+.container{
+	padding-top: 10px;
+}
