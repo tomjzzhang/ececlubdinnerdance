@@ -56,6 +56,16 @@ module.exports.policies = {
   file: {
     'index' : ['admin', 'flash'],
     '*': 'admin'
+  },
+
+  riddle:{
+    '*': ['admin', 'flash'],
+  },
+
+  submission: {
+    'new' : 'flash',
+    'create': [],
+    '*': 'admin'
   }
 
   /***************************************************************************

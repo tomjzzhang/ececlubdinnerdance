@@ -1,0 +1,53 @@
+ <!--  wenxin-added-temp -->
+<link rel="stylesheet" href="/styles/menu.css">
+<link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/register-account.css">
+
+<div class="horizontalcenter">
+
+	<center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center>Riddles</center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+    <br>
+
+
+	<div class="container">
+		<div class="center-block col-md-6 col-md-offset-3">
+			<form role="form" action="/submission/create" method="POST" class="form-horizontal">
+				<% if(flash && flash.err) {%>
+					<ul class="alert alert-success">
+						<% Object.keys(flash.err).forEach(function(error){ %>
+							<% if (flash.err[error].constructor === Array){
+								flash.err[error].forEach(function(obj){ %>
+									<li><%- obj.message %></li>
+								<% }) 
+							} else { %>
+								<li><%- flash.err[error].message %></li>
+							<% } %>
+						<% }) %>
+					</ul>
+				<% } %>
+
+				<% _.each(riddles, function(riddle) { %>
+				<div class="container">
+					<div>
+						<%- riddle.riddle %>
+					</div>
+					Answer: <input type="text" class="form-control" name="<%= riddle.id %>"><br>
+				</div>
+				<%	}) %>
+
+				<input type="text" class="form-control" placeholder="Email address" name="email"><br>
+				<input type="checkbox" name="isECE" value="true"> I am an ECE <br>
+				<input type="submit" class="btn btn-lg btn-primary" value="Create Account"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+			</form>
+		</div>
+	</div>
+
+
+</div>

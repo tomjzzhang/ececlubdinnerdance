@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/styles/registration.css">
+
+<div class="indexlistcontainer">
+	<h3>
+		Riddles
+		<a href="/riddle/new/"><button class="btn btn-primary">Create Riddle</button></a>
+	</h3>
+	<table class="table">
+		<tr>
+			<th>Riddle</th>
+			<th>Answers</th>
+			<th>Publish Date</th>
+			<th>Expiry Date</th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		<% _.each(riddles, function(riddle) { %>
+		<tr data-id="<%= riddle.id %>" data-model="riddle">
+			<td><%= riddle.riddle %></td>
+			<td><%= riddle.answer %></td>
+			<td><%= riddle.publishDate %></td>
+			<td><%= riddle.expiryDate %></td>
+
+			<td><a href="/riddle/edit/<%= riddle.id %>" class="btn btn-sm btn-primary">Edit</a></td>
+			<td>
+				<form action="/riddle/destroy/<%= riddle.id %>" method="POST">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+			</td>
+		</tr>
+		<%	}) %>
+	</table>
+</div>
