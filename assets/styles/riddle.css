@@ -11,3 +11,15 @@
   margin-bottom: -50px;
 }
 
+.container{
+	padding-left: 0;
+	text-align: left;
+}
+
+@media (min-width: 768px){
+	.container{
+		padding-left: 0;
+		text-align: left;
+	}
+}
+
