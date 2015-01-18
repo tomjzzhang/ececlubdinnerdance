@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/styles/menu.css">
+<link rel="stylesheet" href="/styles/changepassword.css">
+
+<!-- enctype="multipart/form-data" -->
+<section class="main-content">
+	<div id="guts">
+		<center> <div class = "top-bar"> </div> </center>
+	    <div id = "title">
+	      <h1 class = "pos">
+	        <center> Bulk User Upload </center>
+	      </h1>
+	    </div>
+	    <center> <div class = "middle-bar"> </div> </center>
+
+	    <div class="container">
+			<div class="center-block col-md-6 col-md-offset-3 cpdiv">
+				<form id="uploadForm" enctype="multipart/form-data" action="/file/upload" method="post">
+				    <% if(flash && flash.err) {%>
+						<ul class="alert alert-success">
+							<% Object.keys(flash.err).forEach(function(error){ %>
+								<% if (flash.err[error].constructor === Array){
+									flash.err[error].forEach(function(obj){ %>
+										<li><%- obj.message %></li>
+									<% }) 
+								} else { %>
+									<li><%- flash.err[error].message %></li>
+								<% } %>
+							<% }) %>
+						</ul>
+					<% } %>
+			    	<input type="file" name="csv" />
+			    	<input type="submit" value="submit"/>
+			    	<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

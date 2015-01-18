@@ -37,7 +37,7 @@ module.exports.policies = {
     'index' : 'admin',
     'register' : ['admin', 'flash'],
     'registerUser': 'admin',
-    '*' : 'sessionAuth'
+    '*' : 'restrict'
   },
 
   tables: {
@@ -51,6 +51,21 @@ module.exports.policies = {
     'generateLink' : [],
     'sendEmail' : [], 
     '*' : 'sessionAuth'
+  },
+
+  file: {
+    'index' : ['admin', 'flash'],
+    '*': 'admin'
+  },
+
+  riddle:{
+    '*': ['admin', 'flash'],
+  },
+
+  submission: {
+    'new' : 'flash',
+    'create': [],
+    '*': 'admin'
   }
 
   /***************************************************************************

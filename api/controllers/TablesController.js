@@ -5,7 +5,7 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var maxTables = 35;
+var maxTables = 32;
 var maxSeats = 10;
 
 module.exports = {

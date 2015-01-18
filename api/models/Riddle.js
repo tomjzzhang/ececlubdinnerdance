@@ -1,5 +1,5 @@
 /**
-* Riddles.js
+* Riddle.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -7,37 +7,33 @@
 
 module.exports = {
 
-
   schema: true,
 
   attributes: {
+  	riddle: {
+		type: 'string',
+		required: true
+	},
 
-    name: {
-      type: 'string',
-      required: true
-    },
+	//comma seperated list of accepted answers
+	answer: {
+		type: 'string',
+		required: true
+	},
 
-    email: {
-      type: 'string',
-      email: true,
-      required: true,
-      unique: true
+	publishDate: {
+		type: 'date',
+		required: true
+	},
 
-    },
-
-    ans_Riddle_1: {
-      type: 'string',
-      required: true
-    },
-
-
-
-
+	expiryDate: {
+		type: 'date',
+		required: true
+	},
   },
 
   toJSON: function() {
     var obj = this.toObject();
-    delete obj.ans_Riddle_1;
-  }
-
+   	delete obj.answer;
+  },
 };
