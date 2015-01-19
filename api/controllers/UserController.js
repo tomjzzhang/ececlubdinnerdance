@@ -28,12 +28,7 @@ module.exports = {
 				return res.redirect('/user/new');
 			}
 
-			req.session.authenticated = true;
-
-			delete user.encryptedPassword;
-			req.session.User = user;
-
-			res.redirect('/user/show/'+user.id);
+			return res.redirect('/user/new');
 		});
 	},
 

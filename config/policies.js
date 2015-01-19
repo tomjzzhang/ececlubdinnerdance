@@ -34,10 +34,8 @@ module.exports.policies = {
     'new' : ['flash', 'admin'],
     'create' : ['flash', 'admin'], 
     'show' : ['restrict', 'flash'],
-    'index' : 'admin',
     'register' : ['admin', 'flash'],
-    'registerUser': 'admin',
-    '*' : 'restrict'
+    '*' : 'admin'
   },
 
   tables: {
