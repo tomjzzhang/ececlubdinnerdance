@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="/styles/tablespage.css">
+<% block('localScripts', '<script src="/js/app.js"></script>') %>
 
 <script>
+  window.csrf = "<%= _csrf %>";
+
   function tablePost(path, params, method) {
     method = method || "post";
 
@@ -44,18 +47,23 @@
     <% } %>
 
     <% for (i = 0; i < numTables; i++) { %>
-        <div id="table_<%= i %>" class="card">
+        <div class="card">
           <h3> Table <%= i+1 %> </h3>
-          
-          <ol class="table_names">
-            <% _.each(tableSeating[i], function(name) { %>
-              <li><%= name %></li>
-            <% }) %>
+          <ol class="table_names" id="table-<%= i+1 %>">
+            <% var count = 0; %>
+            <% _.each(tableSeating[i], function(student) { %>
+              <li id="user-<%= student.id %>"><%= student.name %></li>
+              <% count++; %>
+            <% }); %>
           </ol>
           <% if (userTable === i+1) { %>
-            <button onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
+          <% } else if (i < 2 && count < 12){ %>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+          <% } else if (count >= limit){ %>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
           <% } else { %>
-            <button onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
           <% } %>
         </div>
     <%} %>

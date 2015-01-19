@@ -1,18 +1,51 @@
-.bottom-bar{
-  margin-top: 400px;
+.top-bar {
+  content: url("../images/top-bar.png");
+  width: 365px;
+  height: 40px;
+  margin: zero auto;
+  margin-bottom: 5px;
+  margin-top: 80px;
+  position: static;
+}
 
+.middle-bar {
+  content: url("../images/middle-bar.png");
+  height: 50px;
+  width: 457px;
+  margin: zero auto;
+  margin-top: 0px;
+  position: static;
+  margin-left: -25px;
+}
+
+h1.pos {
+  font-family: "Marion", serif;
+  font-size: 30px;
+  color: #ffffff;
+  position: static;
+  margin-top: 0px;
+  margin-bottom: -15px;
+}
+
+
+
+
+.bottom-bar{
   -moz-transform: scaleY(-1);
   -o-transform: scaleY(-1);
   -webkit-transform: scaleY(-1);
   transform: scaleY(-1);
   filter: FlipV;
   -ms-filter: "FlipV";
+  
+  margin-bottom: -50px;
 }
 
 .second-main-content{
   border: solid gray 3px;
   background: rgba(0, 0, 0, 0.7);
   width: 405px;
+  opacity: 0.8;
 }
 
 .info-font{

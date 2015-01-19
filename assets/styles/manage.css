@@ -1,0 +1,21 @@
+/*===========styling for manage user page===============*/
+
+#manage-table1 tr td form{
+	margin-top: 0;
+
+}
+
+/*===========styling for manage view riddle new===============*/
+
+.horizontalcenter{
+	color: #fff;
+	position: absolute;
+}
+
+#show-btn{
+	margin-bottom: 10px;
+}
+
+#upload-riddle-form form textarea,#upload-riddle-form form input{
+	color:grey;
+}

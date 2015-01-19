@@ -11,7 +11,6 @@ var maxSeats = 10;
 module.exports = {
 
 	'index': function(req, res, next) {
-
 		var tableSeating = new Array(maxTables);
 		var count = 0;
 		for (i = 0; i < maxTables; i++) {
@@ -22,11 +21,15 @@ module.exports = {
 
 				if (typeof users.length !== undefined && users.length > 0){
 					var tableNum = users[0].tableNum;
-					var studentNames = users.map(function extractName(item){
-						return item.name;
+					var students = users.map(function extractName(item){
+						var obj = {
+							name: item.name,
+							id: item.id
+						};
+						return obj;
 					});
 
-					tableSeating[tableNum-1] = JSON.parse(JSON.stringify(studentNames));
+					tableSeating[tableNum-1] = JSON.parse(JSON.stringify(students));
 				}
 
 				count++;
@@ -38,6 +41,7 @@ module.exports = {
 							numTables : maxTables,
 							tableSeating: tableSeating,
 							userTable: user.tableNum,
+							limit: maxSeats,
 							layout: 'mainlayout'
 						});
 					});
@@ -66,13 +70,18 @@ module.exports = {
 			}
 
 			if (num <= limit){
-				User.update(req.session.User.id, tableObj, function userUpdated (err){
+				User.update(req.session.User.id, tableObj, function userUpdated (err, user){
 					if (err){
 						req.session.flash={
 							err: err.ValidationError
 						}
 						return res.redirect('/tables/index');
 					}
+
+					User.publishUpdate(req.session.User.id, {
+						name: user[0].name,
+						tableNum: req.param('tableName'),
+					})
 
 					res.redirect('/tables/index');
 					return;
@@ -93,13 +102,27 @@ module.exports = {
 
 	'removeUser' : function(req, res, next) {
 		var tableObj = {tableNum: undefined};
-		User.update(req.session.User.id, tableObj, function userUpdated (err){
+		User.update(req.session.User.id, tableObj, function userUpdated (err, user){
 			if (err){
 				return next(err);
 			}
 			req.session.User.tableNum = undefined;
 
+			User.publishUpdate(req.session.User.id, {
+				name: user[0].name,
+				tableNum: undefined,
+			})
+
 			res.redirect('/tables/');
+		});
+	},
+
+	'subscribe':function  (req, res, next) {
+	    User.find(function foundUsers (err, users) {
+	    	if (err) return next(err);
+
+		    User.subscribe(req.socket, users);
+		    res.send(200);
 		});
 	}
 };

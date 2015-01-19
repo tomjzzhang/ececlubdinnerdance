@@ -1,0 +1,64 @@
+ <!--  wenxin-added-temp -->
+
+<link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/homepage.css">
+<link rel="stylesheet" href="/styles/eventinfo.css">
+<link rel="stylesheet" href="/styles/menu.css">
+<link rel="stylesheet" href="/styles/register-account.css">
+<link rel="stylesheet" href="/styles/riddle.css">
+
+
+
+<section class="main-content">
+    <center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Riddle Submission </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+
+
+    	<div class="second-main-content">
+	
+		<div class="center-block col-md-6 col-md-offset-3">
+			<form role="form" action="/submission/create" method="POST" class="form-horizontal" style="color:#fff">
+				<% if(flash && flash.err) {%>
+					<ul class="alert alert-success">
+						<% Object.keys(flash.err).forEach(function(error){ %>
+							<% if (flash.err[error].constructor === Array){
+								flash.err[error].forEach(function(obj){ %>
+									<li><%- obj.message %></li>
+								<% }) 
+							} else { %>
+								<li><%- flash.err[error].message %></li>
+							<% } %>
+						<% }) %>
+					</ul>
+				<% } %>
+
+				<% _.each(riddles, function(riddle) { %>
+				<div class="container">
+					<div>
+						<%- riddle.riddle %>
+					</div>
+					Answer: <input type="text" class="form-control" placeholder="Answer" name="<%= riddle.id %>"><br>
+				</div>
+				<%	}) %>
+
+				<br>
+				<p> Please Enter Your Email:</p>
+				<input type="text" class="form-control" placeholder="Email address" name="email"><br>
+				<input type="checkbox" name="isECE" value="true"> <p style="
+    display: inline;">I am an ECE</p>
+				<input type="submit" class="btn btn-lg btn-primary" style="
+    margin: 20px 0;" value="Create Account"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+			</form>
+	</div>
+
+
+<center> <div class = "bottom-bar middle-bar"> </div> </center>
+
+  </div>
+</section>

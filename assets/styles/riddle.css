@@ -1,0 +1,33 @@
+.horizontalcenter{
+	color: #fff;
+}
+
+.second-main-content{
+	opacity: 1;
+}
+
+.bottom-bar{
+  margin-top: 300px;
+  margin-bottom: -50px;
+}
+
+.container{
+	padding-left: 0;
+	text-align: left;
+}
+
+@media (min-width: 768px){
+	.container{
+		padding-left: 0;
+		text-align: left;
+	}
+}
+
+.container div{
+	width: 80%;
+}
+
+
+.container{
+	padding-top: 10px;
+}

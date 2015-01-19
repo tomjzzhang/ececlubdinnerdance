@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/manage.css">
+
+
+<div class="indexlistcontainer">
+	<h3>
+		Riddles Submissions
+	</h3>
+	<table class="table">
+		<tr>
+			<th>Email</th>
+			<th>Submit Date</th>
+			<th>isECE</th>
+			<th></th>
+		</tr>
+
+		<% _.each(submissions, function(submission) { %>
+		<tr data-id="<%= submission.id %>" data-model="submission">
+			<td><%= submission.email %></td>
+			<td><%= submission.createdAt %></td>
+			<td><%= submission.isECE %></td>
+			<td>
+				<form action="/submission/destroy/<%= submission.id %>" method="POST">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+			</td>
+		</tr>
+		<%	}) %>
+	</table>
+</div>

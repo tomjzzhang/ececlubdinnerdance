@@ -1,3 +1,5 @@
+
+
 form{
 	margin-top: -20px;
 	padding: 0 auto;
@@ -11,15 +13,16 @@ table{
 
 #table-container{
 	margin: 0 auto;
-	width: 400px;
+	width: 500px;
 	padding-left: 60px;
 	padding-right: -60px;
 	height: auto;
 }
 
 .title{
-	width: 100px;
-	color: #c68930;
+	width: 200px;
+	font-family: "Marion", serif;
+    color: #ffffff;
 	font-size: 15px;
 	padding: 12px;
 	padding-left: 0px;
@@ -29,8 +32,10 @@ table{
 
 
 .notice{
-	color: #c68930;
-	font-size: 15px;
+	font-family: "Marion", serif;
+    color: #ffffff;
+    font-weight: 900;
+	font-size: 16px;
 }
 
 .info {
@@ -42,6 +47,8 @@ table{
 
 .info a{
 	text-decoration: underline;
+	font-weight: 600;
+	font-size: 16px;
 }
 
 .radiobox-1{
@@ -93,4 +100,8 @@ tr{
   width: 240px;
   margin-bottom: 10px;
   margin: 0 auto;
+}
+
+.info input{
+	margin-right: 5px;
 }
