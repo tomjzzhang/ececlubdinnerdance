@@ -62,4 +62,12 @@ module.exports.routes = {
       layout: 'mainlayout'
     }
   },
+
+  //needed for errors
+  '/cgi-sys/*' : {
+    view: 'homepage',
+    locals: {
+      layout: 'mainlayout'
+    }
+  }
 };
