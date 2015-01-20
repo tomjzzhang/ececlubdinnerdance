@@ -8,17 +8,17 @@
 	</h3>
 	<table class="table">
 		<tr>
+			<th>Name</th>
 			<th>Email</th>
 			<th>Submit Date</th>
-			<th>isECE</th>
 			<th></th>
 		</tr>
 
 		<% _.each(submissions, function(submission) { %>
 		<tr data-id="<%= submission.id %>" data-model="submission">
+			<td><%= submission.name %></td>
 			<td><%= submission.email %></td>
 			<td><%= submission.createdAt %></td>
-			<td><%= submission.isECE %></td>
 			<td>
 				<form action="/submission/destroy/<%= submission.id %>" method="POST">
 					<input type="hidden" name="_method" value="delete" />

@@ -13,6 +13,7 @@ module.exports = {
 			if (err) return next(err);
 			
 			res.view({
+				layout: 'mainlayout',
 				riddles: riddles
 			})
 		})
