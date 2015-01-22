@@ -85,6 +85,7 @@
     <tr>
       <td class="title" id="titletest">Bus Departure Time</td>
       <td class="info">
+        <% var count = 1; %>
         <% _.each(leavingBuses, function(bus) { %>
               
           <% 
@@ -103,7 +104,8 @@
             var time = hour + ":" + min + suffix;
           %>
           <input type="radio" name="busDepartTime" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-         
+          <%= (count % 3 == 0) ? '<br>' : '' %>
+          <% count++; %> 
         <%  }) %>
         <input type="radio" name="busDepartTime" value="" <% if (user.busDepartTime == "") { %><%= 'checked' %><% } %>>Not taking bus
       </td>
@@ -111,8 +113,8 @@
     <tr>
       <td class="title" id="titletest">Bus Return Time</td>
       <td class="info">
-         <% _.each(returningBuses, function(bus) { %>
-              
+        <% var count = 1; %>
+        <% _.each(returningBuses, function(bus) { %>
           <% 
             var hour = bus.date.getHours();
             var suffix = (hour < 12 ? " am" : " pm");
@@ -129,7 +131,8 @@
             var time = hour + ":" + min + suffix;
           %>
           <input type="radio" name="busReturnTime" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-         
+          <%= (count % 3 == 0) ? '<br>' : '' %>
+          <% count++; %> 
         <%  }) %>
         <input type="radio" name="busReturnTime" value="" <% if (user.busReturnTime == "") { %><%= 'checked' %><% } %>>Not taking bus
       </td>
@@ -139,7 +142,7 @@
     <table>
     <tr>
       <br>
-      <td class="notice">** The 8:15 p.m. bus is for those with midterms **</td>
+      <td class="notice">** The 8:20 p.m. bus is for those with midterms **</td>
     </tr>
     </table>
 
