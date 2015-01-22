@@ -104,7 +104,7 @@
             var time = hour + ":" + min + suffix;
           %>
           <input type="radio" name="busDepartTime" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-          <%= (count % 3 == 0) ? '<br>' : '' %>
+          <%- (count % 3 == 0) ? '<br>' : '' %>
           <% count++; %> 
         <%  }) %>
         <input type="radio" name="busDepartTime" value="" <% if (user.busDepartTime == "") { %><%= 'checked' %><% } %>>Not taking bus
@@ -131,7 +131,7 @@
             var time = hour + ":" + min + suffix;
           %>
           <input type="radio" name="busReturnTime" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-          <%= (count % 3 == 0) ? '<br>' : '' %>
+          <%- (count % 3 == 0) ? '<br>' : '' %>
           <% count++; %> 
         <%  }) %>
         <input type="radio" name="busReturnTime" value="" <% if (user.busReturnTime == "") { %><%= 'checked' %><% } %>>Not taking bus
