@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/manage.css">
+
+<div class="indexlistcontainer">
+	<h3>
+		Buses
+		<a href="/bus/new/"><button class="btn btn-primary">Create Bus</button></a>
+	</h3>
+	<h4>Leaving Buses</h4>
+	<table class="table">
+		<tr>
+			<th>id</th>
+			<th>Time</th>
+			<th>Seats</th>
+			<th></th>
+		</tr>
+
+		<% _.each(leavingBuses, function(bus) { %>
+		<tr data-id="<%= bus.id %>" data-model="bus">
+			<td><%= bus.id %></td>
+			<td><%= bus.date %></td>
+			<td><%= bus.seats %></td>
+			<td>
+				<form action="/bus/destroy/<%= bus.id %>" method="POST">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+			</td>
+		</tr>
+		<%	}) %>
+	</table>
+	<br>
+	<br>
+	<h4>Returning Buses</h4>
+	<table class="table">
+		<tr>
+			<th>id</th>
+			<th>Time</th>
+			<th>Seats</th>
+			<th></th>
+		</tr>
+
+		<% _.each(returningBuses, function(bus) { %>
+		<tr data-id="<%= bus.id %>" data-model="bus">
+			<td><%= bus.id %></td>
+			<td><%= bus.date %></td>
+			<td><%= bus.seats %></td>
+			<td>
+				<form action="/bus/destroy/<%= bus.id %>" method="POST">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+			</td>
+		</tr>
+		<%	}) %>
+	</table>
+</div>

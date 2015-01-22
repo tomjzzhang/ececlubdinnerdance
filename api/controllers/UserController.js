@@ -36,9 +36,19 @@ module.exports = {
 		User.findOne(req.param('id'), function foundUser(err, user){
 			if (err) return next(err);
 			if (!user) return next();
-			res.view({
-				user: user,
-				layout: 'mainlayout'
+			Bus.find({ where: { type: 'leaving' }, sort: 'date ASC' }, function foundBuses (err, leavingBuses){
+				if (err) return next(err);
+				
+				Bus.find({ where: { type: 'returning' }, sort: 'date ASC' }, function foundBuses (err, returningBuses){
+					if (err) return next(err);
+
+					res.view({
+						user: user,
+						leavingBuses: leavingBuses,
+						returningBuses: returningBuses,
+						layout: 'mainlayout'
+					});
+				});
 			});
 		});
 	},
@@ -48,8 +58,9 @@ module.exports = {
 			if (err) return next(err);
 			
 			res.view({
-				users: users
+				users: users,	
 			})
+			
 		})
 	},
 
@@ -67,14 +78,13 @@ module.exports = {
 
 		User.update(req.param('id'), userObj, function userUpdated (err){
 			if (err){
-				console.log(err);
 				req.session.flash={
 					err: err.ValidationError
 				}
 				return res.redirect('/user/show/' + req.param('id'));
+			}else{
+				res.redirect('/user/show/' + req.param('id'));
 			}
-
-			res.redirect('/user/show/' + req.param('id'));
 		});
 	},
 

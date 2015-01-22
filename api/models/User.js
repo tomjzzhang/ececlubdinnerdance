@@ -53,10 +53,12 @@ module.exports = {
 
     busDepartTime: {
       type: 'string',
+      defaultsTo: '',
     },
 
-    busLeaveTime: {
+    busReturnTime: {
       type: 'string',
+      defaultsTo: '',
     },
 
   	encryptedPassword:{
@@ -100,5 +102,108 @@ module.exports = {
             next();
         });
     });
-  }
+  },
+
+  /*
+  beforeUpdate: function(values, next){
+    
+    var maxSeats = 1;
+    var done1 = false;
+    var done2 = false;
+
+    if (typeof values.busDepartTime != undefined && values.busDepartTime != ''){
+      var criteria = {
+        busDepartTime: values.busDepartTime
+      }
+
+      User.find(criteria, function (err, users){
+        if (err){
+          return next(err);
+        }else{
+          var numSeats = users.length;
+          var remainingSeats = maxSeats - numSeats;
+          if (remainingSeats > 0){
+            var busObj = {
+              seats: remainingSeats
+            }
+            
+            Bus.update(values.busDepartTime, busObj, function(err){
+              if (err) console.log();
+            });
+
+            done1 = true;
+            if (done1 && done2){
+              return next();
+            }
+          }else{
+            var busObj = {
+              seats: remainingSeats
+            }
+            
+            Bus.update(values.busDepartTime, busObj, function(err){
+              if (err) console.log();
+            });
+
+            delete values.busDepartTime;
+            done1 = true;
+            if (done1 && done2){
+              return next({ValidationError: [{message:"You have selected a full bus!"}]});
+            }
+          }
+        } 
+      });
+    }else{
+      done1 = true;
+      if (done1 && done2){
+        return next();
+      }
+    }
+
+    if (typeof values.busReturnTime != undefined && values.busReturnTime != ''){
+      var criteria = {
+        busReturnTime: values.busReturnTime
+      }
+
+      User.find(criteria, function (err, users){
+        if (err){
+          return next(err);
+        }else{
+          var numSeats = users.length;
+          var remainingSeats = maxSeats - numSeats;
+          if (remainingSeats > 0){
+            var busObj = {
+              seats: remainingSeats
+            }
+            Bus.update(values.busReturnTime, busObj, function(err){
+              if (err) console.log();
+            });
+
+            done2 = true;
+            if (done1 && done2){
+              return next();
+            }
+          }else{
+            var busObj = {
+              seats: remainingSeats
+            }
+            Bus.update(values.busReturnTime, busObj, function(err){
+              if (err) console.log();
+            });
+
+            delete values.busReturnTime;
+            done2 = true;
+            if (done1 && done2){
+              return next({ValidationError: [{message:"You have selected a full bus!"}]});
+            }
+          }
+        } 
+      });
+    }else{
+      done2 = true;
+      if (done1 && done2){
+        return next();
+      }
+    }
+
+  }*/
 };

@@ -11,12 +11,6 @@ module.exports = {
 	},
 
 	create: function (req, res, next) {
-		/*
-		var riddleObj = req.params.all();
-		var oldDate = new Date(); 
-		var newDate = new Date(oldDate.getTime() + 7*24*60*60*1000);
-		console.log(newDate);
-		riddleObj.expiryDate = newDate.toISOString();*/
 		Riddle.create(req.params.all(), function riddleCreated(err, riddle){
 			if (err) {
 				console.log(err);
@@ -40,7 +34,7 @@ module.exports = {
 			if (err) return next(err);
 			
 			res.view({
-				riddles: riddles
+				riddles: riddles,
 			})
 		})
 	},

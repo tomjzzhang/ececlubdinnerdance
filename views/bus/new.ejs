@@ -1,0 +1,49 @@
+	 <!--  wenxin-added-temp -->
+	<link rel="stylesheet" href="/styles/menu.css">
+	<link rel="stylesheet" href="/styles/registration.css">
+	<link rel="stylesheet" href="/styles/register-account.css">
+	<link rel="stylesheet" href="/styles/manage.css">
+
+<div class="horizontalcenter">
+
+	<center> <div class = "top-bar"> </div> </center>
+    <div id = "title">
+      <h1 class = "pos">
+        <center> Create a Bus </center>
+      </h1>
+    </div>
+    <center> <div class = "middle-bar"> </div> </center>
+    <br>
+
+	<div class="container" id="upload-bus-form">
+		<div class="center-block col-md-6 col-md-offset-3">
+			<form role="form" action="/bus/create" method="POST" class="form-horizontal" id="busForm">
+				<% if(flash && flash.err) {%>
+					<ul class="alert alert-success">
+						<% Object.keys(flash.err).forEach(function(error){ %>
+							<% if (flash.err[error].constructor === Array){
+								flash.err[error].forEach(function(obj){ %>
+									<li><%- obj.message %></li>
+								<% }) 
+							} else { %>
+								<li><%- flash.err[error].message %></li>
+							<% } %>
+						<% }) %>
+					</ul>
+				<% } %>
+				Departure time:
+				<input type="date" name="departDate"><br>
+				<input type="time" name="departTime"><br>
+				Type:
+				<select name="type">
+			        <option style="color:#000" value="leaving">leaving</option>
+			        <option style="color:#000" value="returning">returning</option>
+			    </select>
+				<input type="submit" class="btn btn-lg btn-primary" style="color:#fff" value="Create Bus"/><br>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			<table class='ticket-type-container'>
+			</form>
+		</div>
+	</div>
+
+</div>

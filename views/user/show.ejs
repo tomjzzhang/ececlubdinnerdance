@@ -14,19 +14,22 @@
 <center> <div class = "middle-bar"> </div> </center> <br> 
 
   <form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
-    <% if(flash && flash.err) {%>
-      <ul class="alert alert-success">
-      <% Object.keys(flash.err).forEach(function(error){ %>
-        <%flash.err[error].forEach(function(obj){ %>
-          <li><%- obj.message %></li>
-        <% }) %>
-      <% }) %>
-      </ul>
-    <% } %>
-
 
   <div id="table-container">
     <table>
+    <% if(flash && flash.err) {%>
+      <ul class="alert alert-success">
+        <% Object.keys(flash.err).forEach(function(error){ %>
+          <% if (flash.err[error].constructor === Array){
+            flash.err[error].forEach(function(obj){ %>
+              <li><%- obj.message %></li>
+            <% }) 
+          } else { %>
+            <li><%- flash.err[error].message %></li>
+          <% } %>
+        <% }) %>
+      </ul>
+    <% } %>
     <tr>
       <td class="title">Ticket Number</td>
       <td class="info">
@@ -80,22 +83,55 @@
       </td>
     </tr>
     <tr>
-      <td class="title radio" id="titletest">Bus Departure Time</td>
+      <td class="title" id="titletest">Bus Departure Time</td>
       <td class="info">
-        <input type="radio" name="busDepartTime" value="1" <% if (user.busDepartTime == 1) { %><%= 'checked' %><% } %>>6:15 p.m.
-        <input type="radio" name="busDepartTime" value="2" <% if (user.busDepartTime == 2) { %><%= 'checked' %><% } %>>6:30 p.m.
-        <input type="radio" name="busDepartTime" value="3" <% if (user.busDepartTime == 3) { %><%= 'checked' %><% } %>>6:45 p.m. <br>
-        <input type="radio" name="busDepartTime" value="4" <% if (user.busDepartTime == 4) { %><%= 'checked' %><% } %>>8:15 p.m.
-        <input type="radio" name="busDepartTime" value="5" <% if (user.busDepartTime == 5) { %><%= 'checked' %><% } %>>Not taking bus
+        <% _.each(leavingBuses, function(bus) { %>
+              
+          <% 
+            var hour = bus.date.getHours();
+            var suffix = (hour < 12 ? " am" : " pm");
+
+            hour = (hour > 12 ? hour - 12 : hour);
+
+            if (hour == 0){
+              hour = 12;
+            }
+
+            var min  = bus.date.getMinutes();
+            min = (min < 10 ? "0" : "") + min;
+
+            var time = hour + ":" + min + suffix;
+          %>
+          <input type="radio" name="busDepartTime" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
+         
+        <%  }) %>
+        <input type="radio" name="busDepartTime" value="" <% if (user.busDepartTime == "") { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
     <tr>
       <td class="title" id="titletest">Bus Return Time</td>
       <td class="info">
-        <input type="radio" name="busLeaveTime" value="1" <% if (user.busLeaveTime == 1) { %><%= 'checked' %><% } %>>11:00 p.m.
-        <input type="radio" name="busLeaveTime" value="2" <% if (user.busLeaveTime == 2) { %><%= 'checked' %><% } %>>12:00 a.m.
-        <input type="radio" name="busLeaveTime" value="3" <% if (user.busLeaveTime == 3) { %><%= 'checked' %><% } %>>1:00 a.m. <br>
-        <input type="radio" name="busLeaveTime" value="4" <% if (user.busLeaveTime == 4) { %><%= 'checked' %><% } %>>Not taking bus
+         <% _.each(returningBuses, function(bus) { %>
+              
+          <% 
+            var hour = bus.date.getHours();
+            var suffix = (hour < 12 ? " am" : " pm");
+
+            hour = (hour > 12 ? hour - 12 : hour);
+
+            if (hour == 0){
+              hour = 12;
+            }
+
+            var min  = bus.date.getMinutes();
+            min = (min < 10 ? "0" : "") + min;
+
+            var time = hour + ":" + min + suffix;
+          %>
+          <input type="radio" name="busReturnTime" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
+         
+        <%  }) %>
+        <input type="radio" name="busReturnTime" value="" <% if (user.busReturnTime == "") { %><%= 'checked' %><% } %>>Not taking bus
       </td>
     </tr>
 

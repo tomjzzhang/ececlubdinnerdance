@@ -34,6 +34,7 @@ module.exports.policies = {
     'new' : ['flash', 'admin'],
     'create' : ['flash', 'admin'], 
     'show' : ['restrict', 'flash'],
+    'update' : 'restrict',
     'register' : ['admin', 'flash'],
     '*' : 'admin'
   },
@@ -64,6 +65,10 @@ module.exports.policies = {
     'new' : 'flash',
     'create': [],
     '*': 'admin'
+  },
+
+  bus:{
+    '*': ['admin', 'flash'],
   }
 
   /***************************************************************************

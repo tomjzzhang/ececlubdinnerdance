@@ -85,7 +85,8 @@ module.exports = {
 			if (err) return next(err);
 			
 			res.view({
-				submissions: submissions
+				submissions: submissions,
+				length: submissions.length,
 			})
 		})
 	},
