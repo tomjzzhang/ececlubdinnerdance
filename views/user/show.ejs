@@ -83,58 +83,64 @@
       </td>
     </tr>
     <tr>
-      <td class="title" id="titletest">Bus Departure Time</td>
+      <td class="title">Bus Departure Time</td>
       <td class="info">
-        <% var count = 1; %>
-        <% _.each(leavingBuses, function(bus) { %>
-              
-          <% 
-            var hour = bus.date.getHours();
-            var suffix = (hour < 12 ? " am" : " pm");
+        <select name="busDepartTime">
+          <% _.each(leavingBuses, function(bus) { %>
+                
+            <% 
+              var hour = bus.date.getHours();
+              var suffix = (hour < 12 ? " am" : " pm");
 
-            hour = (hour > 12 ? hour - 12 : hour);
+              hour = (hour > 12 ? hour - 12 : hour);
 
-            if (hour == 0){
-              hour = 12;
-            }
+              if (hour == 0){
+                hour = 12;
+              }
 
-            var min  = bus.date.getMinutes();
-            min = (min < 10 ? "0" : "") + min;
+              var min  = bus.date.getMinutes();
+              min = (min < 10 ? "0" : "") + min;
 
-            var time = hour + ":" + min + suffix;
-          %>
-          <input type="radio" name="busDepartTime" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-          <%- (count % 3 == 0) ? '<br>' : '' %>
-          <% count++; %> 
-        <%  }) %>
-        <input type="radio" name="busDepartTime" value="" <% if (user.busDepartTime == "") { %><%= 'checked' %><% } %>>Not taking bus
+              var time = hour + ":" + min + suffix;
+            %>
+            <option style="color:#000" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'selected' %><% } %>>
+              <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
+            </option>
+          <%  }) %>
+          <option style="color:#000" value="" <% if (user.busDepartTime == "") { %><%= 'selected' %><% } %>>
+            Not taking bus
+          </option>
+        </select>
       </td>
     </tr>
     <tr>
       <td class="title" id="titletest">Bus Return Time</td>
       <td class="info">
-        <% var count = 1; %>
-        <% _.each(returningBuses, function(bus) { %>
-          <% 
-            var hour = bus.date.getHours();
-            var suffix = (hour < 12 ? " am" : " pm");
+        <select name="busReturnTime">
+          <% _.each(returningBuses, function(bus) { %>
+            <% 
+              var hour = bus.date.getHours();
+              var suffix = (hour < 12 ? " am" : " pm");
 
-            hour = (hour > 12 ? hour - 12 : hour);
+              hour = (hour > 12 ? hour - 12 : hour);
 
-            if (hour == 0){
-              hour = 12;
-            }
+              if (hour == 0){
+                hour = 12;
+              }
 
-            var min  = bus.date.getMinutes();
-            min = (min < 10 ? "0" : "") + min;
+              var min  = bus.date.getMinutes();
+              min = (min < 10 ? "0" : "") + min;
 
-            var time = hour + ":" + min + suffix;
-          %>
-          <input type="radio" name="busReturnTime" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'checked' %><% } %><%= (bus.seats <= 0) ? " disabled" : "" %>><%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-          <%- (count % 3 == 0) ? '<br>' : '' %>
-          <% count++; %> 
-        <%  }) %>
-        <input type="radio" name="busReturnTime" value="" <% if (user.busReturnTime == "") { %><%= 'checked' %><% } %>>Not taking bus
+              var time = hour + ":" + min + suffix;
+            %>
+            <option style="color:#000" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'selected' %><% } %>>
+              <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
+            </option>
+          <%  }) %>
+          <option style="color:#000" value="" <% if (user.busReturnTime == "") { %><%= 'selected' %><% } %>>
+            Not taking bus
+          </option>
+        </select>
       </td>
     </tr>
 
