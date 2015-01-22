@@ -74,13 +74,13 @@ module.exports = {
                         // the same transporter object for all e-mails
                         var text =  'Hi' + user.name + '\n'
                                     'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n' +
-                                    'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n' +
+                                    'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + item.password + '\n \n' +
                                     'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible. '+
                                     'If you have signed up on someone\'s behalf, please forward them this information.';
 
                         var html = '<p>Hi ' +  user.name + ' </p>'+
                                     '<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p>'+
-                                    '<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div>' +
+                                    '<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + item.password + '</div>' +
                                     '<p>Please sign in with these credentials at <a href="'+ signinLink + '" target="_blank">' + signinLink + '</a> '+
                                     'and change your password as soon as possible. If you have signed up on someone\'s behalf, please forward them this information.</p>';
 
