@@ -76,6 +76,56 @@ module.exports = {
 			delete userObj.otherDietaryRestrictions;
 		}
 
+		var maxSeats = 48;
+
+		Bus.find({ type: 'leaving' }, function foundBuses (err, leavingBuses){
+			if (err) return next(err);
+			
+			leavingBuses.map(function(bus) {
+				var criteria = {
+					busDepartTime: bus.id
+				}
+				User.find(criteria, function (err, users){
+					if (err){
+						console.log(err);	
+					}else{
+						var numSeats = users.length;
+						var remainingSeats = maxSeats - numSeats;
+						var busObj = {
+							seats: remainingSeats
+						}
+						Bus.update(bus.id, busObj, function(err){
+							if (err) console.log();
+						})
+					} 
+				});
+			});
+		});
+
+		Bus.find({ type: 'returning' }, function foundBuses (err, returningBuses){
+			if (err) return next(err);
+
+			returningBuses.map(function(bus) {
+				var criteria = {
+					busDepartTime: bus.id
+				}
+				User.find(criteria, function (err, users){
+					if (err){
+						console.log(err);	
+					}else{
+						var numSeats = users.length;
+						var remainingSeats = maxSeats - numSeats;
+						var busObj = {
+							seats: remainingSeats
+						}
+						Bus.update(bus.id, busObj, function(err){
+							if (err) console.log();
+						})
+					} 
+				});
+			});
+		});
+
 		User.update(req.param('id'), userObj, function userUpdated (err){
 			if (err){
 				req.session.flash={

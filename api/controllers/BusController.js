@@ -30,23 +30,6 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		
-		Bus.find({ where: { type: 'leaving' }, sort: 'date ASC' }, function foundBuses (err, leavingBuses){
-			if (err) return next(err);
-			
-			Bus.find({ where: { type: 'returning' }, sort: 'date ASC' }, function foundBuses (err, returningBuses){
-				if (err) return next(err);
-
-				res.view({
-					leavingBuses: leavingBuses,
-					returningBuses: returningBuses,
-				})
-			});
-		})
-	},
-
-	refresh: function(req, res, next){
-		
 		var maxSeats = 48;
 
 		Bus.find({ type: 'leaving' }, function foundBuses (err, leavingBuses){
@@ -62,7 +45,6 @@ module.exports = {
 					}else{
 						var numSeats = users.length;
 						var remainingSeats = maxSeats - numSeats;
-						console.log(remainingSeats);
 						var busObj = {
 							seats: remainingSeats
 						}
@@ -87,7 +69,6 @@ module.exports = {
 					}else{
 						var numSeats = users.length;
 						var remainingSeats = maxSeats - numSeats;
-						console.log(remainingSeats);
 						var busObj = {
 							seats: remainingSeats
 						}
@@ -99,7 +80,18 @@ module.exports = {
 			});
 		});
 
-		res.redirect('/bus/index/');
+		Bus.find({ where: { type: 'leaving' }, sort: 'date ASC' }, function foundBuses (err, leavingBuses){
+			if (err) return next(err);
+			
+			Bus.find({ where: { type: 'returning' }, sort: 'date ASC' }, function foundBuses (err, returningBuses){
+				if (err) return next(err);
+
+				res.view({
+					leavingBuses: leavingBuses,
+					returningBuses: returningBuses,
+				})
+			});
+		})
 	},
 
 	destroy: function (req, res, next){
