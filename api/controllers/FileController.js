@@ -33,7 +33,7 @@ module.exports = {
 		res.view();
 	},
 
-	'upload' : function(req, res){
+	'upload' : function(req, res, next){
 		if(req.method === 'GET')
 			return res.json({'status':'GET not allowed'});						
 			//	Call to /upload via GET is error
@@ -67,6 +67,7 @@ module.exports = {
                             console.log('The following user was unable to be created:');
                             console.log(item);
                             console.log(err);
+                            return next(err);
                         }
 
                         var signinLink = 'http://' + req.get('host') + '/session/new';
@@ -91,27 +92,19 @@ module.exports = {
                             text: text
                         }
 
-                        EmailService.sendOneEmail(emailOptions, function emailSent(err){
-                            if(err){
-                                console.log(err);
-                                req.session.flash={
-                                    err: err
-                                }
-                            }else{
-                                var accountCreationSuccess = [{name: 'accountCreation', message: 'Account successfully created! Check your email for further instructions.'}]
-                                req.session.flash={
-                                    err: accountCreationSuccess
-                                }
-                            }
-                            return res.redirect('/user/register');
-                        });
-
+                        EmailService.sendOneEmail(emailOptions, function emailSent(err){});
 
                         usersCreated++;
                     });
-
+                    
                     return item;
                 });
+                
+                var accountCreationSuccess = [{name: 'accountCreation', message: 'Account successfully created! Check your email for further instructions.'}]
+                req.session.flash={
+                    err: accountCreationSuccess
+                }
+                return res.redirect('/file/index');
                 /*
                 console.log(userObjs);
 
