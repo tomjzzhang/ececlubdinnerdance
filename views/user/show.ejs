@@ -103,7 +103,7 @@
 
               var time = hour + ":" + min + suffix;
             %>
-            <option style="color:#000" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'selected' %><% } %>>
+            <option style="color:#000" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'selected ' %><% } %> <%= (bus.seats <= 0) ? " disabled" : "" %>>
               <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
             </option>
           <%  }) %>
@@ -133,7 +133,8 @@
 
               var time = hour + ":" + min + suffix;
             %>
-            <option style="color:#000" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'selected' %><% } %>>
+            <option style="color:#000" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'selected ' %><% } %>
+              <%= (bus.seats <= 0) ? " disabled" : "" %>>
               <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
             </option>
           <%  }) %>
