@@ -69,12 +69,50 @@ module.exports = {
                             console.log(err);
                         }
 
+                        var signinLink = 'http://' + req.get('host') + '/session/new';
+                        // NB! No need to recreate the transporter object. You can use
+                        // the same transporter object for all e-mails
+                        var text =  'Hi' + user.name + '\n'
+                                    'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n' +
+                                    'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + newPass + '\n \n' +
+                                    'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible. '+
+                                    'If you have signed up on someone\'s behalf, please forward them this information.';
+
+                        var html = '<p>Hi ' +  user.name + ' </p>'+
+                                    '<p>Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: </p>'+
+                                    '<div><strong>Ticket Number: </strong>' + user.ticketNumber + '<br><strong>Password: </strong>' + newPass + '</div>' +
+                                    '<p>Please sign in with these credentials at <a href="'+ signinLink + '" target="_blank">' + signinLink + '</a> '+
+                                    'and change your password as soon as possible. If you have signed up on someone\'s behalf, please forward them this information.</p>';
+
+                        var emailOptions = {
+                            email: user.email,
+                            subject: 'Welcome to ECE Dinnerdance',
+                            html: html,
+                            text: text
+                        }
+
+                        EmailService.sendOneEmail(emailOptions, function emailSent(err){
+                            if(err){
+                                console.log(err);
+                                req.session.flash={
+                                    err: err
+                                }
+                            }else{
+                                var accountCreationSuccess = [{name: 'accountCreation', message: 'Account successfully created! Check your email for further instructions.'}]
+                                req.session.flash={
+                                    err: accountCreationSuccess
+                                }
+                            }
+                            return res.redirect('/user/register');
+                        });
+
+
                         usersCreated++;
                     });
 
                     return item;
                 });
-
+                /*
                 console.log(userObjs);
 
                 EmailService.sendAccountInfo(req, userObjs, function emailSent(err){
@@ -91,6 +129,7 @@ module.exports = {
                     }
                     return res.redirect('/file/index');
                 });
+                */
 			});
 			
 		});
