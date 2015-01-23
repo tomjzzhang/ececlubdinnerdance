@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/styles/tablespage.css">
+<% block('localScripts', '<script src="/js/imagelightbox.min.js"></script>') %>
 <% block('localScripts', '<script src="/js/app.js"></script>') %>
+
 
 <script>
   window.csrf = "<%= _csrf %>";
@@ -30,8 +32,10 @@
 <div class="tables_section">
 
   <div class="cardholder">
-
-    <h1> Table Selection </h1>
+    <div>
+      <h1> Table Selection </h1>
+      <a href="/images/floorplan.jpg" data-imagelightbox="a">Floor plan</a>
+    </div>
     <% if(flash && flash.err) {%>
       <ul class="alert alert-success">
         <% Object.keys(flash.err).forEach(function(error){ %>
@@ -49,21 +53,23 @@
     <% for (i = 0; i < numTables; i++) { %>
         <div class="card">
           <h3> Table <%= i+1 %> </h3>
-          <ol class="table_names" id="table-<%= i+1 %>">
-            <% var count = 0; %>
-            <% _.each(tableSeating[i], function(student) { %>
-              <li id="user-<%= student.id %>"><%= student.name %></li>
-              <% count++; %>
-            <% }); %>
-          </ol>
-          <% if (userTable === i+1) { %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
-          <% } else if (i < 2 && count < 12){ %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
-          <% } else if (count >= limit){ %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
+          <% if (i == 12 || i == 13) { %>
+            RESERVED
           <% } else { %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+            <ol class="table_names" id="table-<%= i+1 %>">
+              <% var count = 0; %>
+              <% _.each(tableSeating[i], function(student) { %>
+                <li id="user-<%= student.id %>"><%= student.name %></li>
+                <% count++; %>
+              <% }); %>
+            </ol>
+            <% if (userTable === i+1) { %>
+              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
+            <% } else if (count >= limit){ %>
+              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
+            <% } else { %>
+              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+            <% } %>
           <% } %>
         </div>
     <%} %>

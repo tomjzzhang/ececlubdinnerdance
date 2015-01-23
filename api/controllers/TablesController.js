@@ -65,9 +65,6 @@ module.exports = {
 			if (err) return next(err);
 
 			var limit = maxSeats;
-			if (req.param('tableName') == 1 || req.param('tableName') == 2){
-				limit = 12;
-			}
 
 			if (num <= limit){
 				User.update(req.session.User.id, tableObj, function userUpdated (err, user){

@@ -1,3 +1,44 @@
+
+
+	$( function()
+	{
+			// ACTIVITY INDICATOR
+
+		var activityIndicatorOn = function()
+			{
+				$( '<div id="imagelightbox-loading"><div></div></div>' ).appendTo( 'body' );
+			},
+			activityIndicatorOff = function()
+			{
+				$( '#imagelightbox-loading' ).remove();
+			},
+
+
+			// OVERLAY
+
+			overlayOn = function()
+			{
+				$( '<div id="imagelightbox-overlay"></div>' ).appendTo( 'body' );
+			},
+			overlayOff = function()
+			{
+				$( '#imagelightbox-overlay' ).remove();
+			};
+
+		//	WITH OVERLAY & ACTIVITY INDICATION
+
+		$( 'a[data-imagelightbox="a"]' ).imageLightbox(
+		{
+			onStart: 	 function() { overlayOn(); },
+			onEnd:	 	 function() { overlayOff(); activityIndicatorOff(); },
+			onLoadStart: function() { activityIndicatorOn(); },
+			onLoadEnd:	 function() { activityIndicatorOff(); }
+		});
+
+	});
+
+
+
 io.socket.on('connect', function messageReceived() {
 	console.log(this.socket.sessionid);
 
@@ -29,7 +70,7 @@ io.socket.on('connect', function messageReceived() {
 				list.append(userElement);
 
 				var numSeats = list.children().length;
-				if ((message.data.tableNum <= 2 && numSeats >= 12 )|| (message.data.tableNum > 2 && numSeats >= 10 )){
+				if (numSeats >= 10 ){
 					var btn = $('#table-'+message.data.tableNum + '-btn');
 					btn.text("Full");
 					btn.css("pointer-events", "none");
