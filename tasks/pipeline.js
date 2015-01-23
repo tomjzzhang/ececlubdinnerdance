@@ -15,7 +15,7 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'fonts/ufonts.com_marion.ttf',
+  //'fonts/ufonts.com_marion.ttf',
 
   'styles/dependencies/normalize.css',
   'styles/dependencies/bootstrap.min.css',
