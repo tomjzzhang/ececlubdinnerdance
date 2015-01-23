@@ -42,12 +42,34 @@ module.exports = {
 				Bus.find({ where: { type: 'returning' }, sort: 'date ASC' }, function foundBuses (err, returningBuses){
 					if (err) return next(err);
 
-					res.view({
-						user: user,
-						leavingBuses: leavingBuses,
-						returningBuses: returningBuses,
-						layout: 'mainlayout'
-					});
+					if (user.activated == true){
+						res.view({
+							user: user,
+							leavingBuses: leavingBuses,
+							returningBuses: returningBuses,
+							layout: 'mainlayout'
+						});
+					}else{
+						var userObj = {
+							activated: true
+						}
+						User.update(req.param('id'), userObj, function userUpdated (err){
+							if (err){
+								req.session.flash={
+									err: err.ValidationError
+								}
+								res.view({
+									user: user,
+									leavingBuses: leavingBuses,
+									returningBuses: returningBuses,
+									layout: 'mainlayout'
+								});
+							}else{
+								res.redirect('/password/index/');
+							}
+						});
+					}
+					
 				});
 			});
 		});

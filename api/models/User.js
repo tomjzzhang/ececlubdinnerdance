@@ -73,6 +73,11 @@ module.exports = {
     admin : {
       type: 'boolean',
       defaultsTo: false
+    },
+
+    activated: {
+      type: 'boolean',
+      defaultsTo: false
     }
   },
 
