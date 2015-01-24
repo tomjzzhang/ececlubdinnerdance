@@ -92,8 +92,8 @@ module.exports = {
                             text: text
                         }
 
-                        console.log('email:' + emailOptions.email + '\n' + emailOptions.html);
-                        //EmailService.sendOneEmail(emailOptions, function emailSent(err){});
+                        //console.log('email:' + emailOptions.email + '\n' + emailOptions.html);
+                        EmailService.sendOneEmail(emailOptions, function emailSent(err){});
 
                         usersCreated++;
                     });
