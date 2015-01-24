@@ -8,6 +8,7 @@ form{
 table{
 	padding-left: 20px;
 	width: auto;
+	border-collapse: separate;
 }
 
 
