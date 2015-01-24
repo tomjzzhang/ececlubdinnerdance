@@ -76,7 +76,7 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		User.find(function foundUsers (err, users){
+		User.find({sort: 'ticketNumber ASC'}, function foundUsers (err, users){
 			if (err) return next(err);
 			
 			res.view({

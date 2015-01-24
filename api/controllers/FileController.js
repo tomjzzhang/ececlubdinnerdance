@@ -73,7 +73,7 @@ module.exports = {
                         var signinLink = 'http://' + req.get('host') + '/session/new';
                         // NB! No need to recreate the transporter object. You can use
                         // the same transporter object for all e-mails
-                        var text =  'Hi' + user.name + '\n'
+                        var text =  'Hi' + user.name + '\n' +
                                     'Thank you for registering for ECE dinnerdance! Your account has been created with the following credentials: \n' +
                                     'Ticket Number:  ' + user.ticketNumber + '\n Password: ' + item.password + '\n \n' +
                                     'Please sign in with these credentials at ' + signinLink + 'and change your password as soon as possible. '+
