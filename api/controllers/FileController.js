@@ -18,7 +18,7 @@ function csvToArray(csv){
         var currentline=lines[i].split(",");
         if (currentline.length == headers.length){
             for(var j=0;j<headers.length;j++){
-                obj[headers[j]] = currentline[j];
+                obj[headers[j]] = currentline[j].trim();
             }
 
             result.push(obj);
