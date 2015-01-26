@@ -61,7 +61,7 @@ module.exports = {
 
 			returningBuses.map(function(bus) {
 				var criteria = {
-					busDepartTime: bus.id
+					busReturnTime: bus.id
 				}
 				User.find(criteria, function (err, users){
 					if (err){
