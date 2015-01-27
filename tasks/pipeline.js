@@ -43,10 +43,6 @@ var jsFilesToInject = [
 
   'js/homepage-backgroundswitch.js',
   'js/homepage-footprints.js',
-  // <script src="/js/homepage-backgroundswitch.js"></script>
-  // <script src="/js/homepage-canvas.js"></script>
-  // <script src="/js/homepage-footprints.js"></script>
-  // <script src="/js/homepage-sections.js"></script>
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
