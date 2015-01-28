@@ -1,3 +1,14 @@
+#footer-logo{
+  height: 78px;
+  width: 257px;
+  /*background-color: #fff;*/
+  background-image: url("../images/footer.png"); 
+  position: absolute;
+  right: 0;
+  bottom: 0; 
+  margin: 30px;
+}
+
 
 @font-face {
   font-family: marion;
