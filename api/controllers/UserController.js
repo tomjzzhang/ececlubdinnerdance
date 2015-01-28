@@ -76,7 +76,16 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		User.find({sort: 'ticketNumber ASC'}, function foundUsers (err, users){
+		var criteria = {sort: 'ticketNumber ASC'};
+		var activated = req.param('activated');
+
+		var whereObj = {};
+		if (typeof activated != 'undefined'&& activated != undefined && activated != ''){
+			whereObj.activated = activated;
+			criteria.where = whereObj;
+		}
+
+		User.find(criteria, function foundUsers (err, users){
 			if (err) return next(err);
 			
 			res.view({
