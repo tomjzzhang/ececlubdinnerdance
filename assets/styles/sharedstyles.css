@@ -1,8 +1,19 @@
+#footer-logo{
+  height: 78px;
+  width: 257px;
+  /*background-color: #fff;*/
+  background-image: url("../images/footer.png"); 
+  position: absolute;
+  right: 0;
+  bottom: 0; 
+  margin: 30px;
+}
+
 
 @font-face {
   font-family: marion;
   font-size: 1em;
-  src: url(../fonts/ufonts.com_marion.ttf);
+  src: url(/fonts/ufonts.com_marion.ttf);
 }
 
 a:link{

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/styles/registration.css">
 <link rel="stylesheet" href="/styles/manage.css">
+<% block('localScripts', '<script src="/js/jquery.tablesorter.min.js"></script>') %>
 <% block('localScripts', '<script src="/js/manage.js"></script>') %>
 
 <div class="indexlistcontainer">
@@ -8,44 +9,47 @@
 		<a href="/file/index/"><button class="btn btn-primary">Bulk Upload</button></a>
 	</h3>
 	<table class="table" id="manage-table1">
-		<tr>
-			<th>Ticket #</th>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Ticket Type</th>
-			<th>Year</th>
-			<th>Food Option</th>
-			<th>Table #</th>
-			<th>Age</th>
-			<th>Bus Departure Time</th>
-			<th>Bus Return Time</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
+		<thead>
+			<tr>
+				<th>Ticket #</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Ticket Type</th>
+				<th>Year</th>
+				<th>Food Option</th>
+				<th>Table #</th>
+				<th>Age</th>
+				<th>Bus Departure Time</th>
+				<th>Bus Return Time</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% _.each(users, function(user) { %>
+			<tr data-id="<%= user.id %>" data-model="user">
+				<td><%= user.ticketNumber %></td>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.ticketType %></td>
+				<td><%= user.year %></td>
+				<td><%= user.dietaryRestrictions %></td>
+				<td><%= user.tableNum %></td>
+				<td><%= user.overDrinkingAge %></td>
+				<td><%= user.busDepartTime %></td>
+				<td><%= user.busReturnTime %></td>
 
-		<% _.each(users, function(user) { %>
-		<tr data-id="<%= user.id %>" data-model="user">
-			<td><%= user.ticketNumber %></td>
-			<td><%= user.name %></td>
-			<td><%= user.email %></td>
-			<td><%= user.ticketType %></td>
-			<td><%= user.year %></td>
-			<td><%= user.dietaryRestrictions %></td>
-			<td><%= user.tableNum %></td>
-			<td><%= user.overDrinkingAge %></td>
-			<td><%= user.busDepartTime %></td>
-			<td><%= user.busReturnTime %></td>
-
-			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary" id="show-btn">Show</a>
-			
-			<form action="/user/destroy/<%= user.id %>" method="POST">
-				<input type="hidden" name="_method" value="delete" />
-				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
-				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-			</form>
-			</td>
-		</tr>
-		<%	}) %>
+				<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary" id="show-btn">Show</a>
+				
+				<form action="/user/destroy/<%= user.id %>" method="POST">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+				</td>
+			</tr>
+			<%	}) %>
+		</tbody>
 	</table>
 </div>
