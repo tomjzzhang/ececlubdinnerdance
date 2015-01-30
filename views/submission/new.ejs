@@ -7,55 +7,68 @@
 <link rel="stylesheet" href="/styles/register-account.css">
 <link rel="stylesheet" href="/styles/riddle.css">
 
+<% block('localScripts', '<script src="/js/imagelightbox.min.js"></script>') %>
+<% block('localScripts', '<script src="/js/riddles.js"></script>') %>
 
-
-<section class="main-content">
-    <center> <div class = "top-bar"> </div> </center>
+<section>
+    <center>
+    	<div class = "top-bar"></div>
+    </center>
     <div id = "title">
       <h1 class = "pos">
         <center> Riddle Submission </center>
       </h1>
     </div>
-    <center> <div class = "middle-bar"> </div> </center>
+    <center>
+    	<div class = "middle-bar"></div>
+    </center>
 
-
-    	<div class="second-main-content">
-		<!--<img src="/images/crossword.jpg" /> -->
+	<div class="second-main-content">
+		
+		<a href="/images/crossword.jpg" data-imagelightbox="a">
+			<img src="/images/crossword.jpg" class="center-block img-responsive" style="padding:10px"/>
+		</a>
+		
+		
 		<div class="center-block col-md-6 col-md-offset-3">
+
 			<% if (typeof riddles !== 'undefined' && riddles.length > 0) { %>
-			<form role="form" action="/submission/create" method="POST" class="form-horizontal" style="color:#fff">
-				<% if(flash && flash.err) {%>
-					<ul class="alert alert-success">
-						<% Object.keys(flash.err).forEach(function(error){ %>
-							<% if (flash.err[error].constructor === Array){
-								flash.err[error].forEach(function(obj){ %>
-									<li><%- obj.message %></li>
-								<% }) 
-							} else { %>
-								<li><%- flash.err[error].message %></li>
-							<% } %>
-						<% }) %>
-					</ul>
-				<% } %>
+				<form role="form" action="/submission/create" method="POST" class="form-horizontal" style="color:#fff">
+					<% if(flash && flash.err) {%>
+						<ul class="alert alert-success">
+							<% Object.keys(flash.err).forEach(function(error){ %>
+								<% if (flash.err[error].constructor === Array){
+									flash.err[error].forEach(function(obj){ %>
+										<li><%- obj.message %></li>
+									<% }) 
+								} else { %>
+									<li><%- flash.err[error].message %></li>
+								<% } %>
+							<% }) %>
+						</ul>
+					<% } %>
 
-				<% _.each(riddles, function(riddle) { %>
-				<div class="container">
-					<div>
-						<%- riddle.riddle %>
+					<% _.each(riddles, function(riddle) { %>
+					<!--
+					<div class="container">
+						<div>
+							<%- riddle.riddle %>
+						</div>
+						Answer: <input type="text" class="form-control" placeholder="Answer" name="<%= riddle.id %>"><br>
+						
 					</div>
-					Answer: <input type="text" class="form-control" placeholder="Answer" name="<%= riddle.id %>"><br>
-				</div>
-				<%	}) %>
+					-->
+						<%- riddle.riddle %><input type="text" class="form-control" placeholder="Answer" name="<%= riddle.id %>"><br>
+					<%	}) %>
 
-				<br>
-				<p> Please Enter Your Name:</p>
-				<input type="text" class="form-control" placeholder="Name" name="name"><br>
-				<p> Please Enter Your Email:</p>
-				<input type="text" class="form-control" placeholder="Email address" name="email"><br>
-				<input type="submit" class="btn btn-lg btn-primary" style="
-    margin: 20px 0;" value="Submit"/>
-				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-			</form>
+					<br>
+					<p> Please Enter Your Name:</p>
+					<input type="text" class="form-control" placeholder="Name" name="name"><br>
+					<p> Please Enter Your Email:</p>
+					<input type="text" class="form-control" placeholder="Email address" name="email"><br>
+					<input type="submit" class="btn btn-lg btn-primary" style="margin: 20px 0;" value="Submit"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+				</form>
 			<% } else { %>
 				<div class="container horizontalcenter">
 					<div class="text-center">
@@ -63,11 +76,9 @@
 					</div>
 				</div>
 			<% } %>
-
+		</div>
+		<center>
+			<div class = "bottom-bar middle-bar"></div>
+		</center>
 	</div>
-
-
-<center> <div class = "bottom-bar middle-bar"> </div> </center>
-
-  </div>
 </section>
