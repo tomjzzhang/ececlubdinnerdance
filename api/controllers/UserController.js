@@ -300,4 +300,31 @@ module.exports = {
 
 		});
 	},
+
+	sendReminder: function(req, res, next){
+
+		User.find({activated: false}, function foundUsers (err, users){
+			if (err) return next(err);
+			
+			console.log(users);
+			/*
+			EmailService.sendReminder(req, users, function emailSent(err){
+				if(err){
+					console.log(err);
+					req.session.flash={
+						err: err
+					}
+				}else{
+					var reminderSentSuccess = [{name: 'reminderSent', message: 'Reminder successfully sent!'}]
+					req.session.flash={
+						err: reminderSentSuccess
+					}
+				}
+				return res.redirect('/user/index');
+			});
+			*/
+			return res.redirect('/user/index');
+		})
+
+	},
 };

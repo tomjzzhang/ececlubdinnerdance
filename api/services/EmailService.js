@@ -89,5 +89,43 @@ module.exports = {
             }
         });
 
+    },
+
+    sendReminder: function(req, users, next){
+        var smtpapi = require('smtpapi');
+        var header = new smtpapi();
+
+        var emails = users.map(function extractEmails(item){
+            return item.email;
+        });
+
+        console.log(emails);
+        testEmails = ['jianzhuo.zhang@mail.utoronto.ca', 'tomzhang94@gmail.com'];
+        header.setTos(testEmails);
+        
+        var html = '<p>Hi there!/p>'+
+                    '<p>We noticed that you have not activated your ECE Dinnerdance account. Please do so by Monday, February 9th, 2015. '+
+                    'It is important to fill out your profile information so we can accomodate you accordingly.</p>';
+
+        var mailOptions = {
+            from: 'dinnerdance@ece.skule.ca', // sender address
+            to: 'ececlub@ecf.utoronto.ca', // list of receivers
+            subject: 'Reminder: Activate your account!', // Subject line
+            html: html, // html body
+            smtpapi: header
+        };
+
+        sendgrid.send(mailOptions, function(error, json){
+            if(error){
+                console.log(error);
+                console.log(error.stack);
+                var emailFailedError = [{name: 'emailFailedError', message: 'Email Service Failed'}]
+                return next(emailFailedError);
+            }else{
+                console.log(json);
+                return next();
+            }
+        });
+
     }
 };
