@@ -100,14 +100,15 @@ module.exports = {
         });
 
         console.log(emails);
-        testEmails = ['jianzhuo.zhang@mail.utoronto.ca', 'jianzhuo.zhang@mail.utoronto.ca','tomzhang94@gmail.com'];
+        testEmails = ['tomzhang94@gmail.com'];
         header.setTos(testEmails);
         
         var link = 'http://' + req.get('host') + '/password/reset';
-        var html = '<p>Hi there!/p>'+
-                    '<p>We noticed that you have not activated your ECE Dinnerdance account. Please do so by Monday, February 9th, 2015. '+
+        var html = '<p>Hi there!</p>'+
+                    '<p>We noticed that you have not activated your ECE dinner dance account. Please do so by Monday, February 9th, 2015. '+
                     'It is important to fill out your profile information so we can accomodate you accordingly.</p>'+
-                    '<p>If you have lost/forgotten your password, please use the this <a href="'+ link + '" target="_blank">link</a></p>';
+                    '<p>If you have lost/forgotten your password, please use this <a href="'+ link + '" target="_blank">link</a>. If you' +
+                    'have any additional problems, please email ECE club at ececlub@ecf.utoronto.ca</p>';
 
         var mailOptions = {
             from: 'dinnerdance@ece.skule.ca', // sender address
