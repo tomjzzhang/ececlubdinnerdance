@@ -325,7 +325,7 @@ module.exports = {
 	},
 
 	sendUpdates: function(req, res, next){
-		var subject = 'ECE Dinnerdance Updates';
+		var subject = 'ECE Dinner dance Updates';
 
 		var html = '<p>Hey everyone!</p>'+
                     '<p>Here are the final very important updates for the ECE Dinner Dance: </p>'+
