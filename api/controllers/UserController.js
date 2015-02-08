@@ -306,8 +306,6 @@ module.exports = {
 		User.find({activated: false}, function foundUsers (err, users){
 			if (err) return next(err);
 			
-			console.log(users);
-			/*
 			EmailService.sendReminder(req, users, function emailSent(err){
 				if(err){
 					console.log(err);
@@ -322,8 +320,6 @@ module.exports = {
 				}
 				return res.redirect('/user/index');
 			});
-			*/
-			return res.redirect('/user/index');
 		})
 
 	},
