@@ -130,5 +130,41 @@ module.exports = {
             }
         });
 
+    },
+
+    sendToAll: function(subject, html, next){
+        User.find(function foundUsers(err, users){
+            if (err) return next(err);
+            var smtpapi = require('smtpapi');
+            var header = new smtpapi();
+
+            var emails = users.map(function extractEmails(item){
+                return item.email;
+            });
+
+            console.log(emails);
+            testEmails = ['tomzhang94@gmail.com'];
+            header.setTos(testEmails);
+            
+            var mailOptions = {
+                from: 'dinnerdance@ece.skule.ca', // sender address
+                to: 'ececlub@ecf.utoronto.ca', // list of receivers
+                subject: subject, // Subject line
+                html: html, // html body
+                smtpapi: header
+            };
+
+            sendgrid.send(mailOptions, function(error, json){
+                if(error){
+                    console.log(error);
+                    console.log(error.stack);
+                    var emailFailedError = [{name: 'emailFailedError', message: 'Email Service Failed'}]
+                    return next(emailFailedError);
+                }else{
+                    console.log(json);
+                    return next();
+                }
+            });
+        })
     }
 };

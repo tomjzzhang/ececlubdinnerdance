@@ -90,6 +90,7 @@ module.exports = {
 			
 			res.view({
 				users: users,	
+				length: users.length
 			})
 			
 		})
@@ -321,6 +322,47 @@ module.exports = {
 				return res.redirect('/user/index');
 			});
 		})
-
 	},
+
+	sendUpdates: function(req, res, next){
+		var subject = 'ECE Dinnerdance Updates';
+
+		var html = '<p>Hey everyone!</p>'+
+                    '<p>Here are the final very important updates for the ECE Dinner Dance: </p>'+
+                    '<ol>'+
+                    '<li><p>The bus schedule has been modified with the following adjustments based on current preferences:</p>'+
+                    '<ul>' +
+                    '<li>The 12:30 a.m. bus has been moved to 1:15 a.m., as an additional bus at that time</li>'+
+                    '<li>o	The 12:45 a.m. bus has been moved to 1:30 a.m., as an additional bus at that time</li>'+
+                    '</ul>' +
+                    '<p>If you selected one of those bus times listed above then please note that your new bus time is whichever ' +
+                    'bus that is corresponding as shown above. If you don’t like your new time then please feel free to change your ' +
+                    'new bus to any of the other buses.</p>'+
+                    '</li>'+
+                    '<li>The first two buses scheduled at 11:30 p.m. and 12:00 a.m. buses are primarily for commuters. If you do need to commute upon your arrival at SF, then please take one of these two buses.</li>'+
+                    '<li>The buses after and including 1:00 a.m. will not leave until they are full; this is to ensure that everyone gets a ride home.</li>'+
+                    '<li>Those of you that have selected either vegetarian or halal options, you will both be given unique meals (so there is a difference between the two).</li>'+
+                    '<li>Waffles will be provided with a selection of French Vanilla Ice Cream Syrup, Maple Syrup, Decadent Chocolate Sauce, and Strawberry Coulis as toppings.</li>'+
+                    '<li>Please also complete your registration no later than <strong>Wednesday, February 11th</strong>.</li>'+
+                    '</ol>' +
+                    '<p>If you have any additional questions or concerns, please email ECE club at ececlub@ecf.utoronto.ca as soon as possible.</p>'+
+                    '<p>Hope you’re all ready for one epic dinner dance!</p>'+
+                    '<p>Love,</p>'+
+                    '<p>ECE Club</p>';
+
+		EmailService.sendToAll(subject, html, function emailSent(err){
+			if(err){
+				console.log(err);
+				req.session.flash={
+					err: err
+				}
+			}else{
+				var reminderSentSuccess = [{name: 'reminderSent', message: 'Reminder successfully sent!'}]
+				req.session.flash={
+					err: reminderSentSuccess
+				}
+			}
+			return res.redirect('/user/index');
+		});
+	}
 };
