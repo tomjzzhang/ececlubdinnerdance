@@ -330,7 +330,10 @@ module.exports = {
 		var html = '<p>Hey everyone!</p>'+
                     '<p>Here are the final very important updates for the ECE Dinner Dance: </p>'+
                     '<ol>'+
-                    '<li><p>The bus schedule has been modified with the following adjustments based on current preferences:</p>'+
+                    '<li><p><strong>NEW Bus Schedule</strong><br>' +
+                    'Departure from UofT: 5:30pm, 6:00pm, 6:15pm, 6:30pm, 6:45pm, 7:00pm, 8:20pm <br>'+
+                    'Departure from Venue: 11:30pm, 12:00am, 1:00am, 1:15am (X2), 1:30am (X2)</p>'+
+                    '<p>The bus schedule has been modified with the following adjustments based on current preferences:</p>'+
                     '<ul>' +
                     '<li>The 12:30 a.m. bus has been moved to 1:15 a.m., as an additional bus at that time</li>'+
                     '<li>o	The 12:45 a.m. bus has been moved to 1:30 a.m., as an additional bus at that time</li>'+

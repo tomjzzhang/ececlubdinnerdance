@@ -11,7 +11,6 @@ module.exports = {
   attributes: {
   	date: { 
   		type: 'datetime',
-		  unique: true,
   	},
 
   	seats: {
