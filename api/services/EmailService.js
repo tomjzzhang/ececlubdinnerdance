@@ -142,9 +142,7 @@ module.exports = {
                 return item.email;
             });
 
-            console.log(emails);
-            testEmails = ['tomzhang94@gmail.com'];
-            header.setTos(testEmails);
+            header.setTos(emails);
             
             var mailOptions = {
                 from: 'dinnerdance@ece.skule.ca', // sender address
