@@ -105,15 +105,15 @@ module.exports = {
         
         var link = 'http://' + req.get('host') + '/password/reset';
         var html = '<p>Hi there!</p>'+
-                    '<p>We noticed that you have not activated your ECE dinner dance account. Please do so by Monday, February 9th, 2015. '+
-                    'It is important to fill out your profile information so we can accomodate you accordingly.</p>'+
-                    '<p>If you have lost/forgotten your password, please use this <a href="'+ link + '" target="_blank">link</a>. If you' +
-                    'have any additional problems, please email ECE club at ececlub@ecf.utoronto.ca</p>';
+                    '<p>We noticed that you have not picked a table for the ECE dinner dance. Please do so by Tuesday, February 10th, 2015 at 9pm. '+
+                    'If you have not selected a table by then, one will be randomly selected for you.</p>'+
+                    '<p>Yours Truly,</p>' + 
+                    '<p>ECE Club</p>';
 
         var mailOptions = {
-            from: 'dinnerdance@ece.skule.ca', // sender address
+            from: 'ececlub@ecf.utoronto.ca', // sender address
             to: 'ececlub@ecf.utoronto.ca', // list of receivers
-            subject: 'Reminder: Activate your account!', // Subject line
+            subject: 'Reminder: Pick your table!', // Subject line
             html: html, // html body
             smtpapi: header
         };

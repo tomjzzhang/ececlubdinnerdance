@@ -53,23 +53,19 @@
     <% for (i = 0; i < numTables; i++) { %>
         <div class="card">
           <h3> Table <%= i+1 %> </h3>
-          <% if (i == 12 || i == 13) { %>
-            RESERVED
+          <ol class="table_names" id="table-<%= i+1 %>">
+            <% var count = 0; %>
+            <% _.each(tableSeating[i], function(student) { %>
+              <li id="user-<%= student.id %>"><%= student.name %></li>
+              <% count++; %>
+            <% }); %>
+          </ol>
+          <% if (userTable === i+1) { %>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
+          <% } else if (count >= limit){ %>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
           <% } else { %>
-            <ol class="table_names" id="table-<%= i+1 %>">
-              <% var count = 0; %>
-              <% _.each(tableSeating[i], function(student) { %>
-                <li id="user-<%= student.id %>"><%= student.name %></li>
-                <% count++; %>
-              <% }); %>
-            </ol>
-            <% if (userTable === i+1) { %>
-              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
-            <% } else if (count >= limit){ %>
-              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
-            <% } else { %>
-              <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
-            <% } %>
+            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
           <% } %>
         </div>
     <%} %>

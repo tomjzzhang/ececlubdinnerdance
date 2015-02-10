@@ -304,7 +304,7 @@ module.exports = {
 
 	sendReminder: function(req, res, next){
 
-		User.find({activated: false}, function foundUsers (err, users){
+		User.find({tableNum: undefined}, function foundUsers (err, users){
 			if (err) return next(err);
 			
 			EmailService.sendReminder(req, users, function emailSent(err){
