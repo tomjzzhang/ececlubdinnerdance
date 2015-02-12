@@ -60,13 +60,6 @@
               <% count++; %>
             <% }); %>
           </ol>
-          <% if (userTable === i+1) { %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/removeUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Remove </button>
-          <% } else if (count >= limit){ %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
-          <% } else { %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
-          <% } %>
         </div>
     <%} %>
   </div>
