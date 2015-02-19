@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/styles/registration.css">
+<link rel="stylesheet" href="/styles/manage.css">
+
+<div class="indexlistcontainer">
+	<h3>
+		Email
+		<a href="/email/new/"><button class="btn btn-primary">Create Email</button></a>
+	</h3>
+	<table class="table">
+		<tr>
+			<th>id</th>
+			<th>title</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		<% _.each(emails, function(email) { %>
+		<tr data-id="<%= email.id %>" data-model="email">
+			<td><%= email.id %></td>
+			<td><%= email.title %></td>
+			<td><a href="/email/show/<%= email.id %>" class="btn btn-sm btn-primary">Show</a></td>
+			<td><a href="/email/edit/<%= email.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+			<td>
+				<form action="/email/destroy/<%= email.id %>" method="POST" style="margin-top:0px">
+					<input type="hidden" name="_method" value="delete" />
+					<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				</form>
+			</td>
+		</tr>
+		<%	}) %>
+	</table>
+	<br>
+</div>
