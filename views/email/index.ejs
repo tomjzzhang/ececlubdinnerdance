@@ -13,6 +13,7 @@
 			<th></th>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 
 		<% _.each(emails, function(email) { %>
@@ -20,6 +21,7 @@
 			<td><%= email.id %></td>
 			<td><%= email.title %></td>
 			<td><a href="/email/show/<%= email.id %>" class="btn btn-sm btn-primary">Show</a></td>
+			<td><a href="/email/send/<%= email.id %>" class="btn btn-sm btn-success">Send</a></td>
 			<td><a href="/email/edit/<%= email.id %>" class="btn btn-sm btn-warning">Edit</a></td>
 			<td>
 				<form action="/email/destroy/<%= email.id %>" method="POST" style="margin-top:0px">

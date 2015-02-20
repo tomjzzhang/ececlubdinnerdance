@@ -302,6 +302,18 @@ module.exports = {
 		});
 	},
 
+	query: function(req, res, next){
+		var criteria = JSON.parse(req.param('query'));
+		User.find(criteria, function (err, users){
+            if (err) {
+                res.send(500, { error: "DB Error" });
+            } else {
+                res.send(200, users);
+            }
+        });
+	},
+
+	/*
 	sendReminder: function(req, res, next){
 
 		User.find({tableNum: undefined}, function foundUsers (err, users){
@@ -368,4 +380,5 @@ module.exports = {
 			return res.redirect('/user/index');
 		});
 	}
+	*/
 };
