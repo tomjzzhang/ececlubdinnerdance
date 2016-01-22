@@ -6,7 +6,7 @@ module.exports = {
 
     sendOneEmail: function(options, next) {
         var mailOptions = {
-            from: 'dinnerdance@ece.skule.ca', // sender address
+            from: 'ececlub@ecf.utoronto.ca', // sender address
             to: options.email, // list of receivers
             subject: options.subject, // Subject line
             text: options.text, // plaintext body
