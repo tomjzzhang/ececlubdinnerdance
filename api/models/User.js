@@ -97,6 +97,9 @@ module.exports = {
     if(!values.password || values.password != values.confirmation) {
       return next({err: ["Password doesn't match password confirmation"]});
     }
+    if(values.email != values.emailConfirm) {
+      return next({err: ["Email doesn't match email confirmation"]});
+    }
 
     var bcrypt = require('bcryptjs');
     bcrypt.genSalt(10, function(err, salt) {

@@ -109,14 +109,14 @@ html, body {
   background-position: right;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-image: url("../images/background1-left.png");
+  background-image: url("../images/Untitled-1.png");
 }
 
 #trans2, #pic2{
   background-position: left;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-image: url("../images/background1-right.png");
+  background-image: url("../images/Untitled-1.png");
 }
 
 /* ANIMATION KEYFRAMES */
@@ -144,12 +144,12 @@ html, body {
 
 
 /********* CSS FOOTPRINTS **********/
-.footprint{
+/*.footprint{
   position: absolute;
-
+*/
   /*   top: 0;
   left: 0; */
-  width: 25px;
+ /* width: 25px;
   height: 25px;
 
   background: url("../images/footprint.png");
@@ -157,19 +157,19 @@ html, body {
   background-size: contain;
   background-position: right;
 
-  z-index: 10;
+  z-index: 10;*/
 
 
-  -webkit-animation: footprintanimation 2s linear forwards; /* Chrome, Safari, Opera */
+ /* -webkit-animation: footprintanimation 2s linear forwards;  Chrome, Safari, Opera 
   animation: footprintanimation 2s linear forwards;
-}
+}*/
 
-.footprintleft{
+/*.footprintleft{
   position: absolute;
-
+*/
   /*   top: 0;
   left: 0; */
-  width: 25px;
+ /* width: 25px;
   height: 25px;
 
   background: url("../images/footprintleft.png");
@@ -178,12 +178,12 @@ html, body {
   background-position: right;
 
   z-index: 10;
-  overflow: hidden;
+  overflow: hidden;*/
 
 
-  -webkit-animation: footprintanimation 2s linear forwards; /* Chrome, Safari, Opera */
+  /*-webkit-animation: footprintanimation 2s linear forwards;  Chrome, Safari, Opera 
   animation: footprintanimation 2s linear forwards;
-}
+}*/
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes footprintanimation {
