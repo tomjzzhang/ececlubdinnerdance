@@ -36,10 +36,9 @@
     "smtpapi": "^1.0.5"
   },
   "scripts": {
-    // "start": "node app.js",
+    "start": "node app.js",
     "debug": "node debug app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-  "start": "node server.js",
   "postinstall": "bash ./post_install.sh"
 
   },
