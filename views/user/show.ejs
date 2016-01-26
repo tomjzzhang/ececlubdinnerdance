@@ -58,6 +58,7 @@
       <td class="title">Year</td>
       <td class="info">
         <select name="year">
+            <option style="color:#000" value="1T9" <%if (user.year == '1T9') { %><%= 'selected' %><% } %>>1T9</option>
             <option style="color:#000" value="1T8" <%if (user.year == '1T8') { %><%= 'selected' %><% } %>>1T8</option>
             <option style="color:#000" value="1T7" <%if (user.year == '1T7') { %><%= 'selected' %><% } %>>1T7</option>
             <option style="color:#000" value="1T6" <%if (user.year == '1T6') { %><%= 'selected' %><% } %>>1T6</option>
@@ -82,75 +83,9 @@
         <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>">
       </td>
     </tr>
-    <tr>
-      <td class="title">Bus Departure Time</td>
-      <td class="info">
-        <select name="busDepartTime">
-          <% _.each(leavingBuses, function(bus) { %>
-                
-            <% 
-              var hour = bus.date.getHours();
-              var suffix = (hour < 12 ? " am" : " pm");
-
-              hour = (hour > 12 ? hour - 12 : hour);
-
-              if (hour == 0){
-                hour = 12;
-              }
-
-              var min  = bus.date.getMinutes();
-              min = (min < 10 ? "0" : "") + min;
-
-              var time = hour + ":" + min + suffix;
-            %>
-            <option style="color:#000" value="<%= bus.id %>" <% if (user.busDepartTime == bus.id) { %><%= 'selected ' %><% } %> <%= (bus.seats <= 0) ? " disabled" : "" %>>
-              <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-            </option>
-          <%  }) %>
-          <option style="color:#000" value="" <% if (user.busDepartTime == "") { %><%= 'selected' %><% } %>>
-            Not taking bus
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td class="title" id="titletest">Bus Return Time</td>
-      <td class="info">
-        <select name="busReturnTime">
-          <% _.each(returningBuses, function(bus) { %>
-            <% 
-              var hour = bus.date.getHours();
-              var suffix = (hour < 12 ? " am" : " pm");
-
-              hour = (hour > 12 ? hour - 12 : hour);
-
-              if (hour == 0){
-                hour = 12;
-              }
-
-              var min  = bus.date.getMinutes();
-              min = (min < 10 ? "0" : "") + min;
-
-              var time = hour + ":" + min + suffix;
-            %>
-            <option style="color:#000" value="<%= bus.id %>" <% if (user.busReturnTime == bus.id) { %><%= 'selected ' %><% } %>
-              <%= (bus.seats <= 0) ? " disabled" : "" %>>
-              <%= time %><%= (bus.seats <= 0) ? " (full)" : "" %>
-            </option>
-          <%  }) %>
-          <option style="color:#000" value="" <% if (user.busReturnTime == "") { %><%= 'selected' %><% } %>>
-            Not taking bus
-          </option>
-        </select>
-      </td>
-    </tr>
-
+    
     </table>
     <table>
-    <tr>
-      <br>
-      <td class="notice">** The 8:20 p.m. bus is for those with midterms **</td>
-    </tr>
     </table>
 
     <table class='age'>

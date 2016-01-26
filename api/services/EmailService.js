@@ -70,7 +70,7 @@ module.exports = {
                     'and change your password as soon as possible. If you have signed up on someone\'s behalf, please forward them this information.</p>';
 
         var mailOptions = {
-            from: 'dinnerdance@ece.skule.ca', // sender address
+            from: 'ececlub@ecf.utoronto.ca', // sender address
             to: 'ececlub@ecf.utoronto.ca', // list of receivers
             subject: 'Welcome to ECE Dinnerdance', // Subject line
             html: html, // html body
