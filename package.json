@@ -34,7 +34,8 @@
     "smtpapi": "^1.0.5"
   },
   "engines": {
-    "node": "= 5.4.1"
+    "node": "= 5.4.1",
+    "npm" : "3.3.12"
   },
   "scripts": {
     "start": "node app.js",
