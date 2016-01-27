@@ -31,11 +31,12 @@
     "sails-mongo": "^0.10.5",
     "sails-redis": "^0.10.3",
     "sendgrid": "^1.5.0",
-    "smtpapi": "^1.0.5"
+    "smtpapi": "^1.0.5",
+    "socket.io": "^1.4.5"
   },
   "engines": {
     "node": "= 5.4.1",
-    "npm" : "3.3.12"
+    "npm": "3.3.12"
   },
   "scripts": {
     "start": "node app.js",
