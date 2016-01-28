@@ -18,7 +18,7 @@ module.exports.models = {
    *                                                                          *
    ***************************************************************************/
   //connection: 'localDiskDb', //use this if for development
-  //connection: 'mongodbServer',
+  connection: 'mongodbServer',
 
   /***************************************************************************
    *                                                                          *
@@ -28,6 +28,6 @@ module.exports.models = {
    * See http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html  *
    *                                                                          *
    ***************************************************************************/
-  migrate: 'drop'
+  migrate: 'safe'
 
 };
