@@ -15,7 +15,7 @@ module.exports = {
 
   	seats: {
   		type: 'integer',
-  		defaultsTo: 45
+  		defaultsTo: 47
   	},
 
   	type: {
