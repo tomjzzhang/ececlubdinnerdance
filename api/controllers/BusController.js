@@ -30,7 +30,7 @@ module.exports = {
 	},
 
 	index: function(req, res, next){
-		var maxSeats = 48;
+		var maxSeats = 45;
 
 		Bus.find({ type: 'leaving' }, function foundBuses (err, leavingBuses){
 			if (err) return next(err);

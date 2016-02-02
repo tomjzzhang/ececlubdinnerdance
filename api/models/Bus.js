@@ -15,7 +15,7 @@ module.exports = {
 
   	seats: {
   		type: 'integer',
-  		defaultsTo: 48
+  		defaultsTo: 45
   	},
 
   	type: {
@@ -26,7 +26,7 @@ module.exports = {
 
   beforeCreate: function(values, next) {
   	if (typeof values.departDate == undefined || values.departDate == ''){
-  		values.departDate = '2015-02-13';
+  		values.departDate = '2016-02-12';
   	}
   	var dateString = values.departDate + ' ' + values.departTime;
   	values.date = new Date(dateString.replace(/-/g, "/"));
