@@ -83,6 +83,7 @@
         <input type="text" class="form-control" placeholder="Please Specify" name="otherDietaryRestrictions" value="<% if (user.dietaryRestrictions != 'None' && user.dietaryRestrictions != 'Vegetarian' && user.dietaryRestrictions != 'Halal') {%><%= user.dietaryRestrictions %><% } %>">
       </td>
     </tr>
+    <!-- lockdown
     <tr>
        <td class="title">Bus Departure Time</td>
        <td class="info">
@@ -114,6 +115,8 @@
          </select>
        </td>
     </tr>
+    -->
+    <!--
      <tr>
       <td class="title" id="titletest">Bus Return Time</td>
        <td class="info">
@@ -145,6 +148,7 @@
          </select>
        </td>
      </tr>
+     -->
     
     </table>
     <table>
@@ -165,10 +169,12 @@
     </table>
 <br></br>
   </div>
+  <!--
     <div id="submit-container">
       <!-- <input id="reg-submit" type="submit" value="I'm Ready. Sign Me Up!"> -->
       <input type="submit" class="btn btn-lg btn-primary btn-black" value="I'm Ready. Sign Me Up!" />
 </div>
+-->
   <input type="hidden" name="_csrf" value="<%= _csrf %>" />
   </form>
 </div>

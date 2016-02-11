@@ -65,7 +65,7 @@
           <% } else if (count >= limit){ %>
             <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit" style="pointer-events: none"> Full </button>
           <% } else { %>
-            <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button>
+           <!--LOCKDOWN <button id="table-<%= i+1 %>-btn" onclick="tablePost('/tables/addUser', {tableName:<%= i+1 %>, _csrf:'<%= _csrf %>'})" type="submit"> Add </button> -->
           <% } %>
         </div>
     <%} %>
